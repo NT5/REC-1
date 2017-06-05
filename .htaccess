@@ -1,0 +1,14 @@
+Options All -Indexes
+
+RewriteEngine On
+
+RewriteRule ^res/libs/jquery(/.*)?$ ./vendor/components/jquery/$1
+RewriteRule ^res/libs/bootstrap(/.*)?$ ./vendor/components/bootstrap/$1
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+<Files config.ini>
+    order allow,deny
+    deny from all
+</Files>
