@@ -6,11 +6,17 @@
         {
             "name": "Hendell Jonathan Porras Perez",
             "email": "hendelporras@hotmail.com",
-            "homepage": "http://nt5.info"
+            "homepage": "http://nt5.info",
+            "role": "Main Developer"
         }
     ],
     "autoload": {
         "psr-4": {
+            "REC1\\": "res/php/app",
+            "REC1\\Users\\": "res/php/app/Users",
+            "REC1\\Database\\": "res/php/app/Database",
+            "REC1\\Factory\\": "res/php/app/Factory",
+            "REC1\\Util\\": "res/php/app/Util"
         }
     },
     "license": "Apache-2.0",
