@@ -41,7 +41,7 @@ class PageManager extends \REC1\Factory\REC1Components {
         if (!$ExtendedComponents) {
             $ExtendedComponents = new \REC1\Factory\ExtendedComponents();
         }
-        parent::__construct(NULL, NULL, NULL, NULL, $ExtendedComponents);
+        parent::__construct(NULL, NULL, $ExtendedComponents);
 
         $this->Listen_Type = ($ListenType) ? : INPUT_GET;
         $this->Listen_Url = ($ListenUrl) ? : 'p';

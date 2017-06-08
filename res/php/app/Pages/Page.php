@@ -21,7 +21,7 @@ abstract class Page extends \REC1\Factory\REC1Components {
         if (!$REC1Components) {
             $REC1Components = new \REC1\Factory\AddDateComponents();
         }
-        parent::__construct($REC1Components->getUsers(), $REC1Components);
+        parent::__construct($REC1Components->getUsers(), $REC1Components->getCookies(), $REC1Components);
 
         $this->Twig = new \REC1\Twig();
     }

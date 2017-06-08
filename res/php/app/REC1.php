@@ -47,11 +47,11 @@ class REC1 extends \REC1\Factory\ExtendedComponents {
         $BaseComponents = $this->initBaseComponents();
         $ExtendedComponents = $this->initExtendedComponents($BaseComponents);
 
-        parent::__construct($ExtendedComponents->getDatabase(), $ExtendedComponents->getPageConfig(), $ExtendedComponents->getCookies(), $BaseComponents);
+        parent::__construct($ExtendedComponents->getDatabase(), $ExtendedComponents->getPageConfig(), $BaseComponents);
 
         $this->getLogger()->setLog(\REC1\Util\Logger\Areas::CORE, "Nueva instancia %s creada", get_class());
 
-        $this->run();
+        // $this->run();
     }
 
     /**
@@ -98,11 +98,10 @@ class REC1 extends \REC1\Factory\ExtendedComponents {
      * @return \REC1\Factory\ExtendedComponents
      */
     private function initExtendedComponents(\REC1\Factory\BaseComponents $BaseComponents) {
-        $Cookies = $this->initCookies($BaseComponents);
         $PageConfig = $this->initPageConfig($BaseComponents);
         $Database = $this->initDatabase($BaseComponents);
 
-        $ExtendedComponents = new \REC1\Factory\ExtendedComponents($Database, $PageConfig, $Cookies, $BaseComponents);
+        $ExtendedComponents = new \REC1\Factory\ExtendedComponents($Database, $PageConfig, $BaseComponents);
 
         return $ExtendedComponents;
     }
@@ -150,10 +149,12 @@ class REC1 extends \REC1\Factory\ExtendedComponents {
 
     /**
      * 
+     * @param int $ListenType
+     * @param string $ListenUrl
      */
-    private function run() {
+    public function runHTML($ListenType = NULL, $ListenUrl = NULL) {
 
-        $this->PageManager = new \REC1\PageManager(INPUT_GET, "p", $this);
+        $this->PageManager = new \REC1\PageManager($ListenType, $ListenUrl, $this);
 
         $this->initInstall();
 
