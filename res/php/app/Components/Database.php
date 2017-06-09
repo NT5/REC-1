@@ -1,6 +1,6 @@
 <?php
 
-namespace REC1;
+namespace REC1\Components;
 
 /**
  * Clase principal que controla y proporciona todos los métodos de la base de datos

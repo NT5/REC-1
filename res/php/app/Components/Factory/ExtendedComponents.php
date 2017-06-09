@@ -17,19 +17,12 @@ class ExtendedComponents extends \REC1\Factory\BaseComponents {
     private $PageConfig;
 
     /**
-     *s
-     * @var \REC1\Cookies 
-     */
-    private $Cookies;
-
-    /**
      * 
      * @param \REC1\Database $Database
      * @param \REC1\Config $PageConfig
-     * @param \REC1\Cookies $Cookies
      * @param \REC1\Factory\BaseComponents $BaseComponents
      */
-    public function __construct(\REC1\Database $Database = NULL, \REC1\Config $PageConfig = NULL, \REC1\Cookies $Cookies = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
+    public function __construct(\REC1\Database $Database = NULL, \REC1\Config $PageConfig = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
         if (!$BaseComponents) {
             $BaseComponents = new \REC1\Factory\BaseComponents();
         }
@@ -37,7 +30,6 @@ class ExtendedComponents extends \REC1\Factory\BaseComponents {
 
         $this->Database = ($Database) ? : new \REC1\Database(NULL, $this);
         $this->PageConfig = ($PageConfig) ? : new \REC1\Config(NULL, NULL, $this);
-        $this->Cookies = ($Cookies) ? : new \REC1\Cookies();
     }
 
     /**
@@ -54,14 +46,6 @@ class ExtendedComponents extends \REC1\Factory\BaseComponents {
      */
     public function getPageConfig() {
         return $this->PageConfig;
-    }
-
-    /**
-     * 
-     * @return \REC1\Cookies
-     */
-    public function getCookies() {
-        return $this->Cookies;
     }
 
 }
