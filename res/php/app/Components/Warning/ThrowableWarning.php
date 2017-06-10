@@ -1,15 +1,15 @@
 <?php
 
-namespace REC1\Warning;
+namespace REC1\Components\Warning;
 
 /**
- * 
+ * @todo Documentacion
  */
 interface ThrowableWarning {
 
     /**
      * 
-     * @return \REC1\Warning\WarningSet
+     * @return \REC1\Components\Warning\WarningSet
      */
     public function getWarningSet();
 

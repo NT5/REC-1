@@ -1,8 +1,9 @@
 <?php
 
-namespace REC1;
+namespace REC1\Components;
 
 /**
+ * @todo Documentacion
  * Clase <b>Error</b> con métodos usados en el manejo de errores
  */
 class Error {

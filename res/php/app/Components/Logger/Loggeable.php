@@ -1,15 +1,15 @@
 <?php
 
-namespace REC1\Util\Logger;
+namespace REC1\Components\Logger;
 
 /**
- * TODO
+ * @TODO Documentacion
  */
 interface Loggeable {
 
     /**
      * 
-     * @return \REC1\Util\Logger
+     * @return \REC1\Components\Logger
      */
     public function getLogger();
 

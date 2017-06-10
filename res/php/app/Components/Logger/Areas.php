@@ -1,9 +1,9 @@
 <?php
 
-namespace REC1\Util\Logger;
+namespace REC1\Components\Logger;
 
 /**
- * TODO
+ * @todo Docomentacion
  */
 abstract class Areas {
 

@@ -1,8 +1,9 @@
 <?php
 
-namespace REC1\Error;
+namespace REC1\Components\Error;
 
 /**
+ * @todo Documentacion
  * Clase <b>ENUM</b> con los errores validos
  */
 abstract class Errors {

@@ -1,27 +1,27 @@
 <?php
 
-namespace REC1\Error;
+namespace REC1\Components\Error;
 
 /**
- * 
+ * @todo Documentacion
  */
 interface ThrowableError {
 
     /**
      * 
-     * @return \REC1\Error\ErrorSet
+     * @return \REC1\Components\Error\ErrorSet
      */
     public function getErrorSet();
 
     /**
      * 
-     * @param type $Error
+     * @param int $Error
      */
     public function addError($Error);
 
     /**
      * 
-     * @return type
+     * @return array
      */
     public function getErrors();
 }
