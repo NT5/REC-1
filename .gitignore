@@ -1,3 +1,4 @@
 /composer.lock
+/compilation_cache/
 /vendor/
 /nbproject/

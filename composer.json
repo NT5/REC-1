@@ -13,9 +13,8 @@
     "autoload": {
         "psr-4": {
             "REC1\\": "res/php/app",
-            "REC1\\Users\\": "res/php/app/Users",
-            "REC1\\Database\\": "res/php/app/Database",
-            "REC1\\Factory\\": "res/php/app/Factory",
+            "REC1\\Components\\": "res/php/app/Components",
+            "REC1\\Pages\\": "res/php/app/Pages",
             "REC1\\Util\\": "res/php/app/Util"
         }
     },

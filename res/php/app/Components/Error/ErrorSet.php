@@ -1,9 +1,9 @@
 <?php
 
-namespace REC1\Error;
+namespace REC1\Components\Error;
 
 /**
- * 
+ * @todo Documentacion
  */
 class ErrorSet {
 
@@ -29,9 +29,9 @@ class ErrorSet {
 
     /**
      * 
-     * @param \REC1\Error $Error
+     * @param \REC1\Components\Error $Error
      */
-    public function addError(\REC1\Error $Error) {
+    public function addError(\REC1\Components\Error $Error) {
         $this->Errors[] = $Error;
     }
 

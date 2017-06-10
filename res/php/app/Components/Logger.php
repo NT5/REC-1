@@ -1,6 +1,6 @@
 <?php
 
-namespace REC1\Util;
+namespace REC1\Components;
 
 /**
  * Instancia que proporciona métodos para llevar un registro de ejecución
@@ -40,7 +40,7 @@ class Logger {
     public function setLog($area, $string, ...$format) {
         $trace_arr = debug_backtrace(FALSE, $this->TraceSteps);
         $trace = end($trace_arr);
-        $this->Logs[$area][] = new \REC1\Util\Logger\Log(
+        $this->Logs[$area][] = new \REC1\Components\Logger\Log(
                 $trace['class'], $trace['function'], microtime(true), date('m/d/Y h:i:sa', time()), sprintf($string, ...$format)
         );
     }
