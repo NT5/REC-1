@@ -1,12 +1,13 @@
 <?php
 
-namespace REC1\Database;
+namespace REC1\Components\Database;
 
 /**
+ * @todo Documendar
  * Instancia abstracta usada para almacenar y cargar
  * datos de configuración de la base de datos
  */
-class Config extends \REC1\Factory\BaseComponents {
+class Config extends \REC1\Components\BaseComponents {
 
     /**
      * @var string Dirección del servidor de la base de datos
@@ -34,11 +35,11 @@ class Config extends \REC1\Factory\BaseComponents {
      * @param string $username Nombre de usuario de la base de datos
      * @param string $password Contraseña de conexion
      * @param string $database Base de datos que se usara
-     * @param \REC1\Factory\BaseComponents $BaseComponents
+     * @param \REC1\Components\BaseComponents $BaseComponents
      */
-    public function __construct($server = NULL, $username = NULL, $password = NULL, $database = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
+    public function __construct($server = NULL, $username = NULL, $password = NULL, $database = NULL, \REC1\Components\BaseComponents $BaseComponents = NULL) {
         if (!$BaseComponents) {
-            $BaseComponents = new \REC1\Factory\BaseComponents();
+            $BaseComponents = new \REC1\Components\BaseComponents();
         }
         parent::__construct($BaseComponents->getLogger(), $BaseComponents->getErrorSet(), $BaseComponents->getWarningSet());
 
@@ -47,7 +48,7 @@ class Config extends \REC1\Factory\BaseComponents {
         $this->password = ($password) ? : "default";
         $this->database = ($database) ? : "uml_rec_1";
 
-        $this->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG, "Nueva instancia de configuración de base de datos creada");
+        $this->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG, "Nueva instancia de configuración de base de datos creada");
     }
 
     /**
@@ -121,7 +122,7 @@ class Config extends \REC1\Factory\BaseComponents {
      */
     public function saveToIni($inifile = 'config.ini') {
 
-        $this->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG, "Intentando guardar configuración en el archivo $inifile...");
+        $this->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG, "Intentando guardar configuración en el archivo $inifile...");
 
         $ini_area = "MySQL";
         $data = [
@@ -133,27 +134,27 @@ class Config extends \REC1\Factory\BaseComponents {
 
         foreach ($data as $index => $value) {
             if (\REC1\Util\Files::set_ini_file($inifile, $ini_area, $index, $value)) {
-                $this->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG, "La variable %s fue guardada correctamente", $index);
+                $this->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG, "La variable %s fue guardada correctamente", $index);
                 continue;
             } else {
-                $this->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG_ERROR, "No se pudo guardar el archivo de configuración; operacion abortada");
+                $this->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG_ERROR, "No se pudo guardar el archivo de configuración; operacion abortada");
                 return FALSE;
             }
         }
 
-        $this->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG, "El archivo $inifile fue guardado correctamente");
+        $this->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG, "El archivo $inifile fue guardado correctamente");
         return TRUE;
     }
 
     /**
      * Regresa instancia de configuración de la base de datos cargada desde un archivo .ini valido
      * @param string $inifile Ruta del archivo .ini en el servidor
-     * @param \REC1\Factory\BaseComponents $BaseComponents
-     * @return \REC1\Database\Config
+     * @param \REC1\Components\BaseComponents $BaseComponents
+     * @return \REC1\Components\Database\Config
      */
-    public static function fromIniFile($inifile = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
+    public static function fromIniFile($inifile = NULL, \REC1\Components\BaseComponents $BaseComponents = NULL) {
 
-        $BaseComponents = ($BaseComponents) ? : new \REC1\Factory\BaseComponents();
+        $BaseComponents = ($BaseComponents) ? : new \REC1\Components\BaseComponents();
         $inifile = ($inifile) ? : 'config.ini';
 
         $valid_structure = [
@@ -164,29 +165,29 @@ class Config extends \REC1\Factory\BaseComponents {
         ];
         $ini_area = "MySQL";
 
-        $BaseComponents->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG, "Intentando crear configuración de base de datos con $inifile...");
+        $BaseComponents->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG, "Intentando crear configuración de base de datos con $inifile...");
 
         $ini = \REC1\Util\Files::load_ini_file($inifile);
 
         if ($ini) {
-            $BaseComponents->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG, "Comprobando estructura de $inifile...");
+            $BaseComponents->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG, "Comprobando estructura de $inifile...");
 
             if (\REC1\Util\Functions::checkArray([$ini_area], $ini) && \REC1\Util\Functions::checkArray($valid_structure, $ini[$ini_area])) {
                 $instance = new self(
                         $ini[$ini_area]["server"], $ini[$ini_area]["username"], $ini[$ini_area]["password"], $ini[$ini_area]["database"], $BaseComponents
                 );
-                $BaseComponents->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG, "Instancia de configuración de base de datos creada correctamente con $inifile");
+                $BaseComponents->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG, "Instancia de configuración de base de datos creada correctamente con $inifile");
 
                 return $instance;
             } else {
-                $BaseComponents->addWarning(new \REC1\Warning(\REC1\Warning\Warnings::DATABASE_CONFIGURATION_INVALID_FORMAT));
-                $BaseComponents->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG_ERROR, "El archivo $inifile tiene una estructura invalida");
+                $BaseComponents->addWarning(new \REC1\Components\Warning(\REC1\Components\Warning\Warnings::DATABASE_CONFIGURATION_INVALID_FORMAT));
+                $BaseComponents->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG_ERROR, "El archivo $inifile tiene una estructura invalida");
 
                 return new self(NULL, NULL, NULL, NULL, $BaseComponents);
             }
         } else {
-            $BaseComponents->addWarning(new \REC1\Warning(\REC1\Warning\Warnings::CANT_LOAD_DATABASE_CONFIGURATION_FILE));
-            $BaseComponents->setLog(\REC1\Util\Logger\Areas::DATABASE_CONFIG_ERROR, "El archivo $inifile no pudo ser cargado");
+            $BaseComponents->addWarning(new \REC1\Components\Warning(\REC1\Components\Warning\Warnings::CANT_LOAD_DATABASE_CONFIGURATION_FILE));
+            $BaseComponents->setLog(\REC1\Components\Logger\Areas::DATABASE_CONFIG_ERROR, "El archivo $inifile no pudo ser cargado");
 
             return new self(NULL, NULL, NULL, NULL, $BaseComponents);
         }

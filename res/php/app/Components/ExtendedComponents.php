@@ -1,12 +1,12 @@
 <?php
 
-namespace REC1\Factory;
+namespace REC1\Components;
 
-class ExtendedComponents extends \REC1\Factory\BaseComponents {
+class ExtendedComponents extends \REC1\Components\BaseComponents {
 
     /**
      * Objeto con métodos usados en el control de la base de datos
-     * @var \REC1\Database 
+     * @var \REC1\Components\Database 
      */
     private $Database;
 
@@ -18,23 +18,23 @@ class ExtendedComponents extends \REC1\Factory\BaseComponents {
 
     /**
      * 
-     * @param \REC1\Database $Database
+     * @param \REC1\Components\Database $Database
      * @param \REC1\Config $PageConfig
-     * @param \REC1\Factory\BaseComponents $BaseComponents
+     * @param \REC1\Components\BaseComponents $BaseComponents
      */
-    public function __construct(\REC1\Database $Database = NULL, \REC1\Config $PageConfig = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
+    public function __construct(\REC1\Components\Database $Database = NULL, \REC1\Config $PageConfig = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
         if (!$BaseComponents) {
-            $BaseComponents = new \REC1\Factory\BaseComponents();
+            $BaseComponents = new \REC1\Components\BaseComponents();
         }
         parent::__construct($BaseComponents->getLogger(), $BaseComponents->getErrorSet(), $BaseComponents->getWarningSet());
 
-        $this->Database = ($Database) ? : new \REC1\Database(NULL, $this);
+        $this->Database = ($Database) ? : new \REC1\Components\Database(NULL, $this);
         $this->PageConfig = ($PageConfig) ? : new \REC1\Config(NULL, NULL, $this);
     }
 
     /**
      * 
-     * @return \REC1\Database
+     * @return \REC1\Components\Database
      */
     public function getDatabase() {
         return $this->Database;

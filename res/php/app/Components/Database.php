@@ -3,28 +3,29 @@
 namespace REC1\Components;
 
 /**
+ * @todo Documentacion
  * Clase principal que controla y proporciona todos los métodos de la base de datos
  */
-class Database extends \REC1\Factory\BaseComponents {
+class Database extends \REC1\Components\BaseComponents {
 
     /**
-     * @var \REC1\Database\Connection Instancia de <b>\REC1\Database\Connection</b> 
+     * @var \REC1\Components\Database\Connection Instancia de <b>\REC1\Components\Database\Connection</b> 
      */
     private $Connection;
 
     /**
-     * @param \REC1\Database\Connection $Connection Instancia de <b>\REC1\Database\Connection</b>
-     * @param \REC1\Factory\BaseComponents $BaseComponents
+     * @param \REC1\Components\Database\Connection $Connection Instancia de <b>\REC1\Components\Database\Connection</b>
+     * @param \REC1\Components\BaseComponents $BaseComponents
      */
-    public function __construct(\REC1\Database\Connection $Connection = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
+    public function __construct(\REC1\Components\Database\Connection $Connection = NULL, \REC1\Components\BaseComponents $BaseComponents = NULL) {
         if (!$BaseComponents) {
-            $BaseComponents = new \REC1\Factory\BaseComponents();
+            $BaseComponents = new \REC1\Components\BaseComponents();
         }
         parent::__construct($BaseComponents->getLogger(), $BaseComponents->getErrorSet(), $BaseComponents->getWarningSet());
 
-        $this->Connection = ($Connection) ? : new \REC1\Database\Connection(NULL, $this);
+        $this->Connection = ($Connection) ? : new \REC1\Components\Database\Connection(NULL, $this);
 
-        $this->setLog(\REC1\Util\Logger\Areas::DATABASE_METHODS, "Nueva instancia de base de datos creada");
+        $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS, "Nueva instancia de base de datos creada");
     }
 
     /**
@@ -33,9 +34,9 @@ class Database extends \REC1\Factory\BaseComponents {
     public function close() {
         if ($this->getConnection()) {
             $this->getConnection()->getMySQLi()->close();
-            $this->setLog(\REC1\Util\Logger\Areas::DATABASE_METHODS, "Conexión MySQLi cerrada");
+            $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS, "Conexión MySQLi cerrada");
         } else {
-            $this->setLog(\REC1\Util\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'close' sin establecer una conexión validad a la base de datos");
+            $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'close' sin establecer una conexión validad a la base de datos");
         }
     }
 
@@ -46,7 +47,7 @@ class Database extends \REC1\Factory\BaseComponents {
     public function charset($charset) {
         if ($this->getConnection()) {
             mysqli_set_charset($this->getConnection()->getMySQLi(), $charset);
-            $this->setLog(\REC1\Util\Logger\Areas::DATABASE_METHODS, "Charset de la base de datos cambiado a %s", $charset);
+            $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS, "Charset de la base de datos cambiado a %s", $charset);
         }
     }
 
@@ -60,7 +61,7 @@ class Database extends \REC1\Factory\BaseComponents {
         if ($this->getConnection()) {
             return $this->getConnection()->getMySQLi()->query($sql);
         } else {
-            $this->setLog(\REC1\Util\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'query' sin establecer una conexión validad a la base de datos");
+            $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'query' sin establecer una conexión validad a la base de datos");
         }
         return NULL;
     }
@@ -75,14 +76,14 @@ class Database extends \REC1\Factory\BaseComponents {
         if ($this->getConnection()) {
             return $this->getConnection()->getMySQLi()->prepare($statement);
         } else {
-            $this->setLog(\REC1\Util\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'prepare' sin establecer una conexión validad a la base de datos");
+            $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'prepare' sin establecer una conexión validad a la base de datos");
         }
         return NULL;
     }
 
     /**
      * Regresa Objecto MySQLi
-     * @return \REC1\Database\Connection|NULL Instancia <b>\REC1\Database\Connection</b> proporcionada por
+     * @return \REC1\Components\Database\Connection|NULL Instancia <b>\REC1\Components\Database\Connection</b> proporcionada por
      * la clase de conexión
      */
     public function getConnection() {
