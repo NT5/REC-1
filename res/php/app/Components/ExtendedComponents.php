@@ -2,6 +2,9 @@
 
 namespace REC1\Components;
 
+/**
+ * @todo Documentar
+ */
 class ExtendedComponents extends \REC1\Components\BaseComponents {
 
     /**
@@ -12,24 +15,24 @@ class ExtendedComponents extends \REC1\Components\BaseComponents {
 
     /**
      * Objeto con métodos usados en la configuracion de la pagina
-     * @var \REC1\Config 
+     * @var \REC1\Components\PageConfig 
      */
     private $PageConfig;
 
     /**
      * 
      * @param \REC1\Components\Database $Database
-     * @param \REC1\Config $PageConfig
+     * @param \REC1\Components\PageConfig $PageConfig
      * @param \REC1\Components\BaseComponents $BaseComponents
      */
-    public function __construct(\REC1\Components\Database $Database = NULL, \REC1\Config $PageConfig = NULL, \REC1\Factory\BaseComponents $BaseComponents = NULL) {
+    public function __construct(\REC1\Components\Database $Database = NULL, \REC1\Components\PageConfig $PageConfig = NULL, \REC1\Components\BaseComponents $BaseComponents = NULL) {
         if (!$BaseComponents) {
             $BaseComponents = new \REC1\Components\BaseComponents();
         }
         parent::__construct($BaseComponents->getLogger(), $BaseComponents->getErrorSet(), $BaseComponents->getWarningSet());
 
         $this->Database = ($Database) ? : new \REC1\Components\Database(NULL, $this);
-        $this->PageConfig = ($PageConfig) ? : new \REC1\Config(NULL, NULL, $this);
+        $this->PageConfig = ($PageConfig) ? : new \REC1\Components\PageConfig(NULL, NULL, $this);
     }
 
     /**
@@ -42,7 +45,7 @@ class ExtendedComponents extends \REC1\Components\BaseComponents {
 
     /**
      * 
-     * @return \REC1\Config
+     * @return \REC1\Components\PageConfig
      */
     public function getPageConfig() {
         return $this->PageConfig;

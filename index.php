@@ -26,6 +26,10 @@ $db = new \REC1\Components\Database(
         ), $baseComponents
 );
 
+$PageConfig = \REC1\Components\PageConfig::fromIniFile(NULL, $baseComponents);
+
+$extendedComponents = new \REC1\Components\ExtendedComponents($db, $PageConfig, $baseComponents);
+
 echo "<pre>";
 print_r($Logger->getLogs());
 print_r($Warnings->getWarnings());
