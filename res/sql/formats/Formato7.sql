@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS `Formato7` (
+  `Record_Id` int(15) NOT NULL AUTO_INCREMENT,
+  `Ped_Id` int(15) NOT NULL,
+  `Anio_Lectivo` int(15) NOT NULL,
+  `Trimistre` int(15) NOT NULL,
+  `Carrera_Id` int(15) NOT NULL,
+  `Turno_Id` int(15) NOT NULL,
+  `Anio_Carrera` int(15) NOT NULL,
+  `Varones_Urbano` int(15) NOT NULL,
+  `Varones_Rural` int(15) NOT NULL,
+  `Mujeres_Urbano` int(15) NOT NULL,
+  `Mujeres_Rural` int(15) NOT NULL,
+  PRIMARY KEY (`Record_Id`),
+  KEY `FK_Formato7_Peds` (`Ped_Id`),
+  KEY `FK_Formato7_Carreras` (`Carrera_Id`),
+  KEY `FK_Formato7_Turnos` (`Turno_Id`),
+  CONSTRAINT `FK_Formato7_Peds` FOREIGN KEY (`Ped_Id`) REFERENCES `Peds` (`Ped_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_Formato7_Carreras` FOREIGN KEY (`Carrera_Id`) REFERENCES `Carreras` (`Carrera_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_Formato7_Turnos` FOREIGN KEY (`Turno_Id`) REFERENCES `Turnos` (`Turno_Id`) ON DELETE CASCADE ON UPDATE CASCADE
+)
