@@ -11,10 +11,7 @@ CREATE TABLE IF NOT EXISTS `Formato7` (
   `Mujeres_Urbano` int(15) NOT NULL,
   `Mujeres_Rural` int(15) NOT NULL,
   PRIMARY KEY (`Record_Id`),
-  KEY `FK_Formato7_Peds` (`Ped_Id`),
-  KEY `FK_Formato7_Carreras` (`Carrera_Id`),
-  KEY `FK_Formato7_Turnos` (`Turno_Id`),
-  CONSTRAINT `FK_Formato7_Peds` FOREIGN KEY (`Ped_Id`) REFERENCES `Peds` (`Ped_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Formato7_Carreras` FOREIGN KEY (`Carrera_Id`) REFERENCES `Carreras` (`Carrera_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Formato7_Turnos` FOREIGN KEY (`Turno_Id`) REFERENCES `Turnos` (`Turno_Id`) ON DELETE CASCADE ON UPDATE CASCADE
-)
+  FOREIGN KEY (`Ped_Id`) REFERENCES `Peds` (`Ped_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`Carrera_Id`) REFERENCES `Carreras` (`Carrera_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`Turno_Id`) REFERENCES `Turnos` (`Turno_Id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
