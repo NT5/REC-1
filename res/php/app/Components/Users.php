@@ -1,21 +1,21 @@
 <?php
 
-namespace REC1;
+namespace REC1\Components;
 
 /**
- * 
+ * @todo Documentar
  */
-class Users extends \REC1\Factory\ExtendedComponents {
+class Users extends \REC1\Components\ExtendedComponents {
 
     /**
      *
-     * @var \REC1\Users\Token
+     * @var \REC1\Components\Users\Token
      */
     private $UserToken;
 
     /**
      *
-     * @var \REC1\Users\Sessions 
+     * @var \REC1\Components\Users\Sessions 
      */
     private $UserSession;
 
@@ -25,21 +25,21 @@ class Users extends \REC1\Factory\ExtendedComponents {
      * @param \REC1\Users\Token $UserToken
      * @param \REC1\Users\Sessions $UserSession
      */
-    public function __construct(\REC1\Factory\ExtendedComponents $ExtendedComponents = NULL, \REC1\Users\Token $UserToken = NULL, \REC1\Users\Sessions $UserSession = NULL) {
+    public function __construct(\REC1\Components\ExtendedComponents $ExtendedComponents = NULL, \REC1\Components\Users\Token $UserToken = NULL, \REC1\Components\Users\Sessions $UserSession = NULL) {
         if (!$ExtendedComponents) {
-            $ExtendedComponents = new \REC1\Factory\ExtendedComponents();
+            $ExtendedComponents = new \REC1\Components\ExtendedComponents();
         }
         parent::__construct($ExtendedComponents->getDatabase(), $ExtendedComponents->getPageConfig(), $ExtendedComponents->getCookies(), $ExtendedComponents);
 
-        $this->UserToken = ($UserToken) ? : new \REC1\Users\Token($this, $ExtendedComponents);
-        $this->UserSession = ($UserSession) ? : new \REC1\Users\Sessions($this, $ExtendedComponents);
+        $this->UserToken = ($UserToken) ? : new \REC1\Components\Users\Token($this, $ExtendedComponents);
+        $this->UserSession = ($UserSession) ? : new \REC1\Components\Users\Sessions($this, $ExtendedComponents);
 
-        $this->setLog(\REC1\Util\Logger\Areas::USERS, "Nueva instancia de Usuarios creada");
+        $this->setLog(\REC1\Components\Logger\Areas::USERS, "Nueva instancia de Usuarios creada");
     }
 
     /**
      * 
-     * @return \REC1\Users\Token
+     * @return \REC1\Components\Users\Token
      */
     public function getUserTokenClass() {
         return $this->UserToken;
@@ -47,7 +47,7 @@ class Users extends \REC1\Factory\ExtendedComponents {
 
     /**
      * 
-     * @return \REC1\Users\Sessions
+     * @return \REC1\Components\Users\Sessions
      */
     public function getUserSessionClass() {
         return $this->UserSession;
@@ -56,7 +56,7 @@ class Users extends \REC1\Factory\ExtendedComponents {
     /**
      * 
      * @param int $id
-     * @return \REC1\Users\User
+     * @return \REC1\Components\Users\User
      */
     public function getUser($id) {
 
@@ -85,7 +85,7 @@ class Users extends \REC1\Factory\ExtendedComponents {
                 $user_createat !== NULL) {
             $user_token = $this->getUserTokenClass()->getToken($user_id);
 
-            return new \REC1\Users\User($user_id, $user_token, $user_type, $user_fullname, $user_email, $user_createat, $user_createby);
+            return new \REC1\Components\Users\User($user_id, $user_token, $user_type, $user_fullname, $user_email, $user_createat, $user_createby);
         }
 
         return NULL;
@@ -117,7 +117,7 @@ class Users extends \REC1\Factory\ExtendedComponents {
 
     /**
      * 
-     * @param \REC1\Users\User $user
+     * @param \REC1\Components\Users\User $user
      * @return boolean
      */
     public function updateUser(\REC1\Users\User $user) {

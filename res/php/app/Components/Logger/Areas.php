@@ -28,5 +28,7 @@ abstract class Areas {
     const USERS_TOKEN_ERROR = 18;
     const USERS_SESSIONS = 19;
     const USERS_SESSIONS_ERROR = 20;
+    const COOKIES = 21;
+    const COOKIES_ERROR = 22;
 
 }

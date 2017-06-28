@@ -20,12 +20,19 @@ class ExtendedComponents extends \REC1\Components\BaseComponents {
     private $PageConfig;
 
     /**
+     *
+     * @var \REC1\Components\Cookies 
+     */
+    private $Cookies;
+
+    /**
      * 
      * @param \REC1\Components\Database $Database
      * @param \REC1\Components\PageConfig $PageConfig
+     * @param \REC1\Components\Cookies $Cookies
      * @param \REC1\Components\BaseComponents $BaseComponents
      */
-    public function __construct(\REC1\Components\Database $Database = NULL, \REC1\Components\PageConfig $PageConfig = NULL, \REC1\Components\BaseComponents $BaseComponents = NULL) {
+    public function __construct(\REC1\Components\Database $Database = NULL, \REC1\Components\PageConfig $PageConfig = NULL, \REC1\Components\Cookies $Cookies = NULL, \REC1\Components\BaseComponents $BaseComponents = NULL) {
         if (!$BaseComponents) {
             $BaseComponents = new \REC1\Components\BaseComponents();
         }
@@ -33,6 +40,7 @@ class ExtendedComponents extends \REC1\Components\BaseComponents {
 
         $this->Database = ($Database) ? : new \REC1\Components\Database(NULL, $this);
         $this->PageConfig = ($PageConfig) ? : new \REC1\Components\PageConfig(NULL, NULL, $this);
+        $this->Cookies = ($Cookies) ? : new \REC1\Components\Cookies();
     }
 
     /**
@@ -49,6 +57,14 @@ class ExtendedComponents extends \REC1\Components\BaseComponents {
      */
     public function getPageConfig() {
         return $this->PageConfig;
+    }
+
+    /**
+     * 
+     * @return \REC1\Components\Cookies
+     */
+    public function getCookies() {
+        return $this->Cookies;
     }
 
 }

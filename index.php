@@ -28,10 +28,20 @@ $db = new \REC1\Components\Database(
 
 $PageConfig = \REC1\Components\PageConfig::fromIniFile(NULL, $baseComponents);
 
-$extendedComponents = new \REC1\Components\ExtendedComponents($db, $PageConfig, $baseComponents);
+$Cookies = new \REC1\Components\Cookies(NULL, $baseComponents);
+
+$extendedComponents = new \REC1\Components\ExtendedComponents($db, $PageConfig, $Cookies, $baseComponents);
+
+$REC1Components = new \REC1\Components\REC1Components(NULL, $extendedComponents);
+
+$Users = $REC1Components->getUsers();
+
+// $Users->insertUser('TEST_USER', 'test@test.info', 1, 1);
 
 echo "<pre>";
 print_r($Logger->getLogs());
 print_r($Warnings->getWarnings());
 print_r($Errors->getErrors());
+print_r($Users->getCountUsers());
+print_r($Users->getUsers());
 echo "</pre>";

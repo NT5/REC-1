@@ -1,54 +1,38 @@
 <?php
 
-namespace REC1\Factory;
+namespace REC1\Components;
 
 /**
  * 
  */
-class REC1Components extends \REC1\Factory\ExtendedComponents {
+class REC1Components extends \REC1\Components\ExtendedComponents {
 
     /**
      *
-     * @var \REC1\Users
+     * @var \REC1\Components\Users
      */
     private $Users;
 
     /**
-     *
-     * @var \REC1\Cookies 
-     */
-    private $Cookies;
-
-    /**
      * 
-     * @param \REC1\Users $Users
-     * @param \REC1\Cookies $Cookies
-     * @param \REC1\Factory\ExtendedComponents $ExtendedComponents
+     * @param \REC1\Components\Users $Users
+     * @param \REC1\Components\ExtendedComponents $ExtendedComponents
      */
-    public function __construct(\REC1\Users $Users = NULL, \REC1\Cookies $Cookies = NULL, \REC1\Factory\ExtendedComponents $ExtendedComponents = NULL) {
+    public function __construct(\REC1\Components\Users $Users = NULL, \REC1\Components\ExtendedComponents $ExtendedComponents = NULL) {
         if (!$ExtendedComponents) {
-            $ExtendedComponents = new \REC1\Factory\ExtendedComponents();
+            $ExtendedComponents = new \REC1\Components\ExtendedComponents();
         }
-        parent::__construct($ExtendedComponents->getDatabase(), $ExtendedComponents->getPageConfig(), $ExtendedComponents);
+        parent::__construct($ExtendedComponents->getDatabase(), $ExtendedComponents->getPageConfig(), $ExtendedComponents->getCookies(), $ExtendedComponents);
 
-        $this->Users = ($Users) ? : new \REC1\Users($this);
-        $this->Cookies = ($Cookies) ? : new \REC1\Cookies();
+        $this->Users = ($Users) ? : new \REC1\Components\Users($this);
     }
 
     /**
      * 
-     * @return \REC1\Users
+     * @return \REC1\Components\Users
      */
     public function getUsers() {
         return $this->Users;
-    }
-
-    /**
-     * 
-     * @return \REC1\Cookies
-     */
-    public function getCookies() {
-        return $this->Cookies;
     }
 
 }

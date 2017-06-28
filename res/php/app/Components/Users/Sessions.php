@@ -1,15 +1,15 @@
 <?php
 
-namespace REC1\Users;
+namespace REC1\Components\Users;
 
 /**
- * 
+ * @todo Documentar
  */
-class Sessions extends \REC1\Factory\ExtendedComponents {
+class Sessions extends \REC1\Components\ExtendedComponents {
 
     /**
      *
-     * @var \REC1\Users
+     * @var \REC1\Components\Users
      */
     private $Users;
 
@@ -21,23 +21,23 @@ class Sessions extends \REC1\Factory\ExtendedComponents {
 
     /**
      * 
-     * @param \REC1\Users $Users
-     * @param \REC1\Factory\ExtendedComponents $ExtendedComponents
+     * @param \REC1\Components\Users $Users
+     * @param \REC1\Components\ExtendedComponents $ExtendedComponents
      */
-    public function __construct(\REC1\Users $Users = NULL, \REC1\Factory\ExtendedComponents $ExtendedComponents = NULL) {
+    public function __construct(\REC1\Components\Users $Users = NULL, \REC1\Components\ExtendedComponents $ExtendedComponents = NULL) {
         if (!$ExtendedComponents) {
-            $ExtendedComponents = new \REC1\Factory\ExtendedComponents();
+            $ExtendedComponents = new \REC1\Components\ExtendedComponents();
         }
         parent::__construct($ExtendedComponents->getDatabase(), $ExtendedComponents->getPageConfig(), $ExtendedComponents->getCookies(), $ExtendedComponents);
 
-        $this->Users = ($Users) ? : new \REC1\Users($ExtendedComponents, NULL, $this);
+        $this->Users = ($Users) ? : new \REC1\Components\Users($ExtendedComponents, NULL, $this);
 
-        $this->setLog(\REC1\Util\Logger\Areas::USERS_SESSIONS, "Nueva instancia de Usuarios de sesión creada");
+        $this->setLog(\REC1\Components\Logger\Areas::USERS_SESSIONS, "Nueva instancia de Usuarios de sesión creada");
     }
 
     /**
      * 
-     * @return \REC1\Users
+     * @return \REC1\Components\Users
      */
     public function getUsersClass() {
         return $this->Users;

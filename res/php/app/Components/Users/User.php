@@ -1,6 +1,6 @@
 <?php
 
-namespace REC1\Users;
+namespace REC1\Components\Users;
 
 /**
  * 
