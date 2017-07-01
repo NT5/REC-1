@@ -36,8 +36,14 @@ $REC1Components = new \REC1\Components\REC1Components(NULL, $extendedComponents)
 
 $Users = $REC1Components->getUsers();
 
+$PageManager = new \REC1\Components\PageManager(NULL, NULL, $REC1Components);
+$PageManager->initPage();
+
+echo $PageManager->display();
+
 // $Users->insertUser('TEST_USER', 'test@test.info', 1, 1);
 
+/*
 echo "<pre>";
 print_r($Logger->getLogs());
 print_r($Warnings->getWarnings());
@@ -45,3 +51,4 @@ print_r($Errors->getErrors());
 print_r($Users->getCountUsers());
 print_r($Users->getUsers());
 echo "</pre>";
+ */

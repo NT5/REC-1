@@ -1,11 +1,11 @@
 <?php
 
-namespace REC1;
+namespace REC1\Components;
 
 /**
- * 
+ * @todo Documentar / Mejorar
  */
-class PageManager extends \REC1\Factory\REC1Components {
+class PageManager extends \REC1\Components\REC1Components {
 
     /**
      *
@@ -21,7 +21,7 @@ class PageManager extends \REC1\Factory\REC1Components {
 
     /**
      *
-     * @var \REC1\Pages\Page
+     * @var \REC1\Components\Page
      */
     private $Page;
 
@@ -35,18 +35,18 @@ class PageManager extends \REC1\Factory\REC1Components {
      * 
      * @param int $ListenType
      * @param string $ListenUrl
-     * @param \REC1\Factory\ExtendedComponents $ExtendedComponents
+     * @param \REC1\Components\REC1Components $REC1Components
      */
-    public function __construct($ListenType = NULL, $ListenUrl = NULL, \REC1\Factory\ExtendedComponents $ExtendedComponents = NULL) {
-        if (!$ExtendedComponents) {
-            $ExtendedComponents = new \REC1\Factory\ExtendedComponents();
+    public function __construct($ListenType = NULL, $ListenUrl = NULL, \REC1\Components\REC1Components $REC1Components = NULL) {
+        if (!$REC1Components) {
+            $REC1Components = new \REC1\Components\REC1Components();
         }
-        parent::__construct(NULL, NULL, $ExtendedComponents);
+        parent::__construct($REC1Components->getUsers(), $REC1Components);
 
         $this->Listen_Type = ($ListenType) ? : INPUT_GET;
         $this->Listen_Url = ($ListenUrl) ? : 'p';
 
-        $this->setLog(\REC1\Util\Logger\Areas::PAGE_MANAGER, "Nueva instancia controladora de página creada");
+        $this->setLog(\REC1\Components\Logger\Areas::PAGE_MANAGER, "Nueva instancia controladora de página creada");
     }
 
     /**
@@ -67,7 +67,7 @@ class PageManager extends \REC1\Factory\REC1Components {
 
     /**
      * 
-     * @return \REC1\Pages\Page
+     * @return \REC1\Components\Page
      */
     public function getPage() {
         return $this->Page;
@@ -75,15 +75,15 @@ class PageManager extends \REC1\Factory\REC1Components {
 
     /**
      * 
-     * @param \REC1\Pages\Page $page
+     * @param \REC1\Components\Page $page
      */
-    private function setPage(\REC1\Pages\Page $page) {
+    private function setPage(\REC1\Components\Page $page) {
         $this->Page = $page;
     }
 
     /**
      * 
-     * @return \REC1\Twig
+     * @return \REC1\Components\Twig
      */
     public function getTwig() {
         if ($this->getPage()) {
@@ -104,25 +104,28 @@ class PageManager extends \REC1\Factory\REC1Components {
      * 
      */
     public function initPage() {
-        if (
-                $this->checkFirstRun() === FALSE &&
-                $this->checkWarnings() === FALSE &&
-                $this->checkErrors() === FALSE &&
-                $this->checkUserCount() === FALSE
-        ) {
+        /*
+          if (
+          $this->checkFirstRun() === FALSE &&
+          $this->checkWarnings() === FALSE &&
+          $this->checkErrors() === FALSE &&
+          $this->checkUserCount() === FALSE
+          ) {
 
-            $url_page = filter_input($this->getListenType(), $this->getListenUrl());
+          $url_page = filter_input($this->getListenType(), $this->getListenUrl());
 
-            switch ($url_page) {
-                case "home":
-                default:
-                    $this->Page = new \REC1\Pages\Home($this);
-                    break;
-            }
-            $this->setUpUser();
-        }
+          switch ($url_page) {
+          case "home":
+          default:
+          $this->Page = new \REC1\Pages\Home($this);
+          break;
+          }
+          $this->setUpUser();
+          }
+         * 
+         */
 
-        // $this->Page = new \REC1\Pages\Home($this);
+        $this->Page = new \REC1\Pages\Home($this);
     }
 
     public function setUpUser() {
@@ -179,10 +182,10 @@ class PageManager extends \REC1\Factory\REC1Components {
         foreach ($this->getErrors() as $error) {
 
             switch ($error->getErrorCode()) {
-                case \REC1\Error\Errors::CANT_CREATE_DATABASE_CONTROLLER:
-                case \REC1\Error\Errors::CANT_CREATE_DATABASE_CONNECTION:
-                case \REC1\Error\Errors::CANT_CREATE_DATABASE_CONFIG:
-                case \REC1\Error\Errors::CANT_CONNECT_MYSQLI_LINK:
+                case \REC1\Components\Error\Errors::CANT_CREATE_DATABASE_CONTROLLER:
+                case \REC1\Components\Error\Errors::CANT_CREATE_DATABASE_CONNECTION:
+                case \REC1\Components\Error\Errors::CANT_CREATE_DATABASE_CONFIG:
+                case \REC1\Components\Error\Errors::CANT_CONNECT_MYSQLI_LINK:
                     $this->setPage(new \REC1\Pages\Errors($this, $error->getErrorCode()));
                     return TRUE;
             }
@@ -199,7 +202,7 @@ class PageManager extends \REC1\Factory\REC1Components {
         foreach ($this->getWarnings() as $warning) {
 
             switch ($warning->getWarningCode()) {
-                case \REC1\Warning\Warnings::DEFAULT_PAGE_CONFIGURATION:
+                case \REC1\Components\Warning\Warnings::DEFAULT_PAGE_CONFIGURATION:
                     $this->setPage(new \REC1\Pages\FirstRun($this, 1));
                     return TRUE;
             }

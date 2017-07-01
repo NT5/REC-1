@@ -5,14 +5,14 @@ namespace REC1\Pages;
 /**
  * 
  */
-class Errors extends \REC1\Pages\Page {
+class Errors extends \REC1\Components\Page {
 
     /**
      * 
-     * @param \REC1\Factory\REC1Components $REC1Components
+     * @param \REC1\Components\REC1Components $REC1Components
      * @param int $error_code
      */
-    public function __construct(\REC1\Factory\REC1Components $REC1Components = NULL, $error_code = 0) {
+    public function __construct(\REC1\Components\REC1Components $REC1Components = NULL, $error_code = 0) {
         parent::__construct($REC1Components);
 
         $this->setTemplate("pages/errors/error.twig");

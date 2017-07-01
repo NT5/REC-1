@@ -1,0 +1,22 @@
+{
+  "name": "uml/r-e-c-1",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Hendell Jonathan Porras Perez"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "http://nt5.info",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "materialize": "^0.99.0"
+  }
+}

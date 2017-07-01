@@ -2,8 +2,8 @@ Options All -Indexes
 
 RewriteEngine On
 
-RewriteRule ^res/libs/jquery(/.*)?$ ./vendor/components/jquery/$1
-RewriteRule ^res/libs/bootstrap(/.*)?$ ./vendor/components/bootstrap/$1
+RewriteRule ^res/libs/jquery(/.*)?$ ./bower_components/jquery/dist/$1
+RewriteRule ^res/libs/materialize(/.*)?$ ./bower_components/materialize/dist/$1
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f

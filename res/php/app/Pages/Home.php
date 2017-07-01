@@ -5,14 +5,16 @@ namespace REC1\Pages;
 /**
  * 
  */
-class Home extends \REC1\Pages\Page {
+class Home extends \REC1\Components\Page {
 
     /**
      * 
-     * @param \REC1\Factory\REC1Components $REC1Components
+     * @param \REC1\Components\REC1Components $REC1Components
      */
-    public function __construct(\REC1\Factory\REC1Components $REC1Components = NULL) {
+    public function __construct(\REC1\Components\REC1Components $REC1Components = NULL) {
         parent::__construct($REC1Components);
-            $this->setTemplate("base.twig");
+        $this->setTemplate("base.twig");
+        $this->setVar('logs', $this->getLogger()->getLogs());
     }
+
 }

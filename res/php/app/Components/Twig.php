@@ -1,9 +1,9 @@
 <?php
 
-namespace REC1;
+namespace REC1\Components;
 
 /**
- * 
+ * @todo Documentar/Mejorar
  */
 class Twig {
 
@@ -41,13 +41,13 @@ class Twig {
      * 
      */
     public function __construct() {
-        $this->Twig_Template_Folder = \REC1\Util\Functions::parseDir(array(__DIR__, "..", "..", "twig"));
+        $this->Twig_Template_Folder = \REC1\Util\Functions::parseDir(array(__DIR__, "..", "..", "..", "twig"));
         $this->Template_File = "base.twig";
         $this->Twig_Vars = [];
 
         $this->Twig_Loader_Filesystem = new \Twig_Loader_Filesystem($this->Twig_Template_Folder);
         $this->Twig_Environment = new \Twig_Environment($this->Twig_Loader_Filesystem, array(
-            'cache' => \REC1\Util\Functions::parseDir(array(__DIR__, "..", "..", "..", 'compilation_cache')),
+            'cache' => \REC1\Util\Functions::parseDir(array(__DIR__, "..", "..", "..", "..", 'compilation_cache')),
             'output_encoding' => 'UTF-8',
             'auto_reload' => true
         ));
