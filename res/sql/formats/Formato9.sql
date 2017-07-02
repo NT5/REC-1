@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS `formato` (
+  `Record_Id` int(15) NOT NULL AUTO_INCREMENT,
+  `Ped_Id` int(15) NOT NULL,
+  `Anio_Lectivo` int(15) NOT NULL,
+  `Trimestre` int(15) NOT NULL,
+  `Carrera_Id` int(15) NOT NULL,
+  `Turno_Id` int(15) NOT NULL,
+  `Anio_Carrera` int(15) NOT NULL,
+  `Evangelicos` int(15) NOT NULL,
+  `Catolicos` int(15) NOT NULL,
+  `Otros` int(15) NOT NULL,
+  `Ninguna` int(15) NOT NULL,
+  PRIMARY KEY (`Record_Id`),
+  KEY `FK_formato_peds` (`Ped_Id`),
+  KEY `FK_formato_turno` (`Turno_Id`),
+  KEY `FK_formato_carreras` (`Carrera_Id`),
+  CONSTRAINT `FK_formato_carreras` FOREIGN KEY (`Carrera_Id`) REFERENCES `carreras` (`Carreras_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_formato_peds` FOREIGN KEY (`Ped_Id`) REFERENCES `peds` (`Ped_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_formato_turno` FOREIGN KEY (`Turno_Id`) REFERENCES `turno` (`Turno_Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
