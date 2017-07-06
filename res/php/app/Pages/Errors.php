@@ -3,7 +3,7 @@
 namespace REC1\Pages;
 
 /**
- * 
+ * @todo Documentar
  */
 class Errors extends \REC1\Components\Page {
 
@@ -17,8 +17,9 @@ class Errors extends \REC1\Components\Page {
 
         $this->setTemplate("pages/errors/error.twig");
         $this->setVars([
-            "page_title" => " - Error Critico",
-            "error_code" => $error_code
+            "page_title" => "Error Critico",
+            "error_code" => $error_code,
+            "logs" => $this->getLogger()->getLogs()
         ]);
     }
 

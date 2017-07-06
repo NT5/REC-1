@@ -36,7 +36,7 @@ $REC1Components = new \REC1\Components\REC1Components(NULL, $extendedComponents)
 
 $Users = $REC1Components->getUsers();
 
-$Page = new \REC1\Pages\Test($REC1Components);
+$Page = new \REC1\Pages\Errors($REC1Components);
 
 echo $Page->display();
 

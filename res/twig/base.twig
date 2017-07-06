@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         {% block head %}
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+            <title>{{ page_title }}</title>
+
+            <!-- CSS  -->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link href="res/libs/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+            <link href="res/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+            <!-- Meta -->
             <meta name="description" content="">
             <meta name="author" content="Hendell Jonathan Porras Perez">
+
             <link rel="icon" href="icon.png">
-            <title>{{ page_title }}</title>
-            <link href="res/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            <link href="res/css/style.css" rel="stylesheet">
-            <script src="res/libs/jquery/jquery.min.js"></script>
-            <script src="res/libs/bootstrap/js/bootstrap.min.js"></script>
-            <script src="res/js/jquery/sprite-animate.js"></script>
-            <script src="res/js/script.js"></script>
         {% endblock %}
     </head>
     <body>
@@ -32,8 +33,9 @@
         {% block footer %}
             {{ include('footer.twig') }}
         {% endblock %}
-        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click aqui para ir arriba" data-toggle="tooltip" data-placement="left">
-            <span class="glyphicon glyphicon-chevron-up"></span>
-        </a><!--./back-to-top -->
+        <!--  Scripts-->
+        <script src="res/libs/jquery/jquery.min.js"></script>
+        <script src="res/libs/materialize/js/materialize.js"></script>
+        <script src="res/js/script.js"></script>
     </body>
 </html>
