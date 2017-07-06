@@ -27,7 +27,7 @@ class PageManager extends \REC1\Components\REC1Components {
 
     /**
      *
-     * @var type 
+     * @var \REC1\Components\User 
      */
     private $User;
 
@@ -86,8 +86,9 @@ class PageManager extends \REC1\Components\REC1Components {
      * @return \REC1\Components\Twig
      */
     public function getTwig() {
-        if ($this->getPage()) {
-            return $this->getPage()->getTwig();
+        $Page = $this->getPage();
+        if ($Page) {
+            return $Page->getTwig();
         }
     }
 
@@ -95,8 +96,11 @@ class PageManager extends \REC1\Components\REC1Components {
      * 
      */
     public function display() {
-        if ($this->getPage()) {
+        $Page = $this->getPage();
+        if ($Page) {
             echo $this->getPage()->display();
+        } else {
+            echo "No page class found";
         }
     }
 
@@ -104,37 +108,41 @@ class PageManager extends \REC1\Components\REC1Components {
      * 
      */
     public function initPage() {
-        /*
-          if (
-          $this->checkFirstRun() === FALSE &&
-          $this->checkWarnings() === FALSE &&
-          $this->checkErrors() === FALSE &&
-          $this->checkUserCount() === FALSE
-          ) {
+        if (
+                $this->checkInstallation() === FALSE &&
+                $this->checkWarnings() === FALSE &&
+                $this->checkErrors() === FALSE &&
+                $this->checkUserCount() === FALSE
+        ) {
 
-          $url_page = filter_input($this->getListenType(), $this->getListenUrl());
+            $url_page = filter_input($this->getListenType(), $this->getListenUrl());
 
-          switch ($url_page) {
-          case "home":
-          default:
-          $this->Page = new \REC1\Pages\Home($this);
-          break;
-          }
-          $this->setUpUser();
-          }
-         * 
-         */
+            switch ($url_page) {
+                case "home":
+                default:
+                    $this->Page = new \REC1\Pages\Home($this);
+                    break;
+            }
 
-        $this->Page = new \REC1\Pages\Home($this);
+            $this->initVars();
+        }
     }
 
-    public function setUpUser() {
+    private function initVars() {
+        $this->initUser();
+    }
+
+    private function initUser() {
+        $User = $this->getUsers();
+        $Twig = $this->getTwig();
+
         $cookie_session = $this->getCookies()->getCookie('session');
+
         if ($cookie_session) {
-            $user = $this->getUsers()->getUserSessionClass()->getUser($cookie_session);
-            if ($user) {
-                $this->User = $user;
-                $this->getTwig()->setVar('user_data', $this->User);
+            $user_data = $User->getUserSessionClass()->getUser($cookie_session);
+            if ($user_data) {
+                $this->User = $user_data;
+                $Twig->setVar('user_data', $this->User);
             }
         }
     }
@@ -147,11 +155,13 @@ class PageManager extends \REC1\Components\REC1Components {
      * 
      * @return boolean
      */
-    private function checkFirstRun() {
-        if ($this->getPageConfig()->getFirstRun()) {
-            $page = new \REC1\Pages\FirstRun($this, 1);
+    private function checkInstallation() {
+        $PageConfig = $this->getPageConfig();
 
-            $this->setPage($page);
+        if ($PageConfig->getFirstRun()) {
+            $Page = new \REC1\Pages\Installer\PageConfig($this);
+
+            $this->setPage($Page);
             return TRUE;
         }
         return FALSE;
@@ -162,12 +172,12 @@ class PageManager extends \REC1\Components\REC1Components {
      * @return boolean
      */
     private function checkUserCount() {
-        $users = $this->getUsers()->getCountUsers();
+        $Users = $this->getUsers();
 
-        if ($users <= 0) {
-            $page = new \REC1\Pages\FirstRun($this, 2);
+        if ($Users->getCountUsers() <= 0) {
+            $Page = new \REC1\Pages\Installer\Users($this);
 
-            $this->setPage($page);
+            $this->setPage($Page);
             return TRUE;
         }
 
@@ -203,7 +213,7 @@ class PageManager extends \REC1\Components\REC1Components {
 
             switch ($warning->getWarningCode()) {
                 case \REC1\Components\Warning\Warnings::DEFAULT_PAGE_CONFIGURATION:
-                    $this->setPage(new \REC1\Pages\FirstRun($this, 1));
+                    $this->setPage(new \REC1\Pages\Installer\PageConfig($this));
                     return TRUE;
             }
         }

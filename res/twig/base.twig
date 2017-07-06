@@ -27,7 +27,9 @@
                 {{ include('container.twig') }}
             {% endblock %}
             {% block debuglogger %}
-                {{ include('debug/logger.twig') }}
+                {% if logs %}
+                    {{ include('debug/logger.twig') }}
+                {% endif %}
             {% endblock %}
         </div><!-- /.container -->
         {% block footer %}

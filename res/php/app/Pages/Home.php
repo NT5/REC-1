@@ -15,6 +15,7 @@ class Home extends \REC1\Components\Page {
         parent::__construct($REC1Components);
         $this->setTemplate("base.twig");
         $this->setVar('logs', $this->getLogger()->getLogs());
+        $this->setVar('page_title', 'Home');
     }
 
 }

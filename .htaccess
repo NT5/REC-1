@@ -8,6 +8,8 @@ RewriteRule ^res/libs/materialize(/.*)?$ ./bower_components/materialize/dist/$1
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
+RewriteRule ^home*$ ./index.php?p=home
+
 <Files config.ini>
     order allow,deny
     deny from all

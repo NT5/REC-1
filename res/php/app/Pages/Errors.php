@@ -17,7 +17,7 @@ class Errors extends \REC1\Components\Page {
 
         $this->setTemplate("pages/errors/error.twig");
         $this->setVars([
-            "page_title" => "Error Critico",
+            "page_title" => "Error Critico | " . $error_code,
             "error_code" => $error_code,
             "logs" => $this->getLogger()->getLogs()
         ]);
