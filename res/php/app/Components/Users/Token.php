@@ -1,15 +1,15 @@
 <?php
 
-namespace REC1\Users;
+namespace REC1\Components\Users;
 
 /**
- * 
+ * @todo Documentar
  */
-class Token extends \REC1\Factory\ExtendedComponents {
+class Token extends \REC1\Components\ExtendedComponents {
 
     /**
      *
-     * @var \REC1\Users
+     * @var \REC1\Components\Users
      */
     private $Users;
 
@@ -21,23 +21,23 @@ class Token extends \REC1\Factory\ExtendedComponents {
 
     /**
      * 
-     * @param \REC1\Users $Users
-     * @param \REC1\Factory\ExtendedComponents $ExtendedComponents
+     * @param \REC1\Components\Users $Users
+     * @param \REC1\Components\ExtendedComponents $ExtendedComponents
      */
-    public function __construct(\REC1\Users $Users = NULL, \REC1\Factory\ExtendedComponents $ExtendedComponents = NULL) {
+    public function __construct(\REC1\Components\Users $Users = NULL, \REC1\Components\ExtendedComponents $ExtendedComponents = NULL) {
         if (!$ExtendedComponents) {
-            $ExtendedComponents = new \REC1\Factory\ExtendedComponents();
+            $ExtendedComponents = new \REC1\Components\ExtendedComponents();
         }
         parent::__construct($ExtendedComponents->getDatabase(), $ExtendedComponents->getPageConfig(), $ExtendedComponents->getCookies(), $ExtendedComponents);
 
-        $this->Users = ($Users) ? : new \REC1\Users($ExtendedComponents, $this, NULL);
+        $this->Users = ($Users) ? : new \REC1\Components\Users($ExtendedComponents, $this, NULL);
 
-        $this->setLog(\REC1\Util\Logger\Areas::USERS_TOKEN, "Nueva instancia de Usuarios Token creada");
+        $this->setLog(\REC1\Components\Logger\Areas::USERS_TOKEN, "Nueva instancia de Usuarios Token creada");
     }
 
     /**
      * 
-     * @return \REC1\Users
+     * @return \REC1\Components\Users
      */
     public function getUsersClass() {
         return $this->Users;
@@ -96,7 +96,7 @@ class Token extends \REC1\Factory\ExtendedComponents {
     /**
      * 
      * @param string $token
-     * @return \REC1\Users\User|FALSE
+     * @return \REC1\Components\Users\User|FALSE
      */
     public function getUser($token) {
         $user_id = 0;

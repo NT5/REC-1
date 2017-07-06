@@ -1,6 +1,6 @@
 <?php
 
-namespace REC1\Database;
+namespace REC1\Components\Database;
 
 /**
  * Clase <b>Util</b> que contiene métodos utilizados en las consultas con la base de datos

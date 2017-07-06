@@ -1,9 +1,9 @@
 <?php
 
-namespace REC1\Util\Logger;
+namespace REC1\Components\Logger;
 
 /**
- * TODO
+ * @todo Docomentacion
  */
 abstract class Areas {
 
@@ -28,5 +28,7 @@ abstract class Areas {
     const USERS_TOKEN_ERROR = 18;
     const USERS_SESSIONS = 19;
     const USERS_SESSIONS_ERROR = 20;
+    const COOKIES = 21;
+    const COOKIES_ERROR = 22;
 
 }

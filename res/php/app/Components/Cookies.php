@@ -1,11 +1,11 @@
 <?php
 
-namespace REC1;
+namespace REC1\Components;
 
 /**
- * 
+ * @todo Documentar / Mejorar
  */
-class Cookies {
+class Cookies extends \REC1\Components\BaseComponents {
 
     /**
      *
@@ -21,15 +21,24 @@ class Cookies {
 
     /**
      * 
+     * @param string $name
+     * @param \REC1\Components\BaseComponents $BaseComponents
      */
-    public function __construct($name = 'rec-1') {
+    public function __construct($name = 'rec-1', \REC1\Components\BaseComponents $BaseComponents = NULL) {
+        if (!$BaseComponents) {
+            $BaseComponents = new \REC1\Components\BaseComponents();
+        }
+        parent::__construct($BaseComponents->getLogger(), $BaseComponents->getErrorSet(), $BaseComponents->getWarningSet());
+
+        $name = ($name) ? : 'rec-1';
+
         $this->cookie_meta = array(
             "name" => $name,
             "expire" => (time() + ( 86400 * 30 )), // 30 Días
             "content" => array()
         );
-
         $this->cookie_data = $this->createMyCookie();
+        $this->setLog(\REC1\Components\Logger\Areas::COOKIES, "Nueva instancia de Cookies creada");
     }
 
     /**

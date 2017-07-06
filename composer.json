@@ -22,8 +22,12 @@
     "require": {
         "php": ">=5.6",
         "twig/twig": "1.*",
-        "twig/extensions": "1.*",
-        "components/jquery": "3.*",
-        "components/bootstrap": "3.*"
-    }
+        "twig/extensions": "1.*"
+    },
+    "post-update-cmd": [
+        "bower install"
+    ],
+    "post-install-cmd": [
+        "bower install"
+    ]
 }

@@ -1,29 +1,29 @@
 <?php
 
-namespace REC1\Pages;
+namespace REC1\Components;
 
 /**
- * 
+ * @todo Documentar
  */
-abstract class Page extends \REC1\Factory\REC1Components {
+abstract class Page extends \REC1\Components\REC1Components {
 
     /**
      *
-     * @var \REC1\Twig 
+     * @var \REC1\Components\Twig 
      */
     private $Twig;
 
     /**
      * 
-     * @param \REC1\Factory\REC1Components $REC1Components
+     * @param \REC1\Components\REC1Components $REC1Components
      */
-    public function __construct(\REC1\Factory\REC1Components $REC1Components = NULL) {
+    public function __construct(\REC1\Components\REC1Components $REC1Components = NULL) {
         if (!$REC1Components) {
-            $REC1Components = new \REC1\Factory\AddDateComponents();
+            $REC1Components = new \REC1\Components\AddDateComponents();
         }
-        parent::__construct($REC1Components->getUsers(), $REC1Components->getCookies(), $REC1Components);
+        parent::__construct($REC1Components->getUsers(), $REC1Components);
 
-        $this->Twig = new \REC1\Twig();
+        $this->Twig = new \REC1\Components\Twig();
     }
 
     /**
@@ -61,7 +61,7 @@ abstract class Page extends \REC1\Factory\REC1Components {
 
     /**
      * 
-     * @return \REC1\Twig
+     * @return \REC1\Components\Twig
      */
     public function getTwig() {
         return $this->Twig;

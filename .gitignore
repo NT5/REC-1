@@ -1,4 +1,5 @@
 /composer.lock
 /compilation_cache/
+/bower_components/
 /vendor/
 /nbproject/

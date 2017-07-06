@@ -1,9 +1,9 @@
 <?php
 
-namespace REC1\Warning;
+namespace REC1\Components\Warning;
 
 /**
- * 
+ * @todo Documentacion
  */
 class WarningSet {
 
@@ -29,9 +29,9 @@ class WarningSet {
 
     /**
      * 
-     * @param \REC1\Warning $Warning
+     * @param \REC1\Components\Warning $Warning
      */
-    public function addWarning(\REC1\Warning $Warning) {
+    public function addWarning(\REC1\Components\Warning $Warning) {
         $this->Warnings[] = $Warning;
     }
 

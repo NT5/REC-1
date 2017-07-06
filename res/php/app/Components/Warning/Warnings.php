@@ -1,8 +1,9 @@
 <?php
 
-namespace REC1\Warning;
+namespace REC1\Components\Warning;
 
 /**
+ * @todo Documentacion
  * Clase <b>ENUM</b> con las advertencias validas
  */
 abstract class Warnings {
