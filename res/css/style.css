@@ -1,3 +1,9 @@
-/*
- TODO
-*/
+.icon-block {
+    padding: 0 15px;
+}
+.icon-block .material-icons {
+    font-size: inherit;
+}
+.base-container {
+    min-height: 520px;
+}

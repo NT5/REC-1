@@ -1,4 +1,30 @@
 {% extends "base.twig" %}
 {% block content %}
-    <h1>WIP</h1>
+    <div class="col s12 m7">
+        <h2 class="header">Primera ejecucion de <strong>REC-1</strong></h2>
+        <div class="card horizontal">
+            <div class="card-image">
+                <div class="icon-block">
+                    <i class="material-icons" style="font-size: 10em; padding: 5px; color: #f06292;">settings</i>
+                </div>
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>
+                        <i class="material-icons">info</i>
+                        No se detecto una instalación valida de <strong>REC-1</strong>, esto puede ser debido a una mala
+                        configuración o es la primera vez que estas ejecutando la página,
+                        a continuación se te mostrara un formulario de configuración para que procedas a realizar una instalación.
+                    </p>
+                    <hr>
+                    <p>
+                        <i class="material-icons">help_outline</i>
+                        Asegúrate de contar con la dirección del servidor MySQL,
+                        la contraseña, usuario y <strong>tener creada con anterioridad una base de datos</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'pages/installer/pageconfig/database_config_form.twig' %}
 {% endblock %}

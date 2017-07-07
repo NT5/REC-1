@@ -188,8 +188,7 @@ class REC1 extends \REC1\Components\REC1Components {
         $Twig = $PageManager->getTwig();
 
         $Twig->setVars([
-            'page_title' => $this->getPageConfig()->getPageTitle() . " | " . $Twig->getVar('page_title'),
-            'logs' => $this->getLogger()->getLogs()
+            'page_title' => $this->getPageConfig()->getPageTitle() . " | " . $Twig->getVar('page_title')
         ]);
 
         $PageManager->display();

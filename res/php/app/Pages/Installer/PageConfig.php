@@ -18,8 +18,7 @@ class PageConfig extends \REC1\Components\Page {
         $this->setTemplate("pages/installer/pageconfig.twig");
 
         $this->setVars([
-            "page_title" => 'Instalación | Configuración Inicial',
-            "logs" => $this->getLogger()->getLogs()
+            "page_title" => 'Instalación | Configuración Inicial'
         ]);
     }
 
