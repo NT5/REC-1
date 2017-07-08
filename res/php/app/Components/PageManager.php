@@ -196,7 +196,8 @@ class PageManager extends \REC1\Components\REC1Components {
                 case \REC1\Components\Error\Errors::CANT_CREATE_DATABASE_CONNECTION:
                 case \REC1\Components\Error\Errors::CANT_CREATE_DATABASE_CONFIG:
                 case \REC1\Components\Error\Errors::CANT_CONNECT_MYSQLI_LINK:
-                    $this->setPage(new \REC1\Pages\Errors($this, $error->getErrorCode()));
+                    $Page = new \REC1\Pages\Errors($this, $error->getErrorCode());
+                    $this->setPage($Page);
                     return TRUE;
             }
         }

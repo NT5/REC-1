@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `Formato_14` (
-  `Reg_Id` int(15) NOT NULL AUTO_INCREMENT,
+  `Record_id` int(15) NOT NULL AUTO_INCREMENT,
   `Ped_Id` int(15) NOT NULL,
   `Carrera_Id` int(15) NOT NULL,
   `Anio_Lectivo` int(15) NOT NULL,
