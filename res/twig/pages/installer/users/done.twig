@@ -11,20 +11,23 @@
             <div class="card-stacked">
                 <div class="card-content">
                     <p>
-                        <i class="material-icons">info</i>
-                        No se detecto una instalación valida de <strong>REC-1</strong>, esto puede ser debido a una mala
-                        configuración o es la primera vez que estas ejecutando la página,
-                        a continuación se te mostrara un formulario de configuración para que procedas a realizar una instalación.
+                        <i class="material-icons">done</i>
+                        ¡Felicidades! Añadiste correctamente un nuevo usuario administrador al sistema <strong>REC-1</strong>
                     </p>
-                    <hr>
+                    <hr/>
                     <p>
-                        <i class="material-icons">help_outline</i>
-                        Asegúrate de contar con la dirección del servidor MySQL,
-                        la contraseña, usuario y <strong>tener creada con anterioridad una base de datos</strong>
+                        <i class="material-icons">info</i>
+                        Recuerda guardar muy bien tu <strong>clave de acceso</strong>
+                    </p>
+                    <hr/>
+                    <h1>Clave de acceso: <strong><u>{{ token }}</u></strong></h1>
+                    <hr/>
+                    <p>
+                        <i class="material-icons">info</i>
+                        Ya puedes acceder a la página con normalidad <a href="home">aquí.</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    {% include 'pages/installer/pageconfig/form.twig' %}
 {% endblock %}

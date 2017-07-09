@@ -4,6 +4,12 @@
 .icon-block .material-icons {
     font-size: inherit;
 }
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
 .base-container {
     min-height: 520px;
 }

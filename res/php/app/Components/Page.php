@@ -5,7 +5,7 @@ namespace REC1\Components;
 /**
  * @todo Documentar
  */
-abstract class Page extends \REC1\Components\REC1Components {
+abstract class Page extends \REC1\Components\REC1Components implements \REC1\Components\Page\PageInterface {
 
     /**
      *
@@ -19,7 +19,7 @@ abstract class Page extends \REC1\Components\REC1Components {
      */
     public function __construct(\REC1\Components\REC1Components $REC1Components = NULL) {
         if (!$REC1Components) {
-            $REC1Components = new \REC1\Components\AddDateComponents();
+            $REC1Components = new \REC1\Components\REC1Components();
         }
         parent::__construct($REC1Components->getUsers(), $REC1Components);
 

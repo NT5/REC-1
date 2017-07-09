@@ -20,15 +20,21 @@ class PageConfig extends \REC1\Components\Page {
         $this->initVars();
     }
 
-    private function initTwigTemplate() {
+    /**
+     * 
+     */
+    public function initTwigTemplate() {
         if (!$this->CheckPost()) {
             $this->setTemplate("pages/installer/pageconfig.twig");
         } else {
-            $this->setTemplate("pages/installer/pageconfig/config_done.twig");
+            $this->setTemplate("pages/installer/pageconfig/done.twig");
         }
     }
 
-    private function initVars() {
+    /**
+     * 
+     */
+    public function initVars() {
         $this->setVars([
             "page_title" => 'Instalación | Configuración Inicial'
         ]);
@@ -38,7 +44,7 @@ class PageConfig extends \REC1\Components\Page {
      * 
      * @return bool
      */
-    private function CheckPost() {
+    public function CheckPost() {
         $POST = filter_input_array(INPUT_POST);
 
         $require = [
@@ -49,18 +55,25 @@ class PageConfig extends \REC1\Components\Page {
         ];
 
         if ($POST && \REC1\Util\Functions::checkArray($require, $POST)) {
-            $db_config = $this->getDatabase()->getConnection()->getConfig();
-
-            $db_config->setServer($POST['server']);
-            $db_config->setUserName($POST['user']);
-            $db_config->setPassword($POST['password']);
-            $db_config->setDatabase($POST['database']);
-
-            $this->getPageConfig()->setFirstRun(FALSE);
-
+            $this->saveConfig($POST);
             return TRUE;
         }
         return FALSE;
+    }
+
+    /**
+     * 
+     * @param array $vars
+     */
+    private function saveConfig($vars) {
+        $db_config = $this->getDatabase()->getConnection()->getConfig();
+
+        $db_config->setServer($vars['server']);
+        $db_config->setUserName($vars['user']);
+        $db_config->setPassword($vars['password']);
+        $db_config->setDatabase($vars['database']);
+
+        $this->getPageConfig()->setFirstRun(FALSE);
     }
 
 }

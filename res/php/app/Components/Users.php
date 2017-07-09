@@ -21,9 +21,9 @@ class Users extends \REC1\Components\ExtendedComponents {
 
     /**
      * 
-     * @param \REC1\Factory\ExtendedComponents $ExtendedComponents
-     * @param \REC1\Users\Token $UserToken
-     * @param \REC1\Users\Sessions $UserSession
+     * @param \REC1\Components\ExtendedComponents $ExtendedComponents
+     * @param \REC1\Components\Users\Token $UserToken
+     * @param \REC1\Components\Users\Sessions $UserSession
      */
     public function __construct(\REC1\Components\ExtendedComponents $ExtendedComponents = NULL, \REC1\Components\Users\Token $UserToken = NULL, \REC1\Components\Users\Sessions $UserSession = NULL) {
         if (!$ExtendedComponents) {
@@ -141,7 +141,7 @@ class Users extends \REC1\Components\ExtendedComponents {
      * @param string $user_email
      * @param int $user_type
      * @param int $create_by
-     * @return \REC1\Users\User|boolean
+     * @return \REC1\Components\Users\User|boolean
      */
     public function insertUser($user_name, $user_email, $user_type, $create_by) {
 
