@@ -177,8 +177,6 @@ class REC1 extends \REC1\Components\REC1Components {
 
         $this->PageManager = new \REC1\Components\PageManager($ListenType, $ListenUrl, $this);
 
-        // $this->initInstall();
-
         $PageManager = $this->getPageManager();
 
         $PageManager->initPage();
@@ -188,7 +186,8 @@ class REC1 extends \REC1\Components\REC1Components {
         $Twig = $PageManager->getTwig();
 
         $Twig->setVars([
-            'page_title' => $this->getPageConfig()->getPageTitle() . " | " . $Twig->getVar('page_title')
+            'page_title' => $this->getPageConfig()->getPageTitle() . " | " . $Twig->getVar('page_title'),
+            'logs' => $this->getLogger()->getLogs()
         ]);
 
         $PageManager->display();
@@ -246,18 +245,6 @@ class REC1 extends \REC1\Components\REC1Components {
         } else {
             $this->addWarning(new \REC1\Components\Warning(\REC1\Components\Warning\Warnings::NO_DATABASE_CONNECTION_TO_CLOSE));
             $Logger->setLog(\REC1\Components\Logger\Areas::CORE, "No existía una base de datos conectada; ignorando cierre");
-        }
-    }
-
-    /**
-     * 
-     */
-    private function initInstall() {
-        if ($this->getDatabase()->getConnection()->getMySQLi()) {
-            $this->getDatabase()->charset('utf8');
-
-            $Installer = new \REC1\Util\Installer($this);
-            $Installer->Install();
         }
     }
 

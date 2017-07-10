@@ -1,9 +1,9 @@
 <?php
 
-namespace REC1\Util\Installer;
+namespace REC1\Components\Database\Installer;
 
 /**
- * 
+ * @todo Documentar
  */
 abstract class InstallFilesArea {
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace REC1\Util\Installer;
+namespace REC1\Components\Database\Installer;
 
 /**
- * 
+ * @todo Documentar
  */
 class InstallFiles {
 
@@ -14,10 +14,29 @@ class InstallFiles {
     private static $FileList = [];
 
     /**
+     *
+     * @var array 
+     */
+    private static $BaseDir = array(__DIR__, "..", "..", "..", "..", "..", "sql");
+
+    /**
      * 
      */
     static function init() {
-        self::addFile(\REC1\Util\Installer\InstallFilesArea::TABLES, \REC1\Util\Functions::parseDir(array(__DIR__, "..", "..", "..", "..", "sql", "Tables.sql")));
+
+        function addTable($file) {
+            $Tables = \REC1\Components\Database\Installer\InstallFilesArea::TABLES;
+
+            InstallFiles::addFile($Tables, \REC1\Util\Functions::parseDir(array_merge(InstallFiles::getBaseDir(), $file)));
+        }
+
+        addTable(array("Tables.sql"));
+        addTable(array("formats", "Complementos.sql"));
+        addTable(array("formats", "Formato7.sql"));
+        addTable(array("formats", "Formato9.sql"));
+        addTable(array("formats", "Formato10.sql"));
+        addTable(array("formats", "Formato12.sql"));
+        addTable(array("formats", "Formato14.sql"));
     }
 
     /**
@@ -53,7 +72,7 @@ class InstallFiles {
      * @param string $area
      * @param string $file
      */
-    private static function addFile($area, $file) {
+    public static function addFile($area, $file) {
         self::$FileList[$area][] = $file;
     }
 
@@ -63,6 +82,14 @@ class InstallFiles {
      */
     public static function getFileArray() {
         return self::$FileList;
+    }
+
+    /**
+     * 
+     * @return array
+     */
+    public static function getBaseDir() {
+        return self::$BaseDir;
     }
 
 }

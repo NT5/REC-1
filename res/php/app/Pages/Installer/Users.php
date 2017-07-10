@@ -24,7 +24,7 @@ class Users extends \REC1\Components\Page {
      * @return boolean
      */
     public function CheckPost() {
-        $POST = filter_input_array(INPUT_POST);
+        $POST = $this->getPost();
 
         $require = [
             "username",

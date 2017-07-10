@@ -112,6 +112,7 @@ class PageManager extends \REC1\Components\REC1Components {
                 $this->checkInstallation() === FALSE &&
                 $this->checkWarnings() === FALSE &&
                 $this->checkErrors() === FALSE &&
+                $this->checkDatabase() === FALSE &&
                 $this->checkUserCount() === FALSE
         ) {
 
@@ -160,6 +161,23 @@ class PageManager extends \REC1\Components\REC1Components {
 
         if ($PageConfig->getFirstRun()) {
             $Page = new \REC1\Pages\Installer\PageConfig($this);
+
+            $this->setPage($Page);
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    /**
+     * 
+     * @return boolean
+     */
+    private function checkDatabase() {
+        $Installer = new \REC1\Components\Database\Installer($this);
+        if (!$Installer->isInstalled()) {
+            $Installer->Install();
+
+            $Page = new \REC1\Pages\Installer\Database($this);
 
             $this->setPage($Page);
             return TRUE;

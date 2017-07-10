@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `Formato_14` (
   `Egre_mujeres_Id` int(15) NOT NULL,
   `Egre_hombres_Id` int(15) NOT NULL,
   `Turno_Id` int(15) NOT NULL,
-  PRIMARY KEY (`Reg_Id`),
+  PRIMARY KEY (`Record_id`),
   FOREIGN KEY (`Carrera_Id`) REFERENCES `Carreras` (`Carrera_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`Ped_Id`) REFERENCES `Peds` (`Ped_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`Turno_Id`) REFERENCES `Turnos` (`Turno_Id`) ON DELETE CASCADE ON UPDATE CASCADE

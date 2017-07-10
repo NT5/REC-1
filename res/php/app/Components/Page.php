@@ -67,4 +67,13 @@ abstract class Page extends \REC1\Components\REC1Components implements \REC1\Com
         return $this->Twig;
     }
 
+    /**
+     * 
+     * @return array
+     */
+    public function getPost() {
+        $POST = filter_input_array(INPUT_POST);
+        return $POST;
+    }
+
 }

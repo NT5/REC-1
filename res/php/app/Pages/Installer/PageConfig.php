@@ -45,7 +45,7 @@ class PageConfig extends \REC1\Components\Page {
      * @return bool
      */
     public function CheckPost() {
-        $POST = filter_input_array(INPUT_POST);
+        $POST = $this->getPost();
 
         $require = [
             "server",

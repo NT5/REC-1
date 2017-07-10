@@ -1,11 +1,11 @@
 <?php
 
-namespace REC1\Pages;
+namespace REC1\Pages\Installer;
 
 /**
- * 
+ * @todo Documentar
  */
-class Home extends \REC1\Components\Page {
+class Database extends \REC1\Components\Page {
 
     /**
      * 
@@ -29,14 +29,16 @@ class Home extends \REC1\Components\Page {
      * 
      */
     public function initTwigTemplate() {
-        $this->setTemplate("base.twig");
+        $this->setTemplate("pages/installer/database.twig");
     }
 
     /**
      * 
      */
     public function initVars() {
-        $this->setVar('page_title', 'Home');
+        $this->setVars([
+            "page_title" => 'Instalación | Instalacion de tablas SQL'
+        ]);
     }
 
 }
