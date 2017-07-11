@@ -36,7 +36,7 @@ class Home extends \REC1\Components\Page {
      * 
      */
     public function initVars() {
-        $this->setVar('page_title', 'Home');
+        $this->setVar('rec1.page.title', 'Home');
     }
 
 }

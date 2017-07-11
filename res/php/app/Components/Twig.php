@@ -86,16 +86,16 @@ class Twig {
      * @param string $value
      */
     public function setVar($name, $value) {
-        $this->Twig_Vars[$name] = $value;
+        \REC1\Util\Functions::set_array_value($this->Twig_Vars, $name, $value);
     }
 
     /**
      * 
      * @param array $vars
      */
-    public function setVars($vars) {
+    public function setVars(array $vars) {
         foreach ($vars as $k => $v) {
-            $this->Twig_Vars[$k] = $v;
+            $this->setVar($k, $v);
         }
     }
 
@@ -109,13 +109,10 @@ class Twig {
 
     /**
      * 
-     * @param string $var
+     * @param string $name
      */
-    public function getVar($var) {
-        if (array_key_exists($var, $this->getVars())) {
-            return $this->Twig_Vars[$var];
-        }
-        return "";
+    public function getVar($name) {
+        return \REC1\Util\Functions::get_array_value($this->Twig_Vars, $name);
     }
 
     /**

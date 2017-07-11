@@ -173,7 +173,7 @@ class REC1 extends \REC1\Components\REC1Components {
      * @param int $ListenType
      * @param string $ListenUrl
      */
-    public function runHTML($ListenType = NULL, $ListenUrl = NULL) {
+    public function PageManager($ListenType = NULL, $ListenUrl = NULL) {
 
         $this->PageManager = new \REC1\Components\PageManager($ListenType, $ListenUrl, $this);
 
@@ -186,8 +186,11 @@ class REC1 extends \REC1\Components\REC1Components {
         $Twig = $PageManager->getTwig();
 
         $Twig->setVars([
-            'page_title' => $this->getPageConfig()->getPageTitle() . " | " . $Twig->getVar('page_title'),
-            'logs' => $this->getLogger()->getLogs()
+            'rec1.page.title' => \REC1\Util\Functions::strFormat("%config_title | %config_var", array(
+                'config_title' => $this->getPageConfig()->getPageTitle(),
+                'config_var' => $Twig->getVar('rec1.page.title')
+            )),
+            'rec1.debug.logs' => $this->getLogger()->getLogs()
         ]);
 
         $PageManager->display();

@@ -1,6 +1,6 @@
 <div class="container">
-    <h1 class="header center orange-text">Logs</h1>
-    {% for log_area, log_contents in logs %}
+    <h1 class="header center orange-text">{{ rec1.page.title }} | Logs</h1>
+    {% for log_area, log_contents in rec1.debug.logs %}
         <h1>Area Code: {{ log_area }}</h1>
         <table class="striped">
             <thead>

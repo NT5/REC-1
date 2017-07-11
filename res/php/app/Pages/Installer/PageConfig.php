@@ -36,7 +36,7 @@ class PageConfig extends \REC1\Components\Page {
      */
     public function initVars() {
         $this->setVars([
-            "page_title" => 'Instalación | Configuración Inicial'
+            "rec1.page.title" => 'Instalación | Configuración Inicial'
         ]);
     }
 

@@ -37,10 +37,12 @@ class Login extends \REC1\Components\Page {
             $User = $UserToken->getUser($POST['token']);
             if ($User) {
 
+                $Cookies = $this->getCookies();
+
                 $token = $UserSession->generateToken();
                 $UserSession->insertToken($User->getId(), $token);
 
-                $this->getCookies()->setCookie("session", $token);
+                $Cookies->setCookie("session", $token);
 
                 return TRUE;
             }
@@ -69,7 +71,7 @@ class Login extends \REC1\Components\Page {
      * 
      */
     public function initVars() {
-        $this->setVar('page_title', 'Iniciar sesión');
+        $this->setVar('rec1.page.title', 'Iniciar sesión');
     }
 
 }

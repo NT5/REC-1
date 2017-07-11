@@ -6,4 +6,4 @@ Twig_Autoloader::register();
 
 $REC1 = \REC1\REC1::getInstance();
 
-$REC1->runHTML(INPUT_GET, "p");
+$REC1->PageManager(INPUT_GET, "p");

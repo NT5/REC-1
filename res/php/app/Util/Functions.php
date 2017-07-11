@@ -68,4 +68,37 @@ class Functions {
         return TRUE;
     }
 
+    /**
+     * 
+     * @param array $arr
+     * @param string $path
+     * @param mixed $val
+     * @return array
+     */
+    public static function set_array_value(&$arr, $path, $val) {
+        $loc = &$arr;
+        foreach (explode('.', $path) as $step) {
+            $loc = &$loc[$step];
+        }
+        return $loc = $val;
+    }
+
+    /**
+     * 
+     * @param array $context
+     * @param string $name
+     * @return array
+     */
+    public static function get_array_value(&$context, $name) {
+        $pieces = explode('.', $name);
+        foreach ($pieces as $piece) {
+            if (!is_array($context) || !array_key_exists($piece, $context)) {
+                // error occurred
+                return null;
+            }
+            $context = &$context[$piece];
+        }
+        return $context;
+    }
+
 }

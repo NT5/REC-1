@@ -37,7 +37,7 @@ class Database extends \REC1\Components\Page {
      */
     public function initVars() {
         $this->setVars([
-            "page_title" => 'Instalación | Instalacion de tablas SQL'
+            "rec1.page.title" => 'Instalación | Instalacion de tablas SQL'
         ]);
     }
 

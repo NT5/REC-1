@@ -149,7 +149,7 @@ class PageManager extends \REC1\Components\REC1Components {
             $user_data = $User->getUserSessionClass()->getUser($cookie_session);
             if ($user_data) {
                 $this->User = $user_data;
-                $Twig->setVar('user_data', $this->User);
+                $Twig->setVar('rec1.user.logged', $this->User);
             }
         }
     }

@@ -42,9 +42,8 @@ class Errors extends \REC1\Components\Page {
      */
     public function initVars() {
         $this->setVars([
-            "page_title" => "Error Critico | " . $this->Error_Code,
-            "error_code" => $this->Error_Code,
-            "logs" => $this->getLogger()->getLogs()
+            "rec1.page.title" => "Error Critico | " . $this->Error_Code,
+            "rec1.debug.error_code" => $this->Error_Code,
         ]);
     }
 
