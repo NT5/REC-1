@@ -101,7 +101,7 @@ class Token extends \REC1\Components\ExtendedComponents {
     public function getUser($token) {
         $user_id = 0;
 
-        $stmt = $this->getDatabase()->prepare("SELECT User_Id FROM User_Token WHERE User_Token = ?");
+        $stmt = $this->getDatabase()->prepare("SELECT User_Id FROM User_Token WHERE BINARY User_Token = ?");
 
         $stmt->bind_param('s', $token);
         $stmt->execute();

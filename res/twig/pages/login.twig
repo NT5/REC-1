@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+{% block content %}
+    <div class="col s12 m7">
+        <h2 class="header">
+            Ingresa tu clave de acceso para continuar
+        </h2>
+        <div class="card horizontal">
+            <div class="card-image">
+                <div class="icon-block">
+                    <i class="material-icons" style="font-size: 10em; padding: 5px; color: #f06292;">settings</i>
+                </div>
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>
+                        <i class="material-icons">build</i>
+                        El token de acceso tiene 4 caracteres y se te proporciono uno al instalar la página
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include('pages/login/form.twig') %}
+{% endblock %}

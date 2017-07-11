@@ -121,11 +121,17 @@ class PageManager extends \REC1\Components\REC1Components {
             switch ($url_page) {
                 case "home":
                 default:
-                    $this->Page = new \REC1\Pages\Home($this);
+                    $Page = new \REC1\Pages\Home($this);
+                    $this->setPage($Page);
                     break;
             }
 
             $this->initVars();
+
+            if (!$this->getUser()) {
+                $Page = new \REC1\Pages\Login($this);
+                $this->setPage($Page);
+            }
         }
     }
 

@@ -80,7 +80,7 @@ class Sessions extends \REC1\Components\ExtendedComponents {
     public function getUser($token) {
         $user_id = NULL;
 
-        $stmt = $this->getDatabase()->prepare("SELECT User_Id FROM User_Sessions WHERE Session_Token = ?");
+        $stmt = $this->getDatabase()->prepare("SELECT User_Id FROM User_Sessions WHERE BINARY Session_Token = ?");
 
         $stmt->bind_param('s', $token);
         $stmt->execute();
@@ -103,7 +103,7 @@ class Sessions extends \REC1\Components\ExtendedComponents {
      * @return void
      */
     public function deleteToken($token) {
-        $stmt = $this->getDatabase()->prepare("DELETE FROM User_Sessions WHERE Session_Token = ?");
+        $stmt = $this->getDatabase()->prepare("DELETE FROM User_Sessions WHERE BINARY Session_Token = ?");
         $stmt->bind_param('s', $token);
         $stmt->execute();
         $stmt->close();
