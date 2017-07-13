@@ -9,6 +9,7 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
 RewriteRule ^home*$ ./index.php?p=home
+RewriteRule ^test*$ ./index.php?p=test
 
 <Files config.ini>
     order allow,deny

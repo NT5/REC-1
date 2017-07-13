@@ -1,0 +1,6 @@
+{% extends "base.twig" %}
+{% block content %}
+    {% for carrera in rec1.carreras.list %}
+        <h1>{{ carrera.id }} | {{ carrera.name }}</h1>
+    {% endfor %}
+{% endblock %}

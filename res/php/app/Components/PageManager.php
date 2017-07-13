@@ -108,6 +108,8 @@ class PageManager extends \REC1\Components\REC1Components {
      * 
      */
     public function initPage() {
+        $Page = NULL;
+
         if (
                 $this->checkInstallation() === FALSE &&
                 $this->checkWarnings() === FALSE &&
@@ -119,15 +121,21 @@ class PageManager extends \REC1\Components\REC1Components {
             $url_page = filter_input($this->getListenType(), $this->getListenUrl());
 
             switch ($url_page) {
+                case "test":
+                    $Page = new \REC1\Pages\Test($this);
+                    break;
                 case "home":
                 default:
                     $Page = new \REC1\Pages\Home($this);
-                    $this->setPage($Page);
                     break;
             }
+            $this->setPage($Page);
 
             $this->initVars();
 
+            /**
+             * @todo Mejorar
+             */
             if (!$this->getUser()) {
                 $Page = new \REC1\Pages\Login($this);
                 $this->setPage($Page);
@@ -136,7 +144,9 @@ class PageManager extends \REC1\Components\REC1Components {
     }
 
     private function initVars() {
-        $this->initUser();
+        $this->initUser()
+
+        ;
     }
 
     private function initUser() {
@@ -169,6 +179,7 @@ class PageManager extends \REC1\Components\REC1Components {
             $Page = new \REC1\Pages\Installer\PageConfig($this);
 
             $this->setPage($Page);
+
             return TRUE;
         }
         return FALSE;
@@ -186,6 +197,7 @@ class PageManager extends \REC1\Components\REC1Components {
             $Page = new \REC1\Pages\Installer\Database($this);
 
             $this->setPage($Page);
+
             return TRUE;
         }
         return FALSE;
@@ -202,6 +214,7 @@ class PageManager extends \REC1\Components\REC1Components {
             $Page = new \REC1\Pages\Installer\Users($this);
 
             $this->setPage($Page);
+
             return TRUE;
         }
 
@@ -220,8 +233,9 @@ class PageManager extends \REC1\Components\REC1Components {
                 case \REC1\Components\Error\Errors::CANT_CREATE_DATABASE_CONNECTION:
                 case \REC1\Components\Error\Errors::CANT_CREATE_DATABASE_CONFIG:
                 case \REC1\Components\Error\Errors::CANT_CONNECT_MYSQLI_LINK:
-                    $Page = new \REC1\Pages\Errors($this, $error->getErrorCode());
+                    $Page = new \REC1\Pages \Errors($this, $error->getErrorCode());
                     $this->setPage($Page);
+
                     return TRUE;
             }
         }
@@ -239,6 +253,7 @@ class PageManager extends \REC1\Components\REC1Components {
             switch ($warning->getWarningCode()) {
                 case \REC1\Components\Warning\Warnings::DEFAULT_PAGE_CONFIGURATION:
                     $this->setPage(new \REC1\Pages\Installer\PageConfig($this));
+
                     return TRUE;
             }
         }

@@ -30,14 +30,14 @@ class Twig {
     /**
      *
      * @var \Twig_Loader_Filesystem Componente del módulo Twig que maneja directorios de plantillas
-     * @see https://twig.symfony.com/doc/1.x/api.html
+     * @link https://twig.symfony.com/doc/1.x/api.html
      */
     private $Twig_Loader_Filesystem;
 
     /**
      *
      * @var \Twig_Environment Componente de módulo Twig que maneja la configuración principal.
-     * @see https://twig.symfony.com/doc/1.x/api.html
+     * @link https://twig.symfony.com/doc/1.x/api.html
      */
     private $Twig_Environment;
 
@@ -84,8 +84,8 @@ class Twig {
 
     /**
      * Añade filtros del módulo Twig
-     * @see https://twig.symfony.com/doc/1.x/filters/index.html
-     * @see https://twig.symfony.com/doc/1.x/advanced.html
+     * @link https://twig.symfony.com/doc/1.x/filters/index.html
+     * @link https://twig.symfony.com/doc/1.x/advanced.html
      * @param string $filter_name Nombre del filtro que sera llamado desde las plantillas Twig
      * @param string $filter_function Funcion PHP que sera invocada en las plantillas Twig
      * @example ./docs/examples/Components/Twig.md 17 6 Establece un filtro nuevo

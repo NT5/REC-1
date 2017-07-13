@@ -30,5 +30,6 @@ abstract class Areas {
     const USERS_SESSIONS_ERROR = 20;
     const COOKIES = 21;
     const COOKIES_ERROR = 22;
+    const FORMATS_CARRERAS = 23;
 
 }

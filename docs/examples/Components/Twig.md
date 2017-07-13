@@ -38,7 +38,7 @@ $Twig->setVars(array(
 	'foo' => 'bar',
 	'bar' => 'foo',
 	'a' => array(
-		'b' => 'c'
+            'b' => 'c'
 	)
 ));
 

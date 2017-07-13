@@ -15,7 +15,8 @@
             "REC1\\": "res/php/app",
             "REC1\\Components\\": "res/php/app/Components",
             "REC1\\Pages\\": "res/php/app/Pages",
-            "REC1\\Util\\": "res/php/app/Util"
+            "REC1\\Util\\": "res/php/app/Util",
+            "REC1\\Formats\\": "res/php/app/Formats"
         }
     },
     "license": "Apache-2.0",
@@ -24,10 +25,12 @@
         "twig/twig": "1.*",
         "twig/extensions": "1.*"
     },
-    "post-update-cmd": [
-        "bower install"
-    ],
-    "post-install-cmd": [
-        "bower install"
-    ]
+    "scripts": {
+        "post-update-cmd": [
+            "bower install"
+        ],
+        "post-install-cmd": [
+            "bower install"
+        ]
+    }
 }
