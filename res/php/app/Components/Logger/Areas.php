@@ -31,5 +31,6 @@ abstract class Areas {
     const COOKIES = 21;
     const COOKIES_ERROR = 22;
     const FORMATS_CARRERAS = 23;
+    const FORMATS_PEDS = 24;
 
 }

@@ -1,6 +1,46 @@
 {% extends "base.twig" %}
 {% block content %}
-    {% for carrera in rec1.carreras.list %}
-        <h1>{{ carrera.id }} | {{ carrera.name }}</h1>
-    {% endfor %}
+    <h1>Lista de carreras</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Creado el</th>
+                <th>por</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carrera in rec1.carreras.list %}
+                <tr>
+                    <td>{{ carrera.getId }}</td>
+                    <td>{{ carrera.getName }}</td>
+                    <td>{{ carrera.getCreateAt }}</td>
+                    <td>{{ carrera.getCreateBy.getFullName }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Lista de Peds</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Creado el</th>
+                <th>por</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ped in rec1.peds.list %}
+                <tr>
+                    <td>{{ ped.getId }}</td>
+                    <td>{{ ped.getName }}</td>
+                    <td>{{ ped.getCreateAt }}</td>
+                    <td>{{ ped.getCreateBy.getFullName }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
