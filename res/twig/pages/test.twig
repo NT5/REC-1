@@ -43,4 +43,26 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <h1>Lista de Turnos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Creado el</th>
+                <th>por</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turno in rec1.turnos.list %}
+                <tr>
+                    <td>{{ turno.getId }}</td>
+                    <td>{{ turno.getName }}</td>
+                    <td>{{ turno.getCreateAt }}</td>
+                    <td>{{ turno.getCreateBy.getFullName }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

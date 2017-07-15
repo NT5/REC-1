@@ -20,6 +20,12 @@ class Test extends \REC1\Components\Page {
     private $Peds;
 
     /**
+     *
+     * @var \REC1\Formats\Turnos 
+     */
+    private $Turnos;
+
+    /**
      * 
      * @param \REC1\Components\REC1Components $REC1Components
      */
@@ -28,9 +34,11 @@ class Test extends \REC1\Components\Page {
 
         $this->Carreras = new \REC1\Formats\Carreras($this, $this->getUsers());
         $this->Peds = new \REC1\Formats\Peds($this, $this->getUsers());
+        $this->Turnos = new \REC1\Formats\Turnos($this, $this->getUsers());
 
         // $this->getCarreras()->insertCareer('Test!', new \REC1\Components\Users\User(1));
         // $this->getPeds()->insertPed('Test!', $this->getUsers()->getUser(1));
+        // $this->getTurnos()->insertTurno('Test!', $this->getUsers()->getUser(1));
 
         $this->initTwigTemplate();
         $this->initVars();
@@ -52,6 +60,14 @@ class Test extends \REC1\Components\Page {
         return $this->Peds;
     }
 
+    /**
+     * 
+     * @return \REC1\Formats\Turnos
+     */
+    private function getTurnos() {
+        return $this->Turnos;
+    }
+
     public function CheckPost() {
         
     }
@@ -65,7 +81,8 @@ class Test extends \REC1\Components\Page {
 
         $this->setVars([
             'rec1.carreras.list' => $this->getCarreras()->getCarreras(),
-            'rec1.peds.list' => $this->getPeds()->getPeds()
+            'rec1.peds.list' => $this->getPeds()->getPeds(),
+            'rec1.turnos.list' => $this->getTurnos()->getTurnos()
         ]);
     }
 
