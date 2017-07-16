@@ -107,4 +107,18 @@ class Database extends \REC1\Components\BaseComponents {
         return ($this->getConnection() ? $this->getConnection()->getMySQLi()->insert_id : 0);
     }
 
+    /**
+     * 
+     */
+    public function disableForeignKeyChecks() {
+        $this->query("SET FOREIGN_KEY_CHECKS=0;");
+    }
+
+    /**
+     * 
+     */
+    public function enableForeignKeyChecks() {
+        $this->query("SET FOREIGN_KEY_CHECKS=1;");
+    }
+
 }

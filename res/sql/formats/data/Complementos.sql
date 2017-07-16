@@ -1,0 +1,48 @@
+INSERT INTO `Carreras` (`Carrera_Name`) VALUES
+('Admon Empresas'),
+('Admon Empresas (Aduanas)'),
+('Ciencias de la Educ.: Español'),
+('Ciencias de la Educ.: Matemáticas'),
+('Ciencias de la Educ.: Sociales'),
+('Ciencias de la Educ.: CCNN'),
+('Contaduría Pública'),
+('Derecho'),
+('Educación Física'),
+('Enfermería'),
+('IGA'),
+('Ingeniería de Sist.'),
+('Inglés'),
+('Pedagogía'),
+('Teología');
+
+INSERT INTO `Peds` (`Ped_Name`) VALUES
+('Quilalí'),
+('Ext. Wiwilí'),
+('Pantasma'),
+('Jalapa'),
+('Ocotal'),
+('Jinotega'),
+('Ext. Bocay'),
+('Condega'),
+('Estelí'),
+('San Miguelito'),
+('San Carlos'),
+('Santo tomás'),
+('Nueva Guinea'),
+('El Rama'),
+('Ext. Muelle de los Buelles'),
+('Siuna'),
+('Ext. Rosita'),
+('Matiguás'),
+('Mulukukú'),
+('Waslala'),
+('Ometepe'),
+('Masaya'),
+('León'),
+('Chinandega'),
+('Managua');
+
+INSERT INTO `Turnos` (`Turno_Name`) VALUES
+('Sabatino'),
+('Dominical'),
+('Diario');

@@ -51,6 +51,8 @@ class Installer extends \REC1\Components\ExtendedComponents {
 
         $Database = $this->getDatabase();
 
+        $Database->disableForeignKeyChecks();
+
         foreach (\REC1\Components\Database\Installer\InstallFiles::getFileArray() as $area_key => $area_value) {
             $this->setLog(\REC1\Components\Logger\Areas::CORE_INSTALLER, "Cargando archivos del area %s...", $area_key);
 
@@ -60,6 +62,7 @@ class Installer extends \REC1\Components\ExtendedComponents {
         }
 
         $Database->query("INSERT INTO Install_Data VALUES(NOW());");
+        $Database->enableForeignKeyChecks();
 
         $this->setLog(\REC1\Components\Logger\Areas::CORE_INSTALLER, "Instalación de todos los archivos completada correctamente");
     }

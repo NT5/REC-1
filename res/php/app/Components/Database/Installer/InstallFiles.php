@@ -30,6 +30,12 @@ class InstallFiles {
             InstallFiles::addFile($Tables, \REC1\Util\Functions::parseDir(array_merge(InstallFiles::getBaseDir(), $file)));
         }
 
+        function addData($file) {
+            $Data = \REC1\Components\Database\Installer\InstallFilesArea::DATA;
+
+            InstallFiles::addFile($Data, \REC1\Util\Functions::parseDir(array_merge(InstallFiles::getBaseDir(), $file)));
+        }
+
         addTable(array("Tables.sql"));
         addTable(array("formats", "Complementos.sql"));
         addTable(array("formats", "Formato7.sql"));
@@ -37,6 +43,8 @@ class InstallFiles {
         addTable(array("formats", "Formato10.sql"));
         addTable(array("formats", "Formato12.sql"));
         addTable(array("formats", "Formato14.sql"));
+
+        addData(array("formats", "data", "Complementos.sql"));
     }
 
     /**
