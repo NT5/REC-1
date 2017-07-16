@@ -48,7 +48,7 @@ class REC1 extends \REC1\Components\REC1Components {
         $ExtendedComponents = $this->initExtendedComponents($BaseComponents);
         $REC1Components = $this->initREC1Components($ExtendedComponents);
 
-        parent::__construct($REC1Components->getUsers(), $ExtendedComponents);
+        parent::__construct($REC1Components->getUsers(), $REC1Components->getFormatComponents(), $ExtendedComponents);
 
         $this->getLogger()->setLog(\REC1\Components\Logger\Areas::CORE, "Nueva instancia %s creada", get_class());
 
@@ -115,8 +115,9 @@ class REC1 extends \REC1\Components\REC1Components {
      */
     private function initREC1Components(\REC1\Components\ExtendedComponents $ExtendedComponents) {
         $Users = new \REC1\Components\Users($ExtendedComponents, NULL, NULL);
+        $FormatComponents = new \REC1\Formats\FormatComponents($ExtendedComponents, $Users);
 
-        $REC1Components = new \REC1\Components\REC1Components($Users, $ExtendedComponents);
+        $REC1Components = new \REC1\Components\REC1Components($Users, $FormatComponents, $ExtendedComponents);
 
         return $REC1Components;
     }

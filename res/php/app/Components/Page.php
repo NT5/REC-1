@@ -21,7 +21,7 @@ abstract class Page extends \REC1\Components\REC1Components implements \REC1\Com
         if (!$REC1Components) {
             $REC1Components = new \REC1\Components\REC1Components();
         }
-        parent::__construct($REC1Components->getUsers(), $REC1Components);
+        parent::__construct($REC1Components->getUsers(), $REC1Components->getFormatComponents(), $REC1Components);
 
         $this->Twig = new \REC1\Components\Twig();
     }

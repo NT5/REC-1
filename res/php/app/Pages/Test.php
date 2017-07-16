@@ -8,33 +8,11 @@ namespace REC1\Pages;
 class Test extends \REC1\Components\Page {
 
     /**
-     *
-     * @var \REC1\Formats\Carreras 
-     */
-    private $Carreras;
-
-    /**
-     *
-     * @var \REC1\Formats\Peds 
-     */
-    private $Peds;
-
-    /**
-     *
-     * @var \REC1\Formats\Turnos 
-     */
-    private $Turnos;
-
-    /**
      * 
      * @param \REC1\Components\REC1Components $REC1Components
      */
     public function __construct(\REC1\Components\REC1Components $REC1Components = NULL) {
         parent::__construct($REC1Components);
-
-        $this->Carreras = new \REC1\Formats\Carreras($this, $this->getUsers());
-        $this->Peds = new \REC1\Formats\Peds($this, $this->getUsers());
-        $this->Turnos = new \REC1\Formats\Turnos($this, $this->getUsers());
 
         // $this->getCarreras()->insertCareer('Test!', new \REC1\Components\Users\User(1));
         // $this->getPeds()->insertPed('Test!', $this->getUsers()->getUser(1));
@@ -42,30 +20,6 @@ class Test extends \REC1\Components\Page {
 
         $this->initTwigTemplate();
         $this->initVars();
-    }
-
-    /**
-     * 
-     * @return \REC1\Formats\Carreras
-     */
-    private function getCarreras() {
-        return $this->Carreras;
-    }
-
-    /**
-     * 
-     * @return \REC1\Formats\Peds
-     */
-    private function getPeds() {
-        return $this->Peds;
-    }
-
-    /**
-     * 
-     * @return \REC1\Formats\Turnos
-     */
-    private function getTurnos() {
-        return $this->Turnos;
     }
 
     public function CheckPost() {
@@ -77,12 +31,15 @@ class Test extends \REC1\Components\Page {
     }
 
     public function initVars() {
+
+        $FormatComponents = $this->getFormatComponents();
+
         $this->setVar('rec1.page.title', 'Pagina de prueba');
 
         $this->setVars([
-            'rec1.carreras.list' => $this->getCarreras()->getCarreras(),
-            'rec1.peds.list' => $this->getPeds()->getPeds(),
-            'rec1.turnos.list' => $this->getTurnos()->getTurnos()
+            'rec1.carreras.list' => $FormatComponents->getCarreras()->getCarreras(),
+            'rec1.peds.list' => $FormatComponents->getPeds()->getPeds(),
+            'rec1.turnos.list' => $FormatComponents->getTurnos()->getTurnos()
         ]);
     }
 
