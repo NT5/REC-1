@@ -2,6 +2,9 @@
 
 namespace REC1;
 
+/**
+ * 
+ */
 class REC1 extends \REC1\Components\REC1Components {
 
     /**
@@ -187,10 +190,6 @@ class REC1 extends \REC1\Components\REC1Components {
         $Twig = $PageManager->getTwig();
 
         $Twig->setVars([
-            'rec1.page.title' => \REC1\Util\Functions::strFormat("%config_title | %config_var", array(
-                'config_title' => $this->getPageConfig()->getPageTitle(),
-                'config_var' => $Twig->getVar('rec1.page.title')
-            )),
             'rec1.debug.logs' => $this->getLogger()->getLogs()
         ]);
 

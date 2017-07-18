@@ -36,10 +36,10 @@ class FormatComponents extends \REC1\Components\ExtendedComponents {
      * @param \REC1\Components\ExtendedComponents $ExtendedComponents
      * @param \REC1\Components\Users $Users
      * @param \REC1\Formats\Carreras $Carreras
-     * @param \REC1\Formats\Carreras $Peds
+     * @param \REC1\Formats\Peds $Peds
      * @param \REC1\Formats\Turnos $Turnos
      */
-    public function __construct(\REC1\Components\ExtendedComponents $ExtendedComponents = NULL, \REC1\Components\Users $Users = NULL, \REC1\Formats\Carreras $Carreras = NULL, \REC1\Formats\Carreras $Peds = NULL, \REC1\Formats\Turnos $Turnos = NULL) {
+    public function __construct(\REC1\Components\ExtendedComponents $ExtendedComponents = NULL, \REC1\Components\Users $Users = NULL, \REC1\Formats\Carreras $Carreras = NULL, \REC1\Formats\Peds $Peds = NULL, \REC1\Formats\Turnos $Turnos = NULL) {
         if (!$ExtendedComponents) {
             $ExtendedComponents = new \REC1\Components\ExtendedComponents();
         }

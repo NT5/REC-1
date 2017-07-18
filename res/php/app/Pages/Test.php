@@ -14,10 +14,6 @@ class Test extends \REC1\Components\Page {
     public function __construct(\REC1\Components\REC1Components $REC1Components = NULL) {
         parent::__construct($REC1Components);
 
-        // $this->getCarreras()->insertCareer('Test!', new \REC1\Components\Users\User(1));
-        // $this->getPeds()->insertPed('Test!', $this->getUsers()->getUser(1));
-        // $this->getTurnos()->insertTurno('Test!', $this->getUsers()->getUser(1));
-
         $this->initTwigTemplate();
         $this->initVars();
     }

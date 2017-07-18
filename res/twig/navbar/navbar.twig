@@ -1,14 +1,25 @@
 <div class="navbar-fixed">
-    <nav class="light-blue lighten-1" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+    <nav class="teal lighten-2" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="home" class="brand-logo">
+                <i class="material-icons">album</i>
+                REC-1
+            </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
+                {% for link, icon in rec1.page.navbar %}
+                    <li>
+                        <a href="{{ link }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ link }}">
+                            <i class="material-icons">{{ icon }}</i>
+                        </a>
+                    </li>
+                {% endfor %}
+                <li>
+                    <a href="user/{{ rec1.user.logged.getId }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ rec1.user.logged.getFullName }}">
+                        <i class="material-icons left">perm_identity</i>
+                        {{ rec1.user.logged.getFullName|split(' ')[0] }}
+                    </a>
+                </li>
             </ul>
-
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
 </div>

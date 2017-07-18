@@ -35,6 +35,13 @@
         {% block footer %}
             {{ include('footer.twig') }}
         {% endblock %}
+
+        <div class="fixed-action-btn">
+            <a class="tooltipped btn-floating btn-large waves-effect waves-light red" id="back-to-top" style="display: none;" data-position="left" data-delay="50" data-tooltip="Click aqui para ir arriba">
+                <i class="material-icons">navigation</i>
+            </a>
+        </div>
+
         <!--  Scripts-->
         <script src="res/libs/jquery/jquery.min.js"></script>
         <script src="res/libs/materialize/js/materialize.min.js"></script>
