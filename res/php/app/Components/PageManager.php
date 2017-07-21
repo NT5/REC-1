@@ -26,12 +26,6 @@ class PageManager extends \REC1\Components\REC1Components {
     private $Page;
 
     /**
-     *
-     * @var \REC1\Components\User 
-     */
-    private $User;
-
-    /**
      * 
      * @param int $ListenType
      * @param string $ListenUrl
@@ -115,7 +109,8 @@ class PageManager extends \REC1\Components\REC1Components {
                 $this->checkWarnings() === FALSE &&
                 $this->checkErrors() === FALSE &&
                 $this->checkDatabase() === FALSE &&
-                $this->checkUserCount() === FALSE
+                $this->checkUserCount() === FALSE &&
+                $this->checkUserLogin() === FALSE
         ) {
 
             $url_page = filter_input($this->getListenType(), $this->getListenUrl());
@@ -129,17 +124,9 @@ class PageManager extends \REC1\Components\REC1Components {
                     $Page = new \REC1\Pages\Home($this);
                     break;
             }
+
             $this->setPage($Page);
-
             $this->initVars();
-
-            /**
-             * @todo Mejorar
-             */
-            if (!$this->getUser()) {
-                $Page = new \REC1\Pages\Login($this);
-                $this->setPage($Page);
-            }
         }
     }
 
@@ -147,8 +134,6 @@ class PageManager extends \REC1\Components\REC1Components {
      * 
      */
     private function initVars() {
-        $this->initUser();
-
         $Twig = $this->getTwig();
 
         $Twig->setVars([
@@ -159,34 +144,17 @@ class PageManager extends \REC1\Components\REC1Components {
             'rec1.page.navbar' => [
                 "home" => "language",
                 "test" => "track_changes"
-            ]
+            ],
+            'rec1.user.logged' => $this->getLoggedUser()
         ]);
-    }
-
-    /**
-     * 
-     */
-    private function initUser() {
-        $User = $this->getUsers();
-        $Twig = $this->getTwig();
-
-        $cookie_session = $this->getCookies()->getCookie('session');
-
-        if ($cookie_session) {
-            $user_data = $User->getUserSessionClass()->getUser($cookie_session);
-            if ($user_data) {
-                $this->User = $user_data;
-                $Twig->setVar('rec1.user.logged', $this->User);
-            }
-        }
     }
 
     /**
      * 
      * @return type
      */
-    public function getUser() {
-        return $this->User;
+    private function getLoggedUser() {
+        return $this->getUsers()->getUserSessionClass()->getFromCookie();
     }
 
     /**
@@ -234,6 +202,21 @@ class PageManager extends \REC1\Components\REC1Components {
         if ($Users->getCountUsers() <= 0) {
             $Page = new \REC1\Pages\Installer\Users($this);
 
+            $this->setPage($Page);
+
+            return TRUE;
+        }
+
+        return FALSE;
+    }
+
+    /**
+     * 
+     * @return boolean
+     */
+    private function checkUserLogin() {
+        if (!$this->getLoggedUser()) {
+            $Page = new \REC1\Pages\Login($this);
             $this->setPage($Page);
 
             return TRUE;

@@ -39,6 +39,7 @@ class InstallFiles {
         addTable(array("Tables.sql"));
         addTable(array("formats", "Complementos.sql"));
         addTable(array("formats", "Formato7.sql"));
+        addTable(array("formats", "Formato8.sql"));
         addTable(array("formats", "Formato9.sql"));
         addTable(array("formats", "Formato10.sql"));
         addTable(array("formats", "Formato12.sql"));

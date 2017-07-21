@@ -99,6 +99,20 @@ class Sessions extends \REC1\Components\ExtendedComponents {
 
     /**
      * 
+     */
+    public function getFromCookie() {
+        $cookie_session = $this->getCookies()->getCookie('session');
+
+        if ($cookie_session) {
+            $user_data = $this->getUser($cookie_session);
+            return ($user_data ? $user_data : FALSE);
+        } else {
+            return FALSE;
+        }
+    }
+
+    /**
+     * 
      * @param int $token
      * @return void
      */
