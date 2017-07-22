@@ -81,9 +81,7 @@ class PageManager extends \REC1\Components\REC1Components {
      */
     public function getTwig() {
         $Page = $this->getPage();
-        if ($Page) {
-            return $Page->getTwig();
-        }
+        return ($Page ? $Page->getTwig() : NULL);
     }
 
     /**
@@ -141,6 +139,7 @@ class PageManager extends \REC1\Components\REC1Components {
                 'config_title' => $this->getPageConfig()->getPageTitle(),
                 'config_var' => $Twig->getVar('rec1.page.title')
             )),
+            'rec1.page.url' => filter_input(INPUT_SERVER, 'SERVER_NAME'),
             'rec1.page.navbar' => [
                 "home" => "language",
                 "test" => "track_changes"
