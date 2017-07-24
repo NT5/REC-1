@@ -124,8 +124,8 @@ class PageManager extends \REC1\Components\REC1Components {
             }
 
             $this->setPage($Page);
-            $this->initVars();
         }
+        $this->initVars();
     }
 
     /**
@@ -133,18 +133,18 @@ class PageManager extends \REC1\Components\REC1Components {
      */
     private function initVars() {
         $Twig = $this->getTwig();
+        $PageConfig = $this->getPageConfig();
 
         $Twig->setVars([
             'rec1.page.title' => \REC1\Util\Functions::strFormat("%config_title | %config_var", array(
-                'config_title' => $this->getPageConfig()->getPageTitle(),
+                'config_title' => $PageConfig->getPageTitle(),
                 'config_var' => $Twig->getVar('rec1.page.title')
             )),
-            'rec1.page.url' => filter_input(INPUT_SERVER, 'SERVER_NAME'),
             'rec1.page.navbar' => [
                 "home" => "language",
                 "test" => "track_changes"
             ],
-            'rec1.user.logged' => $this->getLoggedUser()
+            'rec1.user.logged' => $this->getLoggedUser(),
         ]);
     }
 

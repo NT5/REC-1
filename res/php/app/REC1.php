@@ -190,7 +190,9 @@ class REC1 extends \REC1\Components\REC1Components {
         $Twig = $PageManager->getTwig();
 
         $Twig->setVars([
-            'rec1.debug.logs' => $this->getLogger()->getLogs()
+            'rec1.debug.logs' => $this->getLogger()->getLogs(),
+            'rec1.debug.enable' => $this->getPageConfig()->getEnableDebug(),
+            'rec1.page.url' => $this->getPageConfig()->getPageDomain(),
         ]);
 
         $PageManager->display();

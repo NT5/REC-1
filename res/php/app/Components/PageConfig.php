@@ -19,12 +19,26 @@ class PageConfig extends \REC1\Components\BaseComponents {
     private $first_run;
 
     /**
+     *
+     * @var string 
+     */
+    private $page_domain;
+
+    /**
+     *
+     * @var bool 
+     */
+    private $enable_debug;
+
+    /**
      * Regresa instancia de configuración de la pagina web
      * @param string $page_title cadena de texto que se usa en los tags <b>title</b>
      * @param boolean $first_run Es la primera ejecucion de la pagina
+     * @param string $page_domain
+     * @param bool $enable_debug
      * @param \REC1\Components\BaseComponents $BaseComponents
      */
-    public function __construct($page_title = NULL, $first_run = TRUE, \REC1\Components\BaseComponents $BaseComponents = NULL) {
+    public function __construct($page_title = NULL, $first_run = TRUE, $page_domain = NULL, $enable_debug = TRUE, \REC1\Components\BaseComponents $BaseComponents = NULL) {
         if (!$BaseComponents) {
             $BaseComponents = new \REC1\Components\BaseComponents();
         }
@@ -32,6 +46,8 @@ class PageConfig extends \REC1\Components\BaseComponents {
 
         $this->page_title = ($page_title) ? : "Default";
         $this->first_run = ($first_run == TRUE ? TRUE : FALSE);
+        $this->page_domain = ($page_domain) ? : FALSE;
+        $this->enable_debug = ($enable_debug == TRUE ? TRUE : FALSE);
 
         $this->setLog(\REC1\Components\Logger\Areas::CORE_CONFIG, "Nueva instancia de configuración de pagina creada");
     }
@@ -54,6 +70,22 @@ class PageConfig extends \REC1\Components\BaseComponents {
 
     /**
      * 
+     * @return string
+     */
+    public function getPageDomain() {
+        return $this->page_domain;
+    }
+
+    /**
+     * 
+     * @return boolean
+     */
+    public function getEnableDebug() {
+        return $this->enable_debug;
+    }
+
+    /**
+     * 
      * @param string $title
      */
     public function setPageTitle($title) {
@@ -69,6 +101,22 @@ class PageConfig extends \REC1\Components\BaseComponents {
     }
 
     /**
+     * 
+     * @param string $page_domain
+     */
+    public function setPageDomain($page_domain) {
+        $this->page_domain = $page_domain;
+    }
+
+    /**
+     * 
+     * @param boolean $enable_debug
+     */
+    public function setEnableDebug($enable_debug) {
+        $this->enable_debug = $enable_debug;
+    }
+
+    /**
      * Guarda la configuracion en un archivo .ini
      * @param string $ini Ruta del archivo .ini en el servidor
      * @return boolean
@@ -79,7 +127,9 @@ class PageConfig extends \REC1\Components\BaseComponents {
 
         $data = [
             "title" => $this->getPageTitle(),
-            "first_run" => ($this->getFirstRun() ? "true" : "false")
+            "first_run" => ($this->getFirstRun() ? "true" : "false"),
+            "page_domain" => $this->getPageDomain(),
+            "enable_debug" => ($this->getEnableDebug() ? "true" : "false")
         ];
         $ini_area = "REC-1";
 
@@ -119,13 +169,15 @@ class PageConfig extends \REC1\Components\BaseComponents {
 
             $valid_structure = [
                 "title",
-                "first_run"
+                "first_run",
+                "page_domain",
+                "enable_debug"
             ];
             $ini_area = "REC-1";
 
             if (\REC1\Util\Functions::checkArray([$ini_area], $ini) && \REC1\Util\Functions::checkArray($valid_structure, $ini[$ini_area])) {
                 $instance = new self(
-                        $ini[$ini_area]["title"], $ini[$ini_area]["first_run"], $BaseComponents
+                        $ini[$ini_area]["title"], $ini[$ini_area]["first_run"], $ini[$ini_area]["page_domain"], $ini[$ini_area]["enable_debug"], $BaseComponents
                 );
                 $BaseComponents->setLog(\REC1\Components\Logger\Areas::CORE_CONFIG, "Instancia de configuración creada correctamente con $inifile");
 
@@ -136,7 +188,7 @@ class PageConfig extends \REC1\Components\BaseComponents {
                 $BaseComponents->addWarning(new \REC1\Components\Warning(\REC1\Components\Warning\Warnings::PAGE_CONFIGURATION_INVALID_FORMAT));
                 $BaseComponents->addWarning(new \REC1\Components\Warning(\REC1\Components\Warning\Warnings::DEFAULT_PAGE_CONFIGURATION));
 
-                return new self(NULL, NULL, $BaseComponents);
+                return new self(NULL, NULL, NULL, NULL, $BaseComponents);
             }
         } else {
             $BaseComponents->setLog(\REC1\Components\Logger\Areas::CORE_CONFIG_ERROR, "El archivo $inifile no pudo ser cargado");
@@ -144,7 +196,7 @@ class PageConfig extends \REC1\Components\BaseComponents {
             $BaseComponents->addWarning(new \REC1\Components\Warning(\REC1\Components\Warning\Warnings::CANT_LOAD_PAGE_CONFIGURATION_FILE));
             $BaseComponents->addWarning(new \REC1\Components\Warning(\REC1\Components\Warning\Warnings::DEFAULT_PAGE_CONFIGURATION));
 
-            return new self(NULL, NULL, $BaseComponents);
+            return new self(NULL, NULL, NULL, NULL, $BaseComponents);
         }
     }
 

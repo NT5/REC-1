@@ -5,7 +5,9 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
             <title>{{ rec1.page.title }}</title>
-            <BASE href="http://{{ rec1.page.url }}">
+            {% if rec1.page.url %}
+                <BASE href="http://{{ rec1.page.url }}">
+            {% endif %}
 
             <!-- CSS  -->
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,11 +29,13 @@
             {% block content %}
                 {{ include('container.twig') }}
             {% endblock %}
-            {% block debuglogger %}
-                {% if rec1.debug.logs %}
-                    {{ include('debug/logger.twig') }}
-                {% endif %}
-            {% endblock %}
+            {% if rec1.debug.enable %}
+                {% block debuglogger %}
+                    {% if rec1.debug.logs %}
+                        {{ include('debug/logger.twig') }}
+                    {% endif %}
+                {% endblock %}
+            {% endif %}
         </div><!-- /.container -->
         {% block footer %}
             {{ include('footer.twig') }}
