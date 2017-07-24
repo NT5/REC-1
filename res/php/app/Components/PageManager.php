@@ -114,6 +114,9 @@ class PageManager extends \REC1\Components\REC1Components {
             $url_page = filter_input($this->getListenType(), $this->getListenUrl());
 
             switch ($url_page) {
+                case "user":
+                    $Page = new \REC1\Pages\User($this);
+                    break;
                 case "test":
                     $Page = new \REC1\Pages\Test($this);
                     break;
@@ -141,8 +144,14 @@ class PageManager extends \REC1\Components\REC1Components {
                 'config_var' => $Twig->getVar('rec1.page.title')
             )),
             'rec1.page.navbar' => [
-                "home" => "language",
-                "test" => "track_changes"
+                "home" => [
+                    "icon" => "language",
+                    "name" => "Inicio"
+                ],
+                "test" => [
+                    "icon" => "track_changes",
+                    "name" => "Pagina de prueba"
+                ]
             ],
             'rec1.user.logged' => $this->getLoggedUser(),
         ]);
