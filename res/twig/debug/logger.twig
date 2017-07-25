@@ -1,30 +1,45 @@
-<div class="container">
-    <h1 class="header center orange-text">{{ rec1.page.title }} | Logs</h1>
-    {% for log_area, log_contents in rec1.debug.logs %}
-        <h1>Area Code: {{ log_area }}</h1>
-        <table class="striped">
-            <thead>
-                <tr>
-                    <th>Class</th>
-                    <th>Function</th>
-                    <th>Microtime</th>
-                    <th>Date</th>
-                    <th>Text</th>
-                </tr>
-            </thead>
+<ul class="collapsible" data-collapsible="expandable">
+    <li>
+        <div class="collapsible-header">
+            <i class="material-icons">broken_image</i>
+            {{ rec1.page.title }} | Logs
+        </div>
+        <div class="collapsible-body">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                {% for log_area, log_contents in rec1.debug.logs %}
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">compare_arrows</i>
+                        Area Code: {{ log_area }}
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="striped">
+                            <thead>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Function</th>
+                                    <th>Microtime</th>
+                                    <th>Date</th>
+                                    <th>Text</th>
+                                </tr>
+                            </thead>
 
-            <tbody>
-                {% for log_content in log_contents %}
-                    <tr>
-                        <td>{{ log_content.class|raw }}</td>
-                        <td>{{ log_content.function|raw }}</td>
-                        <td>{{ log_content.microtime|raw }}</td>
-                        <td>{{ log_content.date|raw }}</td>
-                        <td>{{ log_content.text|raw }}</td>
-                    </tr>
+                            <tbody>
+                                {% for log_content in log_contents %}
+                                <tr>
+                                    <td>{{ log_content.class|raw }}</td>
+                                    <td>{{ log_content.function|raw }}</td>
+                                    <td>{{ log_content.microtime|raw }}</td>
+                                    <td>{{ log_content.date|raw }}</td>
+                                    <td>{{ log_content.text|raw }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
                 {% endfor %}
-            </tbody>
-        </table>
-        <br>
-    {% endfor %}
-</div>
+            </ul>
+        </div>
+    </li>
+</ul>

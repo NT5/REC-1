@@ -29,7 +29,7 @@ class Home extends \REC1\Components\Page {
      * 
      */
     public function initTwigTemplate() {
-        $this->setTemplate("base.twig");
+        $this->setTemplate("pages/home.twig");
     }
 
     /**

@@ -9,6 +9,18 @@ abstract class Page extends \REC1\Components\REC1Components implements \REC1\Com
 
     /**
      *
+     * @var string 
+     */
+    private $Page_Title;
+
+    /**
+     *
+     * @var string 
+     */
+    private $Page_Template;
+
+    /**
+     *
      * @var \REC1\Components\Twig 
      */
     private $Twig;
@@ -16,12 +28,17 @@ abstract class Page extends \REC1\Components\REC1Components implements \REC1\Com
     /**
      * 
      * @param \REC1\Components\REC1Components $REC1Components
+     * @param type $Page_Title
+     * @param type $Page_Template
      */
-    public function __construct(\REC1\Components\REC1Components $REC1Components = NULL) {
+    public function __construct(\REC1\Components\REC1Components $REC1Components = NULL, $Page_Title = NULL, $Page_Template = NULL) {
         if (!$REC1Components) {
             $REC1Components = new \REC1\Components\REC1Components();
         }
         parent::__construct($REC1Components->getUsers(), $REC1Components->getFormatComponents(), $REC1Components);
+
+        $this->Page_Title = ($Page_Title) ? : "Default";
+        $this->Page_Template = ($Page_Template) ? : "base.twig";
 
         $this->Twig = new \REC1\Components\Twig();
     }
@@ -74,6 +91,38 @@ abstract class Page extends \REC1\Components\REC1Components implements \REC1\Com
     public function getPost() {
         $POST = filter_input_array(INPUT_POST);
         return $POST;
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getPageTitle() {
+        return $this->Page_Title;
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getPageTemplate() {
+        return $this->Page_Template;
+    }
+
+    /**
+     * 
+     * @param string $Page_title
+     */
+    public function setPageTitle($Page_title) {
+        $this->Page_Title = $Page_title;
+    }
+
+    /**
+     * 
+     * @param string $Page_template
+     */
+    public function setPageTemplate($Page_template) {
+        $this->Page_Template = $Page_template;
     }
 
 }
