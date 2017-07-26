@@ -1,5 +1,13 @@
 CREATE TABLE IF NOT EXISTS `Formato_12` (
+  `Formato_Id` int(15) NOT NULL AUTO_INCREMENT,
+  `Formato_Name` VARCHAR(350) NOT NULL,
+  `Create_by` INT NOT NULL DEFAULT '1',
+  `Create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Formato_Id`)
+);
+CREATE TABLE IF NOT EXISTS `Formato_12_Data` (
   `Record_id` INT(15) NOT NULL AUTO_INCREMENT,
+  `Formato_Id` int(15) NOT NULL,
   `Peds_id` INT(15) NOT NULL,
   `Anio_lec` INT(15) NOT NULL,
   `Anio_carrera` INT(15) NOT NULL,
@@ -15,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `Formato_12` (
   `Mujeres_Urbano` INT(15) NOT NULL,
   `Mujeres_Rural` INT(15) NOT NULL,
   PRIMARY KEY (`Record_id`),
+  FOREIGN KEY (`Formato_Id`) REFERENCES `Formato_12` (`Formato_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`Carrera_id`) REFERENCES `Carreras` (`Carrera_Id`) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`Peds_id`) REFERENCES `Peds` (`Ped_Id`) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`Turno_id`) REFERENCES `Turnos` (`Turno_Id`) ON UPDATE CASCADE ON DELETE CASCADE
