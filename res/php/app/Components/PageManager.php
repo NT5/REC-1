@@ -120,6 +120,12 @@ class PageManager extends \REC1\Components\REC1Components {
                 case "test":
                     $Page = new \REC1\Pages\Test($this);
                     break;
+                case "formats":
+                    $Page = new \REC1\Pages\Formats($this);
+                    break;
+                case "page":
+                    $Page = new \REC1\Pages\Page($this);
+                    break;
                 case "home":
                 default:
                     $Page = new \REC1\Pages\Home($this);
