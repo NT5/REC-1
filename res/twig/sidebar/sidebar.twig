@@ -1,0 +1,75 @@
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+            <div class="background blue">
+
+            </div>
+            <a href="user/{{ rec1.user.logged.getId }}">
+                <i class="material-icons circle white-text medium">account_circle</i>
+            </a>
+            <a href="user/{{ rec1.user.logged.getId }}">
+                <span class="white-text name">
+                    {{ rec1.user.logged.getFullName }}
+                </span>
+            </a>
+        </div>
+    </li>
+    <li>
+        <a href="home">
+            <i class="material-icons">home</i>
+            Inicio
+        </a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Complementos</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header">Carreras | Turnos | Peds<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a href="formats/carreras/">
+                                <i class="material-icons left">directions_run</i>
+                                Carreras
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formats/turnos/">
+                                <i class="material-icons left">business</i>
+                                Turnos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formats/peds/">
+                                <i class="material-icons left">donut_small</i>
+                                Peds
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Formatos</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header">Formatos<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a href="#!">TODO</a></li>
+                        <li><a href="#!">TODO</a></li>
+                        <li><a href="#!">TODO</a></li>
+                        <li><a href="#!">TODO</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>

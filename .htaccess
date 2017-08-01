@@ -13,7 +13,7 @@ RewriteRule ^login*$ ./index.php?p=login
 RewriteRule ^logout*$ ./index.php?p=logout
 RewriteRule ^page*$ ./index.php?p=page
 RewriteRule ^user\/(\d+)*$ ./index.php?p=user&id=$1
-RewriteRule ^formats\/(\w+)\/((?>\d+)|(?>add|edit|new|del))*$ ./index.php?p=formats&format=$1&action=$2
+RewriteRule ^formats\/(\w+)\/((?>\d+)|(?>list|add|edit|new|del))*$ ./index.php?p=formats&format=$1&action=$2
 RewriteRule ^test*$ ./index.php?p=test
 
 <Files config.ini>

@@ -1,58 +1,69 @@
 {% macro titled(card) %}
-    <h2 class="header">{{ card.title }}</h2>
-    <div class="card horizontal hoverable">
-        <div class="card-image waves-effect waves-block waves-light">
-            <i class="activator large material-icons">{{ card.icon }}</i>
+<h2 class="header">{{ card.title }}</h2>
+<div class="card horizontal hoverable">
+    <div class="card-image waves-effect waves-block waves-light">
+        <i class="activator large material-icons">{{ card.icon }}</i>
+    </div>
+    <div class="card-stacked">
+        <div class="card-content">
+            <p>{{ card.content }}</p>
         </div>
-        <div class="card-stacked">
-            <div class="card-content">
-                <p>{{ card.content }}</p>
-            </div>
-            <div class="card-action">
-                <a href="{{ card.link.url }}"><i class="material-icons">{{ card.icon }}</i>{{ card.link.title }}</a>
-            </div>
-        </div>
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ card.title }}<i class="material-icons right">close</i></span>
-            <p>{{ card.help }}</p>
+        <div class="card-action">
+            <a href="{{ card.link.url }}"><i class="material-icons">{{ card.icon }}</i>{{ card.link.title }}</a>
         </div>
     </div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{ card.title }}<i class="material-icons right">close</i></span>
+        <p>{{ card.help }}</p>
+    </div>
+</div>
 {% endmacro %}
 {% macro horizontal(card) %}
-    <div class="card horizontal hoverable">
-        <div class="card-image waves-effect waves-block waves-light">
-            <i class="activator large material-icons">{{ card.icon }}</i>
+<div class="card hoverable">
+    <div class="card-image waves-effect waves-block waves-light center">
+        <i class="activator large material-icons">{{ card.icon }}</i>
+    </div>
+    <div class="card-stacked">
+        <div class="card-content">
+            <p>{{ card.content }}</p>
         </div>
-        <div class="card-stacked">
-            <div class="card-content">
-                <p>{{ card.content }}</p>
-            </div>
-            <div class="card-action">
-                <a href="{{ card.url }}"><i class="material-icons">{{ card.icon }}</i>{{ card.title }}</a>
-            </div>
-        </div>
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ card.title }}<i class="material-icons right">close</i></span>
-            <p>{{ card.help }}</p>
+        <div class="card-action">
+            <a href="{{ card.url }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ card.title }}">
+                <i class="material-icons">{{ card.icon }}</i>
+            </a>
+            <a href="{{ card.url }}list" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lista">
+                <i class="material-icons">format_list_bulleted</i>
+            </a>
+            <a href="{{ card.url }}add" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Agregar">
+                <i class="material-icons">add</i>
+            </a>
+            <a href="{{ card.url }}del" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Borrar">
+                <i class="material-icons">delete</i>
+            </a>
         </div>
     </div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{ card.title }}<i class="material-icons right">close</i></span>
+        <p>{{ card.help }}</p>
+    </div>
+</div>
 {% endmacro %}
 {% macro normal(card) %}
-    <div class="card hoverable">
-        <div class="card-image waves-effect waves-block waves-light">
-            <i class="activator large material-icons">{{ card.icon }}</i>
+<div class="card hoverable">
+    <div class="card-image waves-effect waves-block waves-light">
+        <i class="activator large material-icons">{{ card.icon }}</i>
+    </div>
+    <div class="card-stacked">
+        <div class="card-content">
+            <p>{{ card.content }}</p>
         </div>
-        <div class="card-stacked">
-            <div class="card-content">
-                <p>{{ card.content }}</p>
-            </div>
-            <div class="card-action">
-                <a href="{{ card.url }}"><i class="material-icons">{{ card.icon }}</i>{{ card.title }}</a>
-            </div>
-        </div>
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ card.title }}<i class="material-icons right">close</i></span>
-            <p>{{ card.help }}</p>
+        <div class="card-action">
+            <a href="{{ card.url }}"><i class="material-icons">{{ card.icon }}</i>{{ card.title }}</a>
         </div>
     </div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{ card.title }}<i class="material-icons right">close</i></span>
+        <p>{{ card.help }}</p>
+    </div>
+</div>
 {% endmacro %}

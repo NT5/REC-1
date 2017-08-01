@@ -1,7 +1,8 @@
 (function ($) {
     $(function () {
 
-        $('.button-collapse').sideNav();
+        $('.button-collapse').sideNav({'edge': 'left'});
+        $('.collapsible').collapsible();
         $('select').material_select();
         $('ul.tabs').tabs({
             'swipeable': false
