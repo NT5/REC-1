@@ -1,1 +1,50 @@
 {% extends "base.twig" %}
+{% block content %}
+<blockquote>
+    <h1>
+        <i class="medium material-icons">business</i>
+        Peds
+    </h1>
+</blockquote>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3">
+                    <a class="active" href="#lista">Lista</a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#TODO">TODO</a>
+                </li>
+            </ul>
+        </div>
+        <div id="lista" class="col s12">
+            <h4 class="cyan-text"><i class="material-icons left small">book</i>Lista de Peds</h4>
+            <hr/>
+            <table class="bordered striped responsive-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Creado el</th>
+                        <th>por</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ped in rec1.peds.list %}
+                    <tr>
+                        <td>{{ ped.getId }}</td>
+                        <td>{{ ped.getName }}</td>
+                        <td>{{ ped.getCreateAt }}</td>
+                        <td>{{ ped.getCreateBy.getFullName }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id="TODO" class="col s12">
+            TODO
+        </div>
+    </div>
+</div>
+{% endblock %}

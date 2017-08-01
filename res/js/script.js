@@ -3,6 +3,9 @@
 
         $('.button-collapse').sideNav();
         $('select').material_select();
+        $('ul.tabs').tabs({
+            'swipeable': false
+        });
         $(".dropdown-button").dropdown();
         $('.tooltipped').tooltip({
             delay: 50

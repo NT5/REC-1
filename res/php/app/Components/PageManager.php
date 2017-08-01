@@ -168,7 +168,8 @@ class PageManager extends \REC1\Components\REC1Components {
      * @return type
      */
     private function getLoggedUser() {
-        return $this->getUsers()->getUserSessionClass()->getFromCookie();
+        $User = $this->getUsers()->getUserSessionClass();
+        return ($User->getFromCookie()) ? : NULL;
     }
 
     /**

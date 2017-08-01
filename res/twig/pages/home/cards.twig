@@ -1,6 +1,6 @@
 {% macro titled(card) %}
     <h2 class="header">{{ card.title }}</h2>
-    <div class="card horizontal">
+    <div class="card horizontal hoverable">
         <div class="card-image waves-effect waves-block waves-light">
             <i class="activator large material-icons">{{ card.icon }}</i>
         </div>
@@ -19,7 +19,7 @@
     </div>
 {% endmacro %}
 {% macro horizontal(card) %}
-    <div class="card horizontal">
+    <div class="card horizontal hoverable">
         <div class="card-image waves-effect waves-block waves-light">
             <i class="activator large material-icons">{{ card.icon }}</i>
         </div>
@@ -38,7 +38,7 @@
     </div>
 {% endmacro %}
 {% macro normal(card) %}
-    <div class="card">
+    <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
             <i class="activator large material-icons">{{ card.icon }}</i>
         </div>

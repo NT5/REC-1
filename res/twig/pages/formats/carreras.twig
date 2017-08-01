@@ -1,5 +1,50 @@
 {% extends "base.twig" %}
 {% block content %}
-    {{ parent() }}
-    <h1>Carreras</h1>
+<blockquote>
+    <h1>
+        <i class="medium material-icons">directions_run</i>
+        Carreras
+    </h1>
+</blockquote>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3">
+                    <a class="active" href="#lista">Lista</a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#TODO">TODO</a>
+                </li>
+            </ul>
+        </div>
+        <div id="lista" class="col s12">
+            <h4 class="cyan-text"><i class="material-icons left small">book</i>Lista de carreras</h4>
+            <hr/>
+            <table class="bordered striped responsive-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Creado el</th>
+                        <th>por</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for carrera in rec1.carreras.list %}
+                    <tr>
+                        <td>{{ carrera.getId }}</td>
+                        <td>{{ carrera.getName }}</td>
+                        <td>{{ carrera.getCreateAt }}</td>
+                        <td>{{ carrera.getCreateBy.getFullName }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id="TODO" class="col s12">
+            TODO
+        </div>
+    </div>
+</div>
 {% endblock %}
