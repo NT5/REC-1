@@ -31,6 +31,7 @@ class Formats extends \REC1\Components\Page {
     public function initTwigTemplate() {
 
         $area = filter_input(INPUT_GET, 'format');
+        $action = filter_input(INPUT_GET, 'action');
         $template = "base.twig";
         $vars = [];
         $FormatComponets = $this->getFormatComponents();
@@ -40,6 +41,7 @@ class Formats extends \REC1\Components\Page {
                 $template = "pages/formats/carreras.twig";
                 $vars["rec1.page.title"] = "Formatos | Carreras";
                 $vars["rec1.carreras.list"] = $FormatComponets->getCarreras()->getCarreras();
+                
                 break;
             case "peds":
                 $template = "pages/formats/peds.twig";
