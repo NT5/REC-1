@@ -12,6 +12,7 @@
             delay: 50
         });
         $('.tap-target').tapTarget('open');
+        $('.modal').modal('open');
 
         $(window).scroll(function () {
             if ($(this).scrollTop() > 50) {

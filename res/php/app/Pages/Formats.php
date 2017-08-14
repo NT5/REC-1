@@ -14,11 +14,19 @@ class Formats extends \REC1\Components\Page {
     private $Twig_Vars = [];
 
     /**
+     *
+     * @var \REC1\Components\Users\User
+     */
+    private $Me;
+
+    /**
      * 
      * @param \REC1\Components\REC1Components $REC1Components
      */
     public function __construct(\REC1\Components\REC1Components $REC1Components = NULL) {
         parent::__construct($REC1Components);
+
+        $this->Me = $this->getUsers()->getUserSessionClass()->getFromCookie();
 
         $this->initTwigTemplate();
         $this->initVars();
@@ -41,7 +49,7 @@ class Formats extends \REC1\Components\Page {
                 $template = "pages/formats/carreras.twig";
                 $vars["rec1.page.title"] = "Formatos | Carreras";
                 $vars["rec1.carreras.list"] = $FormatComponets->getCarreras()->getCarreras();
-                
+
                 break;
             case "peds":
                 $template = "pages/formats/peds.twig";
@@ -58,6 +66,42 @@ class Formats extends \REC1\Components\Page {
                 $vars["rec1.page.title"] = "Formatos";
                 break;
         }
+
+        switch ($action) {
+            case "add":
+                switch ($area) {
+                    case "carreras":
+                        $CarrerasCompo = $this->getFormatComponents()->getCarreras();
+                        $carrera_name = filter_input(INPUT_POST, 'new_carrera_name');
+                        if ($carrera_name) {
+                            $CarrerasCompo->insertCarrera($carrera_name, $this->Me);
+                            $vars["rec1.page.notification"] = "¡Se añadio la carrera con el nombre $carrera_name a la base de datos!";
+                        }
+                        break;
+                }
+                break;
+            case "del":
+                switch ($area) {
+                    case "carreras":
+                        $CarrerasCompo = $this->getFormatComponents()->getCarreras();
+                        $carrera_id = filter_input(INPUT_GET, 'id');
+
+                        if ($carrera_id) {
+                            $carrera_item = $CarrerasCompo->getCarrera($carrera_id);
+                            if ($carrera_item) {
+                                $carrera_name = $carrera_item->getName();
+                                $CarrerasCompo->deleteCarrera($carrera_id);
+                                $vars["rec1.page.notification"] = "¡Se borro la carrera $carrera_name!";
+                            }
+                        }
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+
+        $vars["rec1.page.get_active_action"] = $action;
 
         $this->setTemplate($template);
         $this->Twig_Vars = $vars;
