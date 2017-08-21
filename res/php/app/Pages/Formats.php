@@ -57,6 +57,9 @@ class Formats extends \REC1\Components\Page {
                             $vars["rec1.page.notification"] = "¡Se añadio la carrera con el nombre $carrera_name a la base de datos!";
                         }
                         break;
+                    case "formato12":
+                        // TODO
+                        break;
                 }
                 break;
             case "del":
@@ -101,6 +104,14 @@ class Formats extends \REC1\Components\Page {
             case "turnos":
                 $template = "pages/formats/turnos.twig";
                 $vars["rec1.page.title"] = "Formatos | Turnos";
+                $vars["rec1.turnos.list"] = $FormatComponets->getTurnos()->getTurnos();
+                break;
+            case "formato12":
+                $template = "pages/formats/formato12.twig";
+                $vars["rec1.page.title"] = "Formatos | Formato 12";
+
+                $vars["rec1.peds.list"] = $FormatComponets->getPeds()->getPeds();
+                $vars["rec1.carreras.list"] = $FormatComponets->getCarreras()->getCarreras();
                 $vars["rec1.turnos.list"] = $FormatComponets->getTurnos()->getTurnos();
                 break;
             default:

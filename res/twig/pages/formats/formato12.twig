@@ -1,0 +1,132 @@
+{% extends "base.twig" %}
+{% block content %}
+    <div class="row">
+        <h2>Por favor proporciona la información que se te solicita</h2>
+    </div>
+    <form class="col s12" role="form" action="formats/formato12/add/" method="POST">
+        <div class="row">
+            <div class="input-field col s4">
+                <i class="material-icons prefix"></i>
+                <select name="ped_id">
+                    <option value="-1" disabled selected>Escoge una PED</option>
+                    {% for ped in rec1.peds.list %}
+                        <option value="{{ ped.getId }}">{{ ped.getName }}</option>
+                    {% endfor %}
+                </select>
+                <label>Sede/PED</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix"></i>
+                <input id="anio_lectivo" name="anio_lectivo" type="number" class="validate">
+                <label>Año Lectivo</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix"></i>
+                <select name="trimestre_value">
+                    <option value="-1" disabled selected>Escoge Trimestre</option>
+                    {% for i in range(1, 4) %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <label>Trimestre</label>
+            </div>
+        </div>
+        <div class="input-field col s4">
+            <i class="material-icons prefix"></i>
+            <select name="carrera_id">
+                <option value="-1" disabled selected>Escoge una Carrera</option>
+                {% for carrera in rec1.carreras.list %}
+                    <option value="{{ carrera.getId }}">{{ carrera.getName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-field col s4">
+            <i class="material-icons prefix"></i>
+            <select name="turno_id">
+                <option value="-1" disabled selected>Escoge un Turno</option>
+                {% for turno in rec1.turnos.list %}
+                    <option value="{{ turno.getId }}">{{ turno.getName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-field col s4">
+            <select name="anio_carrera">
+                <option value="-1" disabled selected>Escoge un Año de carrera</option>
+                {% for i in range(1, 5) %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <h4>Varones</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"></i>
+                        <input type="number" class="validate">
+                        <label>Rurales</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"></i>
+                        <input id="anio_lec" name="anio_lec" type="text" class="validate">
+                        <label for="anio_lec">Urbanos</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"></i>
+                        <input disabled id="anio_lec" name="anio_lec" type="text" class="validate">
+                        <label for="anio_lec">Total</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field col s6">
+                <h4>Mujeres</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"></i>
+                        <input id="anio_lec" name="anio_lec" type="text" class="validate">
+                        <label for="anio_lec">Rurales</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"></i>
+                        <input id="anio_lec" name="anio_lec" type="text" class="validate">
+                        <label for="anio_lec">Urbanos</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"></i>
+                        <input disabled id="anio_lec" name="anio_lec" type="text" class="validate">
+                        <label for="anio_lec">Total</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <button class="btn-large waves-effect waves-light" type="submit" name="action">
+                    Aceptar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $("#anio_lectivo").change(function () {
+            var container = $(this);
+            var valor = parseInt(container.val());
+            if (valor < 2000 || valor >= 2100) {
+                container.val(2017);
+            }
+        });
+    </script>
+{% endblock %}
