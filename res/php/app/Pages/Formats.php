@@ -49,7 +49,6 @@ class Formats extends \REC1\Components\Page {
                 $template = "pages/formats/carreras.twig";
                 $vars["rec1.page.title"] = "Formatos | Carreras";
                 $vars["rec1.carreras.list"] = $FormatComponets->getCarreras()->getCarreras();
-
                 break;
             case "peds":
                 $template = "pages/formats/peds.twig";

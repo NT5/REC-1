@@ -7,52 +7,52 @@
     <div class="divider"></div>
     <div class="row">
         <div class="col s6">
-            {{ cards.titled({'title': 'Usuarios', 'icon': 'account_box', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'link': { 'url': 'user/', 'title': 'Administrar usuarios' }, 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.titled(rec1.page.cards.user) }}
         </div>
         <div class="col s6">
-            {{ cards.titled({'title': 'Administracion', 'icon': 'build', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'link': { 'url': 'page', 'title': 'Configuracion de la pagina' }, 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.titled(rec1.page.cards.admin) }}
         </div>
     </div>
     <div class="divider"></div>
     <div class="row">
         <div class="col s4">
-            {{ cards.horizontal({'title': 'Carreras', 'icon': 'directions_run', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': 'formats/carreras/', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.horizontal(rec1.page.cards.carreras) }}
         </div>
         <div class="col s4">
-            {{ cards.horizontal({'title': 'Peds', 'icon': 'business', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': 'formats/peds/', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.horizontal(rec1.page.cards.peds) }}
         </div>
         <div class="col s4">
-            {{ cards.horizontal({'title': 'Turnos', 'icon': 'donut_small', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': 'formats/turnos/', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.horizontal(rec1.page.cards.turnos) }}
         </div>
     </div>
     <div class="divider"></div>
     <h1 class="header">Formatos</h1>
     <div class="row">
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato7) }}
         </div>
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato8) }}
         </div>
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato9) }}
         </div>
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato10) }}
         </div>
     </div>
     <div class="row">
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato11) }}
         </div>
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato12) }}
         </div>
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato13) }}
         </div>
         <div class="col s3">
-            {{ cards.normal({'title': 'Formato', 'icon': 'assignment_turned_in', 'content': 'I am a very simple card. I am good at containing small bits of information.', 'url': '#', 'help': 'Here is some more information about this product that is only revealed once clicked on.' }) }}
+            {{ cards.normal(rec1.page.cards.formato14) }}
         </div>
     </div>
 {% endblock %}
