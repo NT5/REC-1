@@ -26,6 +26,9 @@
                 <li class="tab col s3">
                     <a class="{% if rec1.page.get_active_action == 'add' %}active {% endif %}tooltipped" href="#add_carrera" data-position="top" data-tooltip="Añade más carreras a lista">Añadir</a>
                 </li>
+                <li class="tab col s3">
+                    <a class="{% if rec1.page.get_active_action == 'edit' %}active {% endif %}tooltipped" href="#edit_carrera" data-position="top" data-tooltip="Edita una carrera de la base de datos">Editar</a>
+                </li>
             </ul>
         </div>
         <div id="list_carrera" class="col s12">
@@ -49,7 +52,7 @@
                             <td>{{ carrera.getCreateAt }}</td>
                             <td>{{ carrera.getCreateBy.getFullName }}</td>
                             <td>
-                                <a class="waves-effect waves-teal btn-flat tooltipped" data-position="left" data-tooltip="Editar">
+                                <a href="formats/carreras/edit/{{ carrera.getId }}" class="waves-effect waves-teal btn-flat tooltipped" data-position="left" data-tooltip="Editar">
                                     <i class="material-icons">edit</i>
                                 </a>
                                 <a href="formats/carreras/del/{{ carrera.getId }}" class="waves-effect waves-teal btn-flat tooltipped" data-position="left" data-tooltip="Borrar">
@@ -63,7 +66,7 @@
         </div>
         <div id="add_carrera" class="col s12">
             <div class="row">
-                <form class="col s12" role="form" action="formats/carreras/add" method="post">
+                <form class="col s12" role="form" action="formats/carreras/add/" method="post">
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">directions_walk</i>
@@ -73,6 +76,37 @@
                     </div>
                     <button class="btn waves-effect waves-light" type="submit" name="action">
                         Agregar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div id="edit_carrera" class="col s12">
+            <div class="row">
+                <form class="col s12" role="form" action="formats/carreras/edit/" method="post">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select>
+                                {% for carrera in rec1.carreras.list %}
+                                    {% if rec1.page.get_active_id == carrera.getId %}
+                                        <option selected value="{{ carrera.getId }}">{{ carrera.getName }}</option>
+                                    {% else %}
+                                        <option value="{{ carrera.getId }}">{{ carrera.getName }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <label>Carrera</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">directions_walk</i>
+                            <input id="icon_prefix" type="text" class="validate" name="new_carrera_name">
+                            <label for="icon_prefix">Nombre de la carrera</label>
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Editar
                         <i class="material-icons right">send</i>
                     </button>
                 </form>

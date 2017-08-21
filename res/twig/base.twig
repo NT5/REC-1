@@ -47,9 +47,11 @@
             </a>
         </div>
 
-        <!--  Scripts-->
-        <script src="res/libs/jquery/jquery.min.js"></script>
-        <script src="res/libs/materialize/js/materialize.min.js"></script>
-        <script src="res/js/script.js"></script>
+        {% block scripts %}
+            <!--  Scripts-->
+            <script src="res/libs/jquery/jquery.min.js"></script>
+            <script src="res/libs/materialize/js/materialize.min.js"></script>
+            <script src="res/js/script.js"></script>
+        {% endblock %}
     </body>
 </html>

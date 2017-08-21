@@ -5,8 +5,12 @@
         $('.collapsible').collapsible();
         $('select').material_select();
         $('ul.tabs').tabs({
-            'swipeable': false
+            'swipeable': false,
+            'onShow': function (tab) {
+                Materialize.fadeInImage(tab);
+            }
         });
+        Materialize.showStaggeredList('.tabs');
         $(".dropdown-button").dropdown();
         $('.tooltipped').tooltip({
             delay: 50
