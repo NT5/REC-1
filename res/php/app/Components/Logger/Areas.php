@@ -33,5 +33,6 @@ abstract class Areas {
     const FORMATS_CARRERAS = 23;
     const FORMATS_PEDS = 24;
     const FORMATS_TURNOS = 25;
+    const FORMATS_FORMATO7 = 26;
 
 }

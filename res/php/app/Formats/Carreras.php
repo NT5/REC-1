@@ -96,7 +96,7 @@ class Carreras extends \REC1\Components\ExtendedComponents {
      * @param string $name
      * @param \REC1\Components\Users\User $create_by
      */
-    public function insertCareer($name, \REC1\Components\Users\User $create_by) {
+    public function insertCarrera($name, \REC1\Components\Users\User $create_by) {
         $stmt = $this->getDatabase()->prepare("INSERT INTO Carreras (Carrera_Name, Create_by) VALUES (?, ?)");
 
         $stmt->bind_param('si', $name, $create_by->getId());
@@ -108,7 +108,7 @@ class Carreras extends \REC1\Components\ExtendedComponents {
      * 
      * @param int $id
      */
-    public function deleteCareer($id) {
+    public function deleteCarrera($id) {
         $stmt = $this->getDatabase()->prepare("DELETE FROM Carreras WHERE Carrera_Id = ?");
 
         $stmt->bind_param('i', $id);
