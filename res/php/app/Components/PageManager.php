@@ -133,6 +133,12 @@ class PageManager extends \REC1\Components\REC1Components {
             }
 
             $this->setPage($Page);
+
+            /**
+             * @todo $Me variable in pages
+             */
+            $Twig = $this->getTwig();
+            $Twig->setVar('rec1.user.logged', $this->getLoggedUser());
         }
         $this->initVars();
     }
@@ -158,8 +164,7 @@ class PageManager extends \REC1\Components\REC1Components {
                     "icon" => "track_changes",
                     "name" => "Pagina de prueba"
                 ]
-            ],
-            'rec1.user.logged' => $this->getLoggedUser(),
+            ]
         ]);
     }
 
