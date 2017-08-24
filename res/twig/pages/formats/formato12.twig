@@ -1,132 +1,138 @@
 {% extends "base.twig" %}
+{% import "pages/formats/formats_elements.twig" as element %}
 {% block content %}
-    <div class="row">
-        <h2>Por favor proporciona la información que se te solicita</h2>
-    </div>
-    <form class="col s12" role="form" action="formats/formato12/add/" method="POST">
+    <blockquote>
+        <h1>
+            <i class="material-icons left medium">add_box</i>
+            Por favor proporciona la información que se te solicita
+        </h1>
+    </blockquote>
+    <form role="form" action="formats/12/add/" method="POST">
+        <table class="responsive-table centered">
+            <thead>
+                <tr>
+                    <th>Sede/PED</th>
+                    <th>Año Lectivo</th>
+                    <th>Trimestre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ element.input_select_peds('ped_id', rec1.peds.list) }}
+                    </td>
+                    <td>
+                        {{ element.input_select_anio_lectivo('input_select') }}
+                    </td>
+                    <td>
+                        {{ element.input_select_trimestre('trimestre_value') }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
         <div class="row">
-            <div class="input-field col s4">
-                <i class="material-icons prefix"></i>
-                <select name="ped_id">
-                    <option value="-1" disabled selected>Escoge una PED</option>
-                    {% for ped in rec1.peds.list %}
-                        <option value="{{ ped.getId }}">{{ ped.getName }}</option>
-                    {% endfor %}
-                </select>
-                <label>Sede/PED</label>
-            </div>
-            <div class="input-field col s4">
-                <i class="material-icons prefix"></i>
-                <input id="anio_lectivo" name="anio_lectivo" type="number" class="validate">
-                <label>Año Lectivo</label>
-            </div>
-            <div class="input-field col s4">
-                <i class="material-icons prefix"></i>
-                <select name="trimestre_value">
-                    <option value="-1" disabled selected>Escoge Trimestre</option>
-                    {% for i in range(1, 4) %}
-                        <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-                <label>Trimestre</label>
-            </div>
-        </div>
-        <div class="input-field col s4">
-            <i class="material-icons prefix"></i>
-            <select name="carrera_id">
-                <option value="-1" disabled selected>Escoge una Carrera</option>
-                {% for carrera in rec1.carreras.list %}
-                    <option value="{{ carrera.getId }}">{{ carrera.getName }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="input-field col s4">
-            <i class="material-icons prefix"></i>
-            <select name="turno_id">
-                <option value="-1" disabled selected>Escoge un Turno</option>
-                {% for turno in rec1.turnos.list %}
-                    <option value="{{ turno.getId }}">{{ turno.getName }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="input-field col s4">
-            <select name="anio_carrera">
-                <option value="-1" disabled selected>Escoge un Año de carrera</option>
-                {% for i in range(1, 5) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <h4>Varones</h4>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix"></i>
-                        <input type="number" class="validate">
-                        <label>Rurales</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix"></i>
-                        <input id="anio_lec" name="anio_lec" type="text" class="validate">
-                        <label for="anio_lec">Urbanos</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix"></i>
-                        <input disabled id="anio_lec" name="anio_lec" type="text" class="validate">
-                        <label for="anio_lec">Total</label>
-                    </div>
-                </div>
-            </div>
-            <div class="input-field col s6">
-                <h4>Mujeres</h4>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix"></i>
-                        <input id="anio_lec" name="anio_lec" type="text" class="validate">
-                        <label for="anio_lec">Rurales</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix"></i>
-                        <input id="anio_lec" name="anio_lec" type="text" class="validate">
-                        <label for="anio_lec">Urbanos</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix"></i>
-                        <input disabled id="anio_lec" name="anio_lec" type="text" class="validate">
-                        <label for="anio_lec">Total</label>
+            <div class="col s12">
+                <div style="position: relative; height: 70px;">
+                    <div class="fixed-action-btn horizontal click-to-toggle" style="z-index: 1; position: absolute; display: inline-block; right: 0;">
+                        <a class="btn-floating btn-large teal">
+                            <i class="large material-icons">menu</i>
+                        </a>
+                        <ul>
+                            <li>
+                                <a class="btn-autofill autofill-carreras btn-floating red tooltipped" data-position="bottom" data-tooltip="Añadir carreras">
+                                    <i class="material-icons">all_out</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn-autofill autofill-turnos btn-floating red tooltipped" data-position="bottom" data-tooltip="Añadir Turnos">
+                                    <i class="material-icons">all_out</i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn-autofill btn-floating red tooltipped" data-position="bottom" data-tooltip="Añadir Años">
+                                    <i class="material-icons">all_out</i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="divider"></div>
+        <table class="responsive-table centered" id="table-data">
+            <thead>
+                <tr>
+                    <th>Carrera</th>
+                    <th>Turno</th>
+                    <th>Año de la carrera</th>
+                    <th>Matricula Final Varones Rurales</th>
+                    <th>Matricula Final Varones Urbanos</th>
+                    <th>Matricula Final Mujeres Rurales</th>
+                    <th>Matricula Final Mujeres Urbanos</th>
+                    <th>
 
-        <div class="row">
-            <div class="input-field col s6">
-                <button class="btn-large waves-effect waves-light" type="submit" name="action">
-                    Aceptar
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ element.input_select_carrera('carrera_id[]', rec1.carreras.list) }}
+                    </td>
+                    <td>
+                        {{ element.input_select_turno('turno_id[]', rec1.turnos.list) }}
+                    </td>
+                    <td>
+                        {{ element.input_select_anio_carrera('anio_carrera[]') }}
+                    </td>
+                    <td>
+                        <div class="input-field">
+                            <i class="material-icons prefix"></i>
+                            <input name="varones_rurales[]" id="varones_rurales" type="number" class="validate" value='0' required>
+                            <label>Varones Rurales</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-field">
+                            <i class="material-icons prefix"></i>
+                            <input name="varones_urbanos[]" id="varones_urbanos" type="number" class="validate" value='0' required>
+                            <label>Varones Urbanos</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-field">
+                            <i class="material-icons prefix"></i>
+                            <input name="mujeres_rurales[]" id="mujeres_rurales" type="number" class="validate" value='0' required>
+                            <label>Mujeres Rurales</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-field">
+                            <i class="material-icons prefix"></i>
+                            <input name="mujeres_urbanos[]" id="mujeres_urbanos" type="number" class="validate" value='0' required>
+                            <label>Mujeres Urbanos</label>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="tr_clone_add waves-effect waves-teal btn-floating blue lighten-3">
+                            <i class="material-icons btn-add">add</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div class="input-field">
+            <button class="btn-large waves-effect waves-light" type="submit" name="action">
+                Aceptar
+                <i class="material-icons right">send</i>
+            </button>
         </div>
     </form>
+    <br>
 {% endblock %}
 {% block scripts %}
     {{ parent() }}
-    <script type="text/javascript">
-        $("#anio_lectivo").change(function () {
-            var container = $(this);
-            var valor = parseInt(container.val());
-            if (valor < 2000 || valor >= 2100) {
-                container.val(2017);
-            }
-        });
-    </script>
+    <script src="res/js/formats_validation.js"></script>
 {% endblock %}

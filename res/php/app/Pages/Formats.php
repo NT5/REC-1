@@ -57,7 +57,7 @@ class Formats extends \REC1\Components\Page {
                             $vars["rec1.page.notification"] = "¡Se añadio la carrera con el nombre $carrera_name a la base de datos!";
                         }
                         break;
-                    case "formato12":
+                    case "12":
                         // TODO
                         break;
                 }
@@ -106,7 +106,7 @@ class Formats extends \REC1\Components\Page {
                 $vars["rec1.page.title"] = "Formatos | Turnos";
                 $vars["rec1.turnos.list"] = $FormatComponets->getTurnos()->getTurnos();
                 break;
-            case "formato12":
+            case "12":
                 $template = "pages/formats/formato12.twig";
                 $vars["rec1.page.title"] = "Formatos | Formato 12";
 
