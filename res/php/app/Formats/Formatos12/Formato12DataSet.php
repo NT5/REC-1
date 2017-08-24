@@ -37,7 +37,7 @@ class Format12DataSet extends \REC1\Formats\FormatComponents {
 
         $stmt->bind_param('i', $id);
         $stmt->execute();
-        $stmt->bind_result($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Varones_Urbano, $Varones_Rural, $Mujeres_Urbano, $Mujeres_Rural, Varones_MF_V, Varones_NVR, Mujeres_MF_M, Mujeres_NMR);
+        $stmt->bind_result($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Varones_Urbano, $Varones_Rural, $Mujeres_Urbano, $Mujeres_Rural, $Varones_MF_V, $Varones_NVR, $Mujeres_MF_M, $Mujeres_NMR);
         $stmt->store_result();
         $stmt->fetch();
         $stmt->free_result();
@@ -58,7 +58,7 @@ class Format12DataSet extends \REC1\Formats\FormatComponents {
                 $Mujeres_MF_M !== NULL &&
                 $Mujeres_NMR !== NULL
         ) {
-            return new \REC1\Formats\Formatos7\Formato7Data($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Varones_Urbano, $Varones_Rural, $Mujeres_Urbano, $Mujeres_Rural, $Varones_MF_V, $Varones_NVR, $Mujeres_MF_M, $Mujeres_NMR);
+            return new \REC1\Formats\Formatos12\Formato12Data($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Varones_Urbano, $Varones_Rural, $Mujeres_Urbano, $Mujeres_Rural, $Varones_MF_V, $Varones_NVR, $Mujeres_MF_M, $Mujeres_NMR);
         }
     }
 
@@ -99,7 +99,7 @@ class Format12DataSet extends \REC1\Formats\FormatComponents {
 
         $stmt = $db->prepare("INSERT INTO Formato_12_Data (Formato_Id, Carrera_Id, Turno_Id, Anio_Carrera, Varones_Urbano, Varones_Rural, Mujeres_Urbano, Mujeres_Rural, Varones_MF_V, Varones_NVR, Mujeres_MF_M, Mujeres_NMR) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param('iiiiiiii', $data->getFormato_Id(), $data->getCarrera_Id(), $data->getTurno_Id(), $data->getAnio_Carrera(), $data->getVarones_Urbano(), $data->getVarones_Rural(), $data->getMujeres_Urbano(), $data->getMujeres_Rural(), $data->getVarones_MF_V(), $data->getVarones_NVR(), $data->getMujeres_MF_M(), $data->getMujeres_NMR());
+        $stmt->bind_param('iiiiiiiiiiii', $data->getFormato_Id(), $data->getCarrera_Id(), $data->getTurno_Id(), $data->getAnio_Carrera(), $data->getVarones_Urbano(), $data->getVarones_Rural(), $data->getMujeres_Urbano(), $data->getMujeres_Rural(), $data->getVarones_MF_V(), $data->getVarones_NVR(), $data->getMujeres_MF_M(), $data->getMujeres_NMR());
         $stmt->execute();
         $stmt->close();
     }
