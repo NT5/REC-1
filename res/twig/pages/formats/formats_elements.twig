@@ -1,0 +1,70 @@
+{% macro input_select_peds(name, list) %}
+    <div class="input-field">
+        <select name="{{ name }}">
+            {% for ped in list %}
+                <option value="{{ ped.getId }}">{{ ped.getName }}</option>
+            {% endfor %}
+        </select>
+        <label>Sede/PED</label>
+    </div>
+{% endmacro %}
+
+{% macro input_select_anio_lectivo(name) %}
+    <div class="input-field">
+        <select name="{{ name }}">
+            {% set currentYear = now|date('Y') %}
+            {% set startYear = currentYear - 15 %}
+            {% set endYear = currentYear + 15 %}
+
+            {% for year in range(startYear, endYear) %}
+                {% if currentYear == year %}
+                    <option value="{{ year }}" selected>Año {{ year }}</option>
+                {% else %}
+                    <option value="{{ year }}">Año {{ year }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <label>Año Lectivo</label>
+    </div>
+{% endmacro %}
+
+{% macro input_select_trimestre(name) %}
+    <div class="input-field">
+        <select name="{{ name }}">
+            {% for i in range(1, 4) %}
+                <option value="{{ i }}">{{ i|integerToRoman }} Trimestre</option>
+            {% endfor %}
+        </select>
+        <label>Trimestre</label>
+    </div>
+{% endmacro %}
+
+{% macro input_select_carrera(name, list) %}
+    <div class="input-field">
+        <select name="{{ name }}" class="browser-default">
+            {% for carrera in list %}
+                <option value="{{ carrera.getId }}">{{ carrera.getName }}</option>
+            {% endfor %}
+        </select>
+    </div>
+{% endmacro %}
+
+{% macro input_select_turno(name, list) %}
+    <div class="input-field">
+        <select name="{{ name }}" class="browser-default">
+            {% for turno in list %}
+                <option value="{{ turno.getId }}">{{ turno.getName }}</option>
+            {% endfor %}
+        </select>
+    </div>
+{% endmacro %}
+
+{% macro input_select_anio_carrera(name) %}
+    <div class="input-field">
+        <select name="{{ name }}" class="browser-default">
+            {% for i in range(1, 5) %}
+                <option value="{{ i }}">{{ i }}° Año</option>
+            {% endfor %}
+        </select>
+    </div>
+{% endmacro %}
