@@ -38,7 +38,7 @@ class Formats extends \REC1\Components\Page {
 
     public function initTwigTemplate() {
 
-        $area = filter_input(INPUT_GET, 'format');
+        $area = filter_input(INPUT_GET, 'area_formato');
         $action = filter_input(INPUT_GET, 'action');
         $id = filter_input(INPUT_GET, 'id');
 

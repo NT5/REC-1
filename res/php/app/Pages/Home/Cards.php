@@ -38,21 +38,21 @@ class Cards {
             'title' => 'Carreras',
             'icon' => 'directions_run',
             'content' => 'I am a very simple card. I am good at containing small bits of information.',
-            'url' => 'formats/carreras/',
+            'url' => 'formato/carreras/',
             'help' => 'Here is some more information about this product that is only revealed once clicked on.'
         ],
         'peds' => [
             'title' => 'Peds',
             'icon' => 'business',
             'content' => 'I am a very simple card. I am good at containing small bits of information.',
-            'url' => 'formats/peds/',
+            'url' => 'formato/peds/',
             'help' => 'Here is some more information about this product that is only revealed once clicked on.'
         ],
         'turnos' => [
             'title' => 'Turnos',
             'icon' => 'donut_small',
             'content' => 'I am a very simple card. I am good at containing small bits of information.',
-            'url' => 'formats/turnos/',
+            'url' => 'formato/turnos/',
             'help' => 'Here is some more information about this product that is only revealed once clicked on.'
         ],
         // Normal card

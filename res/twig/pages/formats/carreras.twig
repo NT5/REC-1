@@ -52,10 +52,10 @@
                             <td>{{ carrera.getCreateAt }}</td>
                             <td>{{ carrera.getCreateBy.getFullName }}</td>
                             <td>
-                                <a href="formats/carreras/edit/{{ carrera.getId }}" class="waves-effect waves-teal btn-flat tooltipped" data-position="left" data-tooltip="Editar">
+                                <a href="formato/carreras/edit/{{ carrera.getId }}" class="waves-effect waves-teal btn-flat tooltipped" data-position="left" data-tooltip="Editar">
                                     <i class="material-icons">edit</i>
                                 </a>
-                                <a href="formats/carreras/del/{{ carrera.getId }}" class="waves-effect waves-teal btn-flat tooltipped" data-position="left" data-tooltip="Borrar">
+                                <a href="formato/carreras/del/{{ carrera.getId }}" class="waves-effect waves-teal btn-flat tooltipped" data-position="left" data-tooltip="Borrar">
                                     <i class="material-icons">delete_forever</i>
                                 </a>
                             </td>
@@ -66,7 +66,7 @@
         </div>
         <div id="add_carrera" class="col s12">
             <div class="row">
-                <form class="col s12" role="form" action="formats/carreras/add/" method="post">
+                <form class="col s12" role="form" action="formato/carreras/add/" method="post">
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">directions_walk</i>
@@ -83,7 +83,7 @@
         </div>
         <div id="edit_carrera" class="col s12">
             <div class="row">
-                <form class="col s12" role="form" action="formats/carreras/edit/" method="post">
+                <form class="col s12" role="form" action="formato/carreras/edit/" method="post">
                     <div class="row">
                         <div class="input-field col s12">
                             <select>
