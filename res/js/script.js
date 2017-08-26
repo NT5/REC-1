@@ -3,6 +3,7 @@
 
         $('.button-collapse').sideNav({'edge': 'left'});
         $('.collapsible').collapsible();
+        $('textarea.character-counter').characterCounter();
         $('select').material_select();
         $('ul.tabs').tabs({
             'swipeable': false,
