@@ -123,7 +123,7 @@
                         </a>
                         <ul>
                             <li>
-                                <a class="btn-autofill autofill-clear btn-floating deep-purple lighten-3 tooltipped" data-position="bottom" data-tooltip="Limpiar">
+                                <a class="btn-autofill autofill-clear btn-floating deep-purple lighten-3 tooltipped pulse" data-position="bottom" data-tooltip="Limpiar">
                                     <i class="material-icons">clear_all</i>
                                 </a>
                             </li>
@@ -196,19 +196,19 @@
                     </td>
                     <td>
                         <div class="input-field">
-                            <input disabled type="number" class="validate" value=0>
+                            <input id="MF-V" disabled type="number" value=0>
                             <label>MF-V</label>
                         </div>
                     </td>
                     <td>
                         <div class="input-field">
-                            <input disabled type="number" class="validate" value=0>
+                            <input id="NVR" type="number" name="nvr[]" class="validate" value=0>
                             <label>NVR</label>
                         </div>
                     </td>
                     <td>
                         <div class="input-field">
-                            <input disabled type="number" class="validate" value=0>
+                            <input id="per_rep-v" disabled type="number" class="validate" value=0>
                             <label>% Rep-V</label>
                         </div>
                     </td>
@@ -226,19 +226,19 @@
                     </td>
                     <td>
                         <div class="input-field">
-                            <input disabled type="number" class="validate" value=0>
+                            <input id="MF-M" disabled type="number" value=0>
                             <label>MF-M</label>
                         </div>
                     </td>
                     <td>
                         <div class="input-field">
-                            <input disabled type="number" class="validate" value=0>
+                            <input id="NMR" type="number" name="mmr" class="validate" value=0>
                             <label>NMR</label>
                         </div>
                     </td>
                     <td>
                         <div class="input-field">
-                            <input disabled type="number" class="validate" value=0>
+                            <input id="per_rep-m" disabled type="number" value=0>
                             <label>% Rep-M</label>
                         </div>
                     </td>
@@ -262,5 +262,5 @@
 {% endblock %}
 {% block scripts %}
     {{ parent() }}
-    <script src="res/js/formats_validation.js"></script>
+    <script src="res/js/formatos/formato12.js"></script>
 {% endblock %}

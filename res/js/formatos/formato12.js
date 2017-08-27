@@ -1,11 +1,69 @@
 $(function () {
-    $(".input-field").delegate('input[type=number]', 'change', function () {
-        var container = $(this);
-        var valor = parseInt(container.val());
-        if (valor) {
-            container.val(Math.abs(valor));
+
+    var frm_validations = {
+        // No numeros negativos
+        number_input: function (selector) {
+            selector.change(function () {
+                var container = $(this);
+                var valor = container.val();
+                if (!isNaN(valor) && (valor = parseInt(valor))) {
+                    container.val(Math.abs(valor));
+                } else {
+                    container.val(0);
+                }
+            });
+        },
+        // Calculos
+        number_maths: function (entry) {
+            var varones_rurales = entry.find('input[type=number][name="varones_rurales[]"]'),
+                    varones_urbanos = entry.find('input[type=number][name="varones_urbanos[]"]'),
+                    mf_v = entry.find('input#MF-V[type=number]'),
+                    nvr = entry.find('input#NVR[type=number]'),
+                    per_repv = entry.find('input#per_rep-v[type=number]'),
+                    mujeres_rurales = entry.find('input[type=number][name="mujeres_rurales[]"]'),
+                    mujeres_urbanos = entry.find('input[type=number][name="mujeres_urbanos[]"]'),
+                    mf_m = entry.find('input#MF-M[type=number]'),
+                    nmr = entry.find('input#NMR[type=number]'),
+                    per_repm = entry.find('input#per_rep-m[type=number]'),
+                    toast_duration = 1000;
+
+            $(varones_rurales)
+                    .add($(varones_urbanos))
+                    .change(function () {
+                        $(mf_v).val(parseInt($(varones_urbanos).val()) + parseInt($(varones_rurales).val()))
+                                .trigger('change');
+
+                        Materialize.toast('Matricula final de varones: ' + $(mf_v).val(), toast_duration);
+                    });
+
+            $(nvr)
+                    .add($(mf_v))
+                    .change(function () {
+                        var calc = parseInt($(nvr).val()) / parseInt($(mf_v).val());
+                        $(per_repv).val(Math.floor(calc * 100));
+                        Materialize.toast('% Rendimiento de varones: ' + $(per_repv).val(), toast_duration);
+                    });
+
+            $(mujeres_rurales)
+                    .add($(mujeres_urbanos))
+                    .change(function () {
+                        $(mf_m).val(parseInt($(mujeres_rurales).val()) + parseInt($(mujeres_urbanos).val()))
+                                .trigger('change');
+
+                        Materialize.toast('Matricula final de mujeres: ' + $(mf_m).val(), toast_duration);
+                    });
+
+            $(nmr)
+                    .add($(mf_m))
+                    .change(function () {
+                        var calc = parseInt($(nmr).val()) / parseInt($(mf_m).val());
+                        $(per_repm).val(Math.floor(calc * 100));
+                        Materialize.toast('% Rendimiento de mujeres: ' + $(per_repm).val(), toast_duration);
+                    });
         }
-    });
+    };
+    frm_validations.number_input($('.input-field input[type=number]'));
+    frm_validations.number_maths($('table#table-data tbody td'));
 
     $('.btn-autofill.autofill-clear').on('click', function () {
         var controlForm = $('table#table-data tbody');
@@ -43,6 +101,13 @@ $(function () {
 
                 newEntry.find('select[name="carrera_id[]"]')
                         .val(value_itm);
+
+                newEntry.find('input[type=number]')
+                        .removeClass('valid')
+                        .val(0);
+
+                frm_validations.number_input(newEntry.find('.input-field input[type=number]'));
+                frm_validations.number_maths(newEntry);
             });
         });
         Materialize.toast('¡Carreras añadidas!', 4000, 'rounded');
@@ -50,14 +115,6 @@ $(function () {
         controlForm.find('tr:not(:last) .btn-add')
                 .removeClass('btn-add').addClass('btn-remove')
                 .text('remove');
-
-        controlForm.find('.input-field input[type=number]').change(function () {
-            var container = $(this);
-            var valor = parseInt(container.val());
-            if (valor) {
-                container.val(Math.abs(valor));
-            }
-        });
     });
 
     $('.btn-autofill.autofill-turnos').on('click', function () {
@@ -83,6 +140,13 @@ $(function () {
 
                 newEntry.find('select[name="turno_id[]"]')
                         .val(value_itm);
+
+                newEntry.find('input[type=number]')
+                        .removeClass('valid')
+                        .val(0);
+
+                frm_validations.number_input(newEntry.find('.input-field input[type=number]'));
+                frm_validations.number_maths(newEntry);
             });
         });
         Materialize.toast('¡Turnos añadidas!', 4000, 'rounded');
@@ -90,14 +154,6 @@ $(function () {
         controlForm.find('tr:not(:last) .btn-add')
                 .removeClass('btn-add').addClass('btn-remove')
                 .text('remove');
-
-        controlForm.find('.input-field input[type=number]').change(function () {
-            var container = $(this);
-            var valor = parseInt(container.val());
-            if (valor) {
-                container.val(Math.abs(valor));
-            }
-        });
     });
 
     $('.btn-autofill.autofill-anio_carrera').on('click', function () {
@@ -123,6 +179,13 @@ $(function () {
 
                 newEntry.find('select[name="anio_carrera[]"]')
                         .val(value_itm);
+
+                newEntry.find('input[type=number]')
+                        .removeClass('valid')
+                        .val(0);
+
+                frm_validations.number_input(newEntry.find('.input-field input[type=number]'));
+                frm_validations.number_maths(newEntry);
             });
         });
         Materialize.toast('¡Años de carrera añadidas!', 4000, 'rounded');
@@ -130,14 +193,6 @@ $(function () {
         controlForm.find('tr:not(:last) .btn-add')
                 .removeClass('btn-add').addClass('btn-remove')
                 .text('remove');
-
-        controlForm.find('.input-field input[type=number]').change(function () {
-            var container = $(this);
-            var valor = parseInt(container.val());
-            if (valor) {
-                container.val(Math.abs(valor));
-            }
-        });
     });
 
     $(document).on('click', '.btn-add', function (e) {
@@ -146,13 +201,12 @@ $(function () {
                 currentEntry = $(this).parents('tr:first'),
                 newEntry = $(currentEntry.clone()).appendTo(controlForm);
 
-        newEntry.find('.input-field input[type=number]').change(function () {
-            var container = $(this);
-            var valor = parseInt(container.val());
-            if (valor) {
-                container.val(Math.abs(valor));
-            }
-        });
+        newEntry.find('input[type=number]')
+                .removeClass('valid')
+                .val(0);
+
+        frm_validations.number_input(newEntry.find('.input-field input[type=number]'));
+        frm_validations.number_maths(newEntry);
 
         var selects = currentEntry.find('select');
         $(selects).each(function (i) {
