@@ -58,7 +58,7 @@ class Formats extends \REC1\Components\Page {
                         }
                         break;
                     case "12":
-                        // TODO
+                        print_r($this->getPost());
                         break;
                 }
                 break;

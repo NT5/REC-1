@@ -41,7 +41,7 @@
 
 {% macro input_select_carrera(name, list) %}
     <div class="input-field">
-        <select name="{{ name }}" class="browser-default">
+        <select name="{{ name }}">
             {% for carrera in list %}
                 <option value="{{ carrera.getId }}">{{ carrera.getName }}</option>
             {% endfor %}
@@ -51,7 +51,7 @@
 
 {% macro input_select_turno(name, list) %}
     <div class="input-field">
-        <select name="{{ name }}" class="browser-default">
+        <select name="{{ name }}">
             {% for turno in list %}
                 <option value="{{ turno.getId }}">{{ turno.getName }}</option>
             {% endfor %}
@@ -61,7 +61,7 @@
 
 {% macro input_select_anio_carrera(name) %}
     <div class="input-field">
-        <select name="{{ name }}" class="browser-default">
+        <select name="{{ name }}">
             {% for i in range(1, 5) %}
                 <option value="{{ i }}">{{ i }}° Año</option>
             {% endfor %}

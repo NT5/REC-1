@@ -112,6 +112,7 @@ $(function () {
         });
         Materialize.toast('¡Carreras añadidas!', 4000, 'rounded');
 
+        $(controlForm).find('select').material_select();
         controlForm.find('tr:not(:last) .btn-add')
                 .removeClass('btn-add').addClass('btn-remove')
                 .text('remove');
@@ -151,6 +152,7 @@ $(function () {
         });
         Materialize.toast('¡Turnos añadidas!', 4000, 'rounded');
 
+        $(controlForm).find('select').material_select();
         controlForm.find('tr:not(:last) .btn-add')
                 .removeClass('btn-add').addClass('btn-remove')
                 .text('remove');
@@ -190,6 +192,7 @@ $(function () {
         });
         Materialize.toast('¡Años de carrera añadidas!', 4000, 'rounded');
 
+        $(controlForm).find('select').material_select();
         controlForm.find('tr:not(:last) .btn-add')
                 .removeClass('btn-add').addClass('btn-remove')
                 .text('remove');
@@ -214,15 +217,26 @@ $(function () {
             $(newEntry).find("select").eq(i).val($(select).val());
         });
 
+        $(newEntry).add($(currentEntry))
+                .find('select').material_select();
+
         controlForm.find('tr:not(:last) .btn-add')
                 .removeClass('btn-add').addClass('btn-remove')
                 .text('remove');
 
         Materialize.toast('¡Entrada añadida!', 500);
     }).on('click', '.btn-remove', function (e) {
-        $(this).parents('tr:first').remove();
-        Materialize.toast('¡Entrada borrada!', 500);
+        // $(this).parents('tr:first').remove();
+        $(this).closest('tr')
+                .children('td')
+                .animate({padding: 0})
+                .wrapInner('<div />')
+                .children()
+                .slideUp(function () {
+                    $(this).closest('tr').remove();
+                });
 
+        Materialize.toast('¡Entrada borrada!', 500);
         e.preventDefault();
         return false;
     });

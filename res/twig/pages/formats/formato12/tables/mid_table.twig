@@ -1,0 +1,26 @@
+{% import "pages/formats/formato12/help_cards.twig" as helpCard %}
+{% import "pages/formats/formato12/help_buttons.twig" as helpButtons %}
+
+<div class="row">
+    <div class="col s5">
+        {# Lista de las leyendas usadas en las tablas #}
+        {{ helpCard.card_captions() }}
+    </div>
+    <div class="col s5">
+        <div class="input-field">
+            <i class="material-icons prefix" data-length="120">mode_edit</i>
+            <textarea name="format_comment" class="character-counter materialize-textarea validate" data-length="120" required></textarea>
+            <label>Comentario o nota sobre el formato actual</label>
+        </div>
+    </div>
+    <div class="col s2">
+        {{ helpButtons.btn_autofill() }}
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="progress hide" id="auto-fill-preloader">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
+</div>

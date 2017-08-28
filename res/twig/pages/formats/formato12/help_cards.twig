@@ -1,0 +1,54 @@
+{% macro card_info() %}
+    <div class="card-panel hoverable light-green lighten-5">
+        <i class="material-icons">info</i>
+        <span class="right-align">
+            En el cuadro siguiente solo, se deben reflejar los estudiantes reprobados en el trimestre, a fin de que los responsables de carrera o las subdirecciones académicas implementen planes de remediales con los mismos de manera personalizada.
+        </span>
+    </div>
+{% endmacro %}
+
+{% macro card_maths() %}
+    <div class="card hoverable orange lighten-5">
+        <div class="card-content">
+            <div class="card-title">
+                <i class="material-icons">linear_scale</i>
+                Fórmulas de cálculo
+            </div>
+            <p class="right-align">
+                Para calcular el rendimiento promedio de cada carrera y el rendimiento general por todas ellas, se procederá así:
+            </p>
+            <ol>
+                <li>Se debe tener el rendimiento de cada estudiante</li>
+                <li>Rendimiento académico por año de cada carrera</li>
+                <li>Rendimiento promedio por carrera</li>
+                <li>Rendimiento promedio de todas las carreras</li>
+            </ol>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro card_captions() %}
+    <ul class="collapsible" data-collapsible="accordion">
+        <li>
+            <div class="collapsible-header">
+                <i class="material-icons">library_books</i>
+                Leyendas
+            </div>
+            <div class="collapsible-body">
+                <div class="card-panel hoverable green accent-1">
+                    <ul>
+                        <li>MF-V = Matrícula final varones</li>
+                        <li>MF-M = Matrícula final mujeres</li>
+                        <li>U = Urbano</li>
+                        <li>R = Rural</li>
+                        <li>%Rend-V = Rendimiento de varones</li>
+                        <li>%Rend-M = Rendimiento de mujeres</li>
+                        <li>%Rend General = Rendimiento general de varones y mujeres</li>
+                        <li>NVR = ???</li>
+                        <li>NMR = ???</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+{% endmacro %}

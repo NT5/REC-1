@@ -1,0 +1,109 @@
+{% import "pages/formats/formats_elements.twig" as element %}
+
+<table class="responsive-table bordered z-depth-2" id="table-data">
+    <colgroup>
+        <col span="3" class="deep-purple lighten-5">
+        <col span="5" class="indigo lighten-5">
+        <col span="6" class="blue lighten-5">
+    </colgroup>
+    <thead>
+        <tr>
+            <th rowspan="2" class="flow-text" style="width: 20%;">Carrera</th>
+            <th rowspan="2" class="flow-text" style="width: 8%;">Turno</th>
+            <th rowspan="2" class="flow-text" style="width: 8%;">Año</th>
+            <th colspan="5" class="flow-text center-align">Matricula de Varones</th>
+            <th colspan="5" class="flow-text center-align">Matricula de Mujeres</th>
+            <th rowspan="2"></th>
+        </tr>
+        <tr>
+            <th>Rurales</th>
+            <th>Urbanos</th>
+            <th>MF-V</th>
+            <th>NVR</th>
+            <th>% Rep-V</th>
+            <th>Rurales</th>
+            <th>Urbanos</th>
+            <th>MF-M</th>
+            <th>NMR</th>
+            <th>% Rep-M</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {{ element.input_select_carrera('carrera_id[]', rec1.carreras.list) }}
+            </td>
+            <td>
+                {{ element.input_select_turno('turno_id[]', rec1.turnos.list) }}
+            </td>
+            <td>
+                {{ element.input_select_anio_carrera('anio_carrera[]') }}
+            </td>
+            <td>
+                <div class="input-field">
+                    <input name="varones_rurales[]" id="varones_rurales" type="number" class="validate" value=0 required>
+                    <label>R</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input name="varones_urbanos[]" id="varones_urbanos" type="number" class="validate" value=0 required>
+                    <label>U</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input id="MF-V" disabled type="number" value=0>
+                    <label>MF-V</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input id="NVR" type="number" name="nvr[]" class="validate" value=0>
+                    <label>NVR</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input id="per_rep-v" disabled type="number" class="validate" value=0>
+                    <label>% Rep-V</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input name="mujeres_rurales[]" id="mujeres_rurales" type="number" class="validate" value=0 required>
+                    <label>R</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input name="mujeres_urbanos[]" id="mujeres_urbanos" type="number" class="validate" value=0 required>
+                    <label>U</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input id="MF-M" disabled type="number" value=0>
+                    <label>MF-M</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input id="NMR" type="number" name="mmr[]" class="validate" value=0>
+                    <label>NMR</label>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <input id="per_rep-m" disabled type="number" value=0>
+                    <label>% Rep-M</label>
+                </div>
+            </td>
+            <td>
+                <a class="tr_clone_add btn-floating teal">
+                    <i class="material-icons btn-add white-text">add</i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

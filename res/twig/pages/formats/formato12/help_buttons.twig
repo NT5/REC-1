@@ -1,0 +1,31 @@
+{% macro btn_autofill() %}
+    <div style="position: relative; height: 70px;">
+        <div class="fixed-action-btn horizontal" style="z-index: 1; position: absolute; display: inline-block; right: 0;">
+            <a class="btn-floating btn-large teal waves-effect waves-circle waves-light tooltipped" data-position="top" data-tooltip="Rellenar">
+                <i class="large material-icons">all_out</i>
+            </a>
+            <ul>
+                <li>
+                    <a class="btn-autofill autofill-clear btn-floating deep-purple lighten-3 tooltipped pulse" data-position="bottom" data-tooltip="Limpiar">
+                        <i class="material-icons">clear_all</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-autofill autofill-carreras btn-floating blue lighten-3 tooltipped" data-position="bottom" data-tooltip="Añadir carreras">
+                        <i class="material-icons">directions_run</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-autofill autofill-turnos btn-floating deep-purple accent-1 tooltipped" data-position="bottom" data-tooltip="Añadir Turnos">
+                        <i class="material-icons">donut_small</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-autofill autofill-anio_carrera btn-floating orange lighten-1 tooltipped" data-position="bottom" data-tooltip="Añadir Años">
+                        <i class="material-icons">timelapse</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
