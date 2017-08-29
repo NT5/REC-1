@@ -7,15 +7,22 @@ namespace REC1\Formats\Formatos12;
  */
 class Format12DataSet extends \REC1\Formats\FormatComponents {
 
+    /**
+     * 
+     * @param \REC1\Formats\FormatComponents $FormatComponents
+     */
     public function __construct(\REC1\Formats\FormatComponents $FormatComponents = NULL) {
-
         if (!$FormatComponents) {
             $FormatComponents = new \REC1\Formats\FormatComponents();
         }
-
-        parent::__construct($FormatComponents, $FormatComponents->getUsersClass(), $FormatComponents->getCarreras(), $FormatComponents->getPeds(), $FormatComponents->getTurnos(), $FormatComponents->getRecord_Id(), $FormatComponents->getFormato_Id(), $FormatComponents->getAnio_carrera(), $FormatComponents->getCarrera_Id(), $FormatComponents->getTurno_Id(), $FormatComponents->getVarones_MF_V(), $FormatComponents->getVarones_NVR(), $FormatComponents->getVarones_Urbano(), $FormatComponents->getVarones_Rural(), $FormatComponents->getMujeres_MF_M(), $FormatComponents->getMujeres_NMR(), $FormatComponents->getMujeres_Urbano(), $FormatComponents->getMujeres_Rural());
+        parent::__construct($this, $FormatComponents->getUsersClass(), $FormatComponents->getCarrerasClass(), $FormatComponents->getPedsClass(), $FormatComponents->getTurnosClass());
     }
 
+    /**
+     * 
+     * @param int $id
+     * @return \REC1\Formats\Formatos12\Formato12Data
+     */
     public function getRecord($id) {
         $db = $this->getDatabase();
 
@@ -24,20 +31,18 @@ class Format12DataSet extends \REC1\Formats\FormatComponents {
         $Carrera_Id = NULL;
         $Turno_Id = NULL;
         $Anio_Carrera = NULL;
-        $Varones_Urbano = NULL;
-        $Varones_Rural = NULL;
-        $Mujeres_Urbano = NULL;
-        $Mujeres_Rural = NULL;
-        $Varones_MF_V = NULL;
-        $Varones_NVR = NULL;
-        $Mujeres_MF_M = NULL;
-        $Mujeres_NMR = NULL;
+        $Matricula_Varones_Rurales = NULL;
+        $Matricula_Varones_Urbanos = NULL;
+        $Numero_Varones_Reprobados = NULL;
+        $Matricula_Mujeres_Rurales = NULL;
+        $Matricula_Mujeres_Urbanos = NULL;
+        $Numero_Mujeres_Reprobados = NULL;
 
-        $stmt = $db->prepare("SELECT Record_Id, Formato_Id, Carrera_Id, Turno_Id, Anio_Carrera, Varones_Urbano, Varones_Rural, Mujeres_Urbano, Mujeres_Rural, Varones_MF_V, Varones_NVR, Mujeres_MF_M, Mujeres_NMR, FROM Formato_12_Data WHERE Record_Id = ?");
+        $stmt = $db->prepare("SELECT Record_Id, Formato_Id, Carrera_Id, Turno_Id, Anio_Carrera, Matricula_Varones_Rurales, Matricula_Varones_Urbanos, Numero_Varones_Reprobados, Matricula_Mujeres_Rurales, Matricula_Mujeres_Urbanos, Numero_Mujeres_Reprobados FROM Formato_12_Data WHERE Record_Id = ?");
 
         $stmt->bind_param('i', $id);
         $stmt->execute();
-        $stmt->bind_result($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Varones_Urbano, $Varones_Rural, $Mujeres_Urbano, $Mujeres_Rural, $Varones_MF_V, $Varones_NVR, $Mujeres_MF_M, $Mujeres_NMR);
+        $stmt->bind_result($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Matricula_Varones_Rurales, $Matricula_Varones_Urbanos, $Numero_Varones_Reprobados, $Matricula_Mujeres_Rurales, $Matricula_Mujeres_Urbanos, $Numero_Mujeres_Reprobados);
         $stmt->store_result();
         $stmt->fetch();
         $stmt->free_result();
@@ -49,16 +54,14 @@ class Format12DataSet extends \REC1\Formats\FormatComponents {
                 $Carrera_Id !== NULL &&
                 $Turno_Id !== NULL &&
                 $Anio_Carrera !== NULL &&
-                $Varones_Urbano !== NULL &&
-                $Varones_Rural !== NULL &&
-                $Mujeres_Urbano !== NULL &&
-                $Mujeres_Rural !== NULL &&
-                $Varones_MF_V !== NULL &&
-                $Varones_NVR !== NULL &&
-                $Mujeres_MF_M !== NULL &&
-                $Mujeres_NMR !== NULL
+                $Matricula_Varones_Rurales !== NULL &&
+                $Matricula_Varones_Urbanos !== NULL &&
+                $Numero_Varones_Reprobados !== NULL &&
+                $Matricula_Mujeres_Rurales !== NULL &&
+                $Matricula_Mujeres_Urbanos !== NULL &&
+                $Numero_Mujeres_Reprobados !== NULL
         ) {
-            return new \REC1\Formats\Formatos12\Formato12Data($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Varones_Urbano, $Varones_Rural, $Mujeres_Urbano, $Mujeres_Rural, $Varones_MF_V, $Varones_NVR, $Mujeres_MF_M, $Mujeres_NMR);
+            return new \REC1\Formats\Formatos12\Formato12Data($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Matricula_Varones_Rurales, $Matricula_Varones_Urbanos, $Numero_Varones_Reprobados, $Matricula_Mujeres_Rurales, $Matricula_Mujeres_Urbanos, $Numero_Mujeres_Reprobados);
         }
     }
 
@@ -92,14 +95,23 @@ class Format12DataSet extends \REC1\Formats\FormatComponents {
 
     /**
      * 
-     * @param \REC1\Formats\Formatos7\Formato7Data $data
+     * @param int $Formato_Id
+     * @param int $Carrera_Id
+     * @param int $Turno_Id
+     * @param int $Anio_Carrera
+     * @param int $Matricula_Varones_Rurales
+     * @param int $Matricula_Varones_Urbanos
+     * @param int $Numero_Varones_Reprobados
+     * @param int $Matricula_Mujeres_Rurales
+     * @param int $Matricula_Mujeres_Urbanos
+     * @param int $Numero_Mujeres_Reprobados
      */
-    public function insertRecord(\REC1\Formats\Formatos12\Formato12Data $data) {
+    public function insertRecord($Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Matricula_Varones_Rurales, $Matricula_Varones_Urbanos, $Numero_Varones_Reprobados, $Matricula_Mujeres_Rurales, $Matricula_Mujeres_Urbanos, $Numero_Mujeres_Reprobados) {
         $db = $this->getDatabase();
 
-        $stmt = $db->prepare("INSERT INTO Formato_12_Data (Formato_Id, Carrera_Id, Turno_Id, Anio_Carrera, Varones_Urbano, Varones_Rural, Mujeres_Urbano, Mujeres_Rural, Varones_MF_V, Varones_NVR, Mujeres_MF_M, Mujeres_NMR) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO Formato_12_Data (Formato_Id, Carrera_Id, Turno_Id, Anio_Carrera, Matricula_Varones_Rurales, Matricula_Varones_Urbanos, Numero_Varones_Reprobados, Matricula_Mujeres_Rurales, Matricula_Mujeres_Urbanos, Numero_Mujeres_Reprobados) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param('iiiiiiiiiiii', $data->getFormato_Id(), $data->getCarrera_Id(), $data->getTurno_Id(), $data->getAnio_Carrera(), $data->getVarones_Urbano(), $data->getVarones_Rural(), $data->getMujeres_Urbano(), $data->getMujeres_Rural(), $data->getVarones_MF_V(), $data->getVarones_NVR(), $data->getMujeres_MF_M(), $data->getMujeres_NMR());
+        $stmt->bind_param('iiiiiiiiii', $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Matricula_Varones_Rurales, $Matricula_Varones_Urbanos, $Numero_Varones_Reprobados, $Matricula_Mujeres_Rurales, $Matricula_Mujeres_Urbanos, $Numero_Mujeres_Reprobados);
         $stmt->execute();
         $stmt->close();
     }

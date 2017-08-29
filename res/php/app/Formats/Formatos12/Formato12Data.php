@@ -23,12 +23,6 @@ class Formato12Data {
      *
      * @var int 
      */
-    private $Anio_Carrera;
-
-    /**
-     *
-     * @var int 
-     */
     private $Carrera_Id;
 
     /**
@@ -41,49 +35,71 @@ class Formato12Data {
      *
      * @var int 
      */
-    private $Varones_MF_V;
+    private $Anio_Carrera;
+
+    /**
+     *
+     * @var int 
+     */
+    private $Matricula_Varones_Rurales;
 
     /**
      *
      * @var int
      */
-    private $Varones_NVR;
+    private $Matricula_Varones_Urbanos;
 
     /**
      * 
      * @return int
      */
-    private $Varones_Urbano;
+    private $Numero_Varones_Reprobados;
 
     /**
      *
      * @var int
      */
-    private $Varones_Rural;
+    private $Matricula_Mujeres_Rurales;
 
     /**
      *
      * @var int
      */
-    private $Mujeres_MF_M;
+    private $Matricula_Mujeres_Urbanos;
 
     /**
      *
      * @var int
      */
-    private $Mujeres_NMR;
+    private $Numero_Mujeres_Reprobados;
 
     /**
-     *
-     * @var int
+     * 
+     * @param int $Record_Id
+     * @param int $Formato_Id
+     * @param int $Carrera_Id
+     * @param int $Turno_Id
+     * @param int $Anio_Carrera
+     * @param int $Matricula_Varones_Rurales
+     * @param int $Matricula_Varones_Urbanos
+     * @param int $Numero_Varones_Reprobados
+     * @param int $Matricula_Mujeres_Rurales
+     * @param int $Matricula_Mujeres_Urbanos
+     * @param int $Numero_Mujeres_Reprobados
      */
-    private $Mujeres_Urbano;
-
-    /**
-     *
-     * @var int
-     */
-    private $Mujeres_Rural;
+    public function __construct($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Matricula_Varones_Rurales, $Matricula_Varones_Urbanos, $Numero_Varones_Reprobados, $Matricula_Mujeres_Rurales, $Matricula_Mujeres_Urbanos, $Numero_Mujeres_Reprobados) {
+        $this->Record_Id = $Record_Id;
+        $this->Formato_Id = $Formato_Id;
+        $this->Carrera_Id = $Carrera_Id;
+        $this->Turno_Id = $Turno_Id;
+        $this->Anio_Carrera = $Anio_Carrera;
+        $this->Matricula_Varones_Rurales = $Matricula_Varones_Rurales;
+        $this->Matricula_Varones_Urbanos = $Matricula_Varones_Urbanos;
+        $this->Numero_Varones_Reprobados = $Numero_Varones_Reprobados;
+        $this->Matricula_Mujeres_Rurales = $Matricula_Mujeres_Rurales;
+        $this->Matricula_Mujeres_Urbanos = $Matricula_Mujeres_Urbanos;
+        $this->Numero_Mujeres_Reprobados = $Numero_Mujeres_Reprobados;
+    }
 
     /**
      * 
@@ -99,14 +115,6 @@ class Formato12Data {
      */
     public function getFormatoId() {
         return $this->Formato_Id;
-    }
-
-    /**
-     * 
-     * @return int
-     */
-    public function getAnioCarrera() {
-        return $this->Anio_Carrera;
     }
 
     /**
@@ -129,80 +137,56 @@ class Formato12Data {
      * 
      * @return int
      */
-    public function getVaroneMfV() {
-        return $this->Varones_MF_V;
+    public function getAnioCarrera() {
+        return $this->Anio_Carrera;
     }
 
     /**
      * 
      * @return int
      */
-    public function getVaroneNvr() {
-        return $this->Varones_NVR;
+    public function getMatricula_Varones_Rurales() {
+        return $this->Matricula_Varones_Rurales;
     }
 
     /**
      * 
      * @return int
      */
-    public function getVaronesUrbano() {
-        return $this->Varones_Urbano;
+    public function getMatricula_Varones_Urbanos() {
+        return $this->Matricula_Varones_Urbanos;
     }
 
     /**
      * 
      * @return int
      */
-    public function getVaronesRural() {
-        return $this->Varones_Rural;
+    public function getNumero_Varones_Reprobados() {
+        return $this->Numero_Varones_Reprobados;
     }
 
     /**
      * 
      * @return int
      */
-    public function getMujeresMFM() {
-        return $this->Mujeres_MF_M;
+    public function getMatricula_Mujeres_Rurales() {
+        return $this->Matricula_Mujeres_Rurales;
     }
 
     /**
      * 
      * @return int
      */
-    public function getMujeresNMR() {
-        return $this->Mujeres_NMR;
+    public function getMatricula_Mujeres_Urbanos() {
+        return $this->Matricula_Mujeres_Urbanos;
     }
 
     /**
      * 
      * @return int
      */
-    public function getMujeresUrbano() {
-        return $this->Mujeres_Urbano;
-    }
-
-    /**
-     * 
-     * @return int
-     */
-    public function getMujeresRural() {
-        return $this->Mujeres_Rural;
-    }
-
-    public function __construct($Record_Id, $Formato_Id, $Carrera_Id, $Turno_Id, $Anio_Carrera, $Varones_Urbano, $Varones_Rural, $Varones_MF_V, $Varones_NVR, $Mujeres_Urbano, $Mujeres_Rural, $Mujeres_MF_M, $Mujeres_NMR) {
-        $this->Record_Id = $Record_Id;
-        $this->Formato_Id = $Formato_Id;
-        $this->Carrera_Id = $Carrera_Id;
-        $this->Turno_Id = $Turno_Id;
-        $this->Anio_Carrera = $Anio_Carrera;
-        $this->Varones_Urbano = $Varones_Urbano;
-        $this->Varones_Rural = $Varones_Rural;
-        $this->Mujeres_Urbano = $Mujeres_Urbano;
-        $this->Mujeres_Rural = $Mujeres_Rural;
-        $this->Mujeres_MF_M = $Mujeres_MF_M;
-        $this->Mujeres_NMR = $Mujeres_NMR;
-        $this->Varones_MF_V = $Varones_MF_V;
-        $this->Varones_NVR = $Varones_NVR;
+    public function getNumero_Mujeres_Reprobados() {
+        return $this->Numero_Mujeres_Reprobados;
     }
 
 }

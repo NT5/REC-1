@@ -63,7 +63,7 @@ class FormatComponents extends \REC1\Components\ExtendedComponents {
      * 
      * @return \REC1\Formats\Carreras
      */
-    public function getCarreras() {
+    public function getCarrerasClass() {
         return $this->Carreras;
     }
 
@@ -71,7 +71,7 @@ class FormatComponents extends \REC1\Components\ExtendedComponents {
      * 
      * @return \REC1\Formats\Peds
      */
-    public function getPeds() {
+    public function getPedsClass() {
         return $this->Peds;
     }
 
@@ -79,7 +79,7 @@ class FormatComponents extends \REC1\Components\ExtendedComponents {
      * 
      * @return \REC1\Formats\Turnos
      */
-    public function getTurnos() {
+    public function getTurnosClass() {
         return $this->Turnos;
     }
 

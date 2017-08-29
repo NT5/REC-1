@@ -50,7 +50,7 @@ class Formats extends \REC1\Components\Page {
             case "add":
                 switch ($area) {
                     case "carreras":
-                        $CarrerasCompo = $this->getFormatComponents()->getCarreras();
+                        $CarrerasCompo = $this->getFormatComponents()->getCarrerasClass();
                         $carrera_name = filter_input(INPUT_POST, 'new_carrera_name');
                         if ($carrera_name) {
                             $CarrerasCompo->insertCarrera($carrera_name, $this->Me);
@@ -65,7 +65,7 @@ class Formats extends \REC1\Components\Page {
             case "del":
                 switch ($area) {
                     case "carreras":
-                        $CarrerasCompo = $this->getFormatComponents()->getCarreras();
+                        $CarrerasCompo = $this->getFormatComponents()->getCarrerasClass();
                         $carrera_id = filter_input(INPUT_GET, 'id');
 
                         if ($carrera_id) {
@@ -94,25 +94,25 @@ class Formats extends \REC1\Components\Page {
             case "carreras":
                 $template = "pages/formats/carreras.twig";
                 $vars["rec1.page.title"] = "Formatos | Carreras";
-                $vars["rec1.carreras.list"] = $FormatComponets->getCarreras()->getCarreras();
+                $vars["rec1.carreras.list"] = $FormatComponets->getCarrerasClass()->getCarreras();
                 break;
             case "peds":
                 $template = "pages/formats/peds.twig";
                 $vars["rec1.page.title"] = "Formatos | Peds";
-                $vars["rec1.peds.list"] = $FormatComponets->getPeds()->getPeds();
+                $vars["rec1.peds.list"] = $FormatComponets->getPedsClass()->getPeds();
                 break;
             case "turnos":
                 $template = "pages/formats/turnos.twig";
                 $vars["rec1.page.title"] = "Formatos | Turnos";
-                $vars["rec1.turnos.list"] = $FormatComponets->getTurnos()->getTurnos();
+                $vars["rec1.turnos.list"] = $FormatComponets->getTurnosClass()->getTurnos();
                 break;
             case "12":
                 $template = "pages/formats/formato12.twig";
                 $vars["rec1.page.title"] = "Formatos | Formato 12";
 
-                $vars["rec1.peds.list"] = $FormatComponets->getPeds()->getPeds();
-                $vars["rec1.carreras.list"] = $FormatComponets->getCarreras()->getCarreras();
-                $vars["rec1.turnos.list"] = $FormatComponets->getTurnos()->getTurnos();
+                $vars["rec1.peds.list"] = $FormatComponets->getPedsClass()->getPeds();
+                $vars["rec1.carreras.list"] = $FormatComponets->getCarrerasClass()->getCarreras();
+                $vars["rec1.turnos.list"] = $FormatComponets->getTurnosClass()->getTurnos();
                 break;
             default:
                 $template = "pages/formats.twig";
