@@ -15,7 +15,7 @@
     </ul>
     <nav class="teal lighten-2" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="home" class="brand-logo center">
+            <a id="logo-container" href="inicio" class="brand-logo center">
                 <i class="material-icons">album</i>
                 REC-1
             </a>
@@ -27,13 +27,6 @@
                 </li>
             </ul>
             <ul class="right hide-on-med-and-down">
-                {% for link, item in rec1.page.navbar %}
-                    <li>
-                        <a href="{{ link }}" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ item.name }}">
-                            <i class="material-icons">{{ item.icon }}</i>
-                        </a>
-                    </li>
-                {% endfor %}
                 <li>
                     <a class="dropdown-button" href="#!" data-activates="navbar_user_dropdown">
                         <i class="material-icons left">account_circle</i>
