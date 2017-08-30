@@ -42,7 +42,6 @@ class Formats extends \REC1\Components\Page {
         $action = filter_input(INPUT_GET, 'action');
         $id = filter_input(INPUT_GET, 'id');
 
-        $template = "base.twig";
         $vars = [];
         $FormatComponets = $this->getFormatComponents();
 
@@ -90,41 +89,14 @@ class Formats extends \REC1\Components\Page {
                 break;
         }
 
-        switch ($area) {
-            case "carreras":
-                $template = "pages/formats/carreras.twig";
-                $vars["rec1.page.title"] = "Formatos | Carreras";
-                $vars["rec1.carreras.list"] = $FormatComponets->getCarrerasClass()->getCarreras();
-                break;
-            case "peds":
-                $template = "pages/formats/peds.twig";
-                $vars["rec1.page.title"] = "Formatos | Peds";
-                $vars["rec1.peds.list"] = $FormatComponets->getPedsClass()->getPeds();
-                break;
-            case "turnos":
-                $template = "pages/formats/turnos.twig";
-                $vars["rec1.page.title"] = "Formatos | Turnos";
-                $vars["rec1.turnos.list"] = $FormatComponets->getTurnosClass()->getTurnos();
-                break;
-            case "12":
-                $template = "pages/formats/formato12.twig";
-                $vars["rec1.page.title"] = "Formatos | Formato 12";
-
-                $vars["rec1.peds.list"] = $FormatComponets->getPedsClass()->getPeds();
-                $vars["rec1.carreras.list"] = $FormatComponets->getCarrerasClass()->getCarreras();
-                $vars["rec1.turnos.list"] = $FormatComponets->getTurnosClass()->getTurnos();
-                break;
-            default:
-                $template = "pages/formats.twig";
-                $vars["rec1.page.title"] = "Formatos";
-                break;
-        }
+        $AreaManager = \REC1\Pages\Formats\Areas\AreaManager::getInstance($FormatComponets);
+        $_area = $AreaManager->getArea($area);
 
         $vars["rec1.page.get_active_action"] = $action;
         $vars["rec1.page.get_active_id"] = $id;
 
-        $this->setTemplate($template);
-        $this->Twig_Vars = $vars;
+        $this->setTemplate($_area->getTemplate());
+        $this->Twig_Vars = $_area->getVars();
     }
 
     public function initVars() {

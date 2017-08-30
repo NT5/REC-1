@@ -8,7 +8,7 @@
         $('ul.tabs').tabs({
             'swipeable': false,
             'onShow': function (tab) {
-                Materialize.fadeInImage(tab);
+                // Materialize.fadeInImage(tab);
             }
         });
         $('.parallax').parallax();
