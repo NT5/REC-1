@@ -93,13 +93,61 @@
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
             <li>
-                <a class="collapsible-header">Lista de Formatos<i class="material-icons">arrow_drop_down</i></a>
+                <a class="collapsible-header" onclick="Materialize.showStaggeredList(
+                                $(this).parent('li')
+                                .children('div.collapsible-body')
+                                .children('ul'));
+                   ">
+                    Lista de Formatos<i class="material-icons">arrow_drop_down</i>
+                </a>
                 <div class="collapsible-body">
                     <ul>
                         <li>
-                            <a href="formato/12/">
-                                <i class="material-icons left">flare</i>
+                            <a href="formato/7/" class="purple-text bold">
+                                <i class="material-icons left purple-text">gradient</i>
+                                Formato 7
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formato/8/" class="blue-text bold">
+                                <i class="material-icons left blue-text">group</i>
+                                Formato 8
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formato/9/" class="teal-text bold">
+                                <i class="material-icons left teal-text">import_contacts</i>
+                                Formato 9
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formato/10/" class="lime-text bold">
+                                <i class="material-icons left lime-text">insert_chart</i>
+                                Formato 10
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formato/11/" class="deep-orange-text bold">
+                                <i class="material-icons left deep-orange-text">school</i>
+                                Formato 11
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formato/12/" class="yellow-text bold">
+                                <i class="material-icons left yellow-text">flare</i>
                                 Formato 12
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formato/13/" class="red-text bold">
+                                <i class="material-icons left red-text">add_to_photos</i>
+                                Formato 13
+                            </a>
+                        </li>
+                        <li>
+                            <a href="formato/14/" class="indigo-text bold">
+                                <i class="material-icons left indigo-text">equalizer</i>
+                                Formato 14
                             </a>
                         </li>
                     </ul>

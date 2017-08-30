@@ -1,0 +1,18 @@
+{% macro title(text, icon, height = '250') %}
+    <div class="parallax-container" style="height: {{ height }}px;">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <blockquote>
+                    <h1 class="header white-text text-lighten-2">
+                        <i class="material-icons left medium">{{ icon }}</i>
+                        {{ text }}
+                    </h1>
+                </blockquote>
+            </div>
+        </div>
+        <div class="parallax">
+            <img src="gfx/img/home_header_img.jpg">
+        </div>
+    </div>
+{% endmacro %}

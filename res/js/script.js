@@ -11,6 +11,8 @@
                 Materialize.fadeInImage(tab);
             }
         });
+        $('.parallax').parallax();
+        $('.scrollspy').scrollSpy();
         Materialize.showStaggeredList('.tabs');
         $(".dropdown-button").dropdown();
         $('.tooltipped').tooltip({

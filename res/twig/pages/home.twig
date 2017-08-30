@@ -1,61 +1,89 @@
 {% import "pages/home/cards.twig" as cards %}
+{% import 'pages/home/paralax.twig' as paralax %}
+
 {% extends "base.twig" %}
 {% block content %}
-    <blockquote>
-        <h1><i class="medium material-icons">apps</i>Tabla de contenidos</h1>
-    </blockquote>
-    <div class="divider"></div>
     <div class="row">
-        <div class="col s6">
-            {{ cards.titled(rec1.page.cards.user) }}
+        <div class="col s12 m9 l10">
+            <div id="contenidos-admin" class="section scrollspy">
+                {{ paralax.title('Tabla de contenidos', 'apps') }}
+                <div class="divider"></div>
+                <div class="row">
+                    <div class="col s6">
+                        {{ cards.titled(rec1.page.cards.user) }}
+                    </div>
+                    <div class="col s6">
+                        {{ cards.titled(rec1.page.cards.admin) }}
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div id="contenidos-complementos" class="section scrollspy">
+                <div class="row">
+                    <div class="col s4">
+                        {{ cards.horizontal(rec1.page.cards.carreras) }}
+                    </div>
+                    <div class="col s4">
+                        {{ cards.horizontal(rec1.page.cards.peds) }}
+                    </div>
+                    <div class="col s4">
+                        {{ cards.horizontal(rec1.page.cards.turnos) }}
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div id="contenidos-formatos" class="section scrollspy">
+                {{ paralax.title('Lista de Formatos', 'view_list') }}
+                <div class="row">
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato7) }}
+                    </div>
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato8) }}
+                    </div>
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato9) }}
+                    </div>
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato10) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato11) }}
+                    </div>
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato12) }}
+                    </div>
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato13) }}
+                    </div>
+                    <div class="col s3">
+                        {{ cards.format(rec1.page.cards.formato14) }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col s6">
-            {{ cards.titled(rec1.page.cards.admin) }}
-        </div>
-    </div>
-    <div class="divider"></div>
-    <div class="row">
-        <div class="col s4">
-            {{ cards.horizontal(rec1.page.cards.carreras) }}
-        </div>
-        <div class="col s4">
-            {{ cards.horizontal(rec1.page.cards.peds) }}
-        </div>
-        <div class="col s4">
-            {{ cards.horizontal(rec1.page.cards.turnos) }}
-        </div>
-    </div>
-    <div class="divider"></div>
-    <h1 class="header">
-        <i class="material-icons left medium">view_list</i>
-        Lista de Formatos
-    </h1>
-    <div class="row">
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato7) }}
-        </div>
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato8) }}
-        </div>
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato9) }}
-        </div>
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato10) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato11) }}
-        </div>
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato12) }}
-        </div>
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato13) }}
-        </div>
-        <div class="col s3">
-            {{ cards.format(rec1.page.cards.formato14) }}
+        <div class="col hide-on-small-only m3 l2">
+            <div class="pinned toc-wrapper">
+                <div class="row">
+                    <div class="s5">
+                        <div class="card-panel teal">
+                            <span class="white-text">
+                                <i class="material-icons">info_outline</i>
+                                Version de desarrollo
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <ul class="section table-of-contents">
+                            <li><a href="#contenidos-admin">Administracion</a></li>
+                            <li><a href="#contenidos-complementos">Complementos</a></li>
+                            <li><a href="#contenidos-formatos">Formatos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

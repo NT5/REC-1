@@ -49,11 +49,13 @@
     </div>
 {% endmacro %}
 {% macro format(card) %}
-    <div class="card hoverable">
+    <div class="card hoverable large">
         <blockquote>
             <h4>
-                <i class="material-icons left small">{{ card.icon }}</i>
-                {{ card.title }}
+                <a href="{{ card.url }}" class="black-text bold">
+                    <i class="material-icons left small">{{ card.icon }}</i>
+                    {{ card.title }}
+                </a>
             </h4>
         </blockquote>
         <div class="container z-depth-2 {{ card.color }}">
