@@ -1,11 +1,16 @@
 <?php
 
-namespace REC1\Pages\Formats\Areas;
+namespace REC1\Pages\Formats;
 
 /**
  * 
  */
 interface AreaInterface {
+
+    /**
+     * 
+     */
+    public function initArea();
 
     /**
      * 

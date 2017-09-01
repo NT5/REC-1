@@ -1,11 +1,11 @@
 <?php
 
-namespace REC1\Pages\Formats\Areas;
+namespace REC1\Pages\Formats;
 
 /**
  * 
  */
-abstract class AreaAbstract {
+abstract class AreaAbstract extends \REC1\Pages\Formats\ActionAbstract implements \REC1\Pages\Formats\AreaInterface {
 
     /**
      *
@@ -21,15 +21,19 @@ abstract class AreaAbstract {
 
     /**
      * 
+     * @param \REC1\Formats\FormatComponents $FormatComponets
+     * @param string $Action
      */
-    abstract public static function getInstance(\REC1\Formats\FormatComponents $FormatComponets);
+    abstract public static function getInstance(\REC1\Formats\FormatComponents $FormatComponets, $Action);
 
     /**
      * 
      * @param \REC1\Formats\FormatComponents $FormatComponets
+     * @param string $Action
      */
-    public function __construct(\REC1\Formats\FormatComponents $FormatComponets) {
+    public function __construct(\REC1\Formats\FormatComponents $FormatComponets, $Action) {
         $this->FormatComponets = $FormatComponets;
+        parent::__construct($this, $Action);
     }
 
     /**

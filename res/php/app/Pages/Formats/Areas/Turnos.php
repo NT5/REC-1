@@ -5,7 +5,7 @@ namespace REC1\Pages\Formats\Areas;
 /**
  * 
  */
-class Turnos extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC1\Pages\Formats\Areas\AreaInterface {
+class Turnos extends \REC1\Pages\Formats\AreaAbstract {
 
     /**
      *
@@ -15,12 +15,14 @@ class Turnos extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC1\Pag
 
     /**
      * 
+     * @param \REC1\Formats\FormatComponents $FormatComponets
+     * @param string $Action
      * @return self
      */
-    public static function getInstance(\REC1\Formats\FormatComponents $FormatComponets) {
+    public static function getInstance(\REC1\Formats\FormatComponents $FormatComponets, $Action) {
         if (!isset(self::$Instance)) {
             $c = __CLASS__;
-            self::$Instance = new $c($FormatComponets);
+            self::$Instance = new $c($FormatComponets, $Action);
         }
         return self::$Instance;
     }
@@ -28,13 +30,10 @@ class Turnos extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC1\Pag
     /**
      * 
      * @param \REC1\Formats\FormatComponents $FormatComponets
+     * @param string $Action
      */
-    public function __construct(\REC1\Formats\FormatComponents $FormatComponets) {
-        parent::__construct($FormatComponets);
-        $TurnosClass = $this->getFormatComponents()->getTurnosClass();
-
-        $this->addVar("rec1.page.title", "Formatos | Turnos");
-        $this->addVar("rec1.turnos.list", $TurnosClass->getTurnos());
+    public function __construct(\REC1\Formats\FormatComponents $FormatComponets, $Action) {
+        parent::__construct($FormatComponets, $Action);
     }
 
     /**
@@ -51,6 +50,33 @@ class Turnos extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC1\Pag
      */
     public function getAreaURL() {
         return "turnos";
+    }
+
+    /**
+     * 
+     */
+    public function initArea() {
+        $TurnosClass = $this->getFormatComponents()->getTurnosClass();
+        $this->initActions();
+
+        $this->addVar("rec1.page.title", "Formatos | Turnos");
+        $this->addVar("rec1.turnos.list", $TurnosClass->getTurnos());
+    }
+
+    public function getAdd() {
+        
+    }
+
+    public function getDel() {
+        
+    }
+
+    public function getEdit() {
+        
+    }
+
+    public function getList() {
+        
     }
 
 }

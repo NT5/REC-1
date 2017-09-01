@@ -10,7 +10,7 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 
 RewriteRule ^(\w+)*$ ./index.php?p=$1
 RewriteRule ^user\/(\d+)*$ ./index.php?p=user&id=$1
-RewriteRule ^formato\/(\w+)\/(?>(?>\d+)|(list|add|edit|new|del)\/(\w+)?)*$ ./index.php?p=formato&area_formato=$1&action=$2&id=$3
+RewriteRule ^formato\/(\w+)\/(?>(?>\d+)|(list|add|edit|new|del)\/(\w+)?)*$ ./index.php?p=formato&area=$1&action=$2&id=$3
 
 <Files config.ini>
     order allow,deny

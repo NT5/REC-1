@@ -5,7 +5,7 @@ namespace REC1\Pages\Formats\Areas;
 /**
  * 
  */
-class DefaultArea extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC1\Pages\Formats\Areas\AreaInterface {
+class DefaultArea extends \REC1\Pages\Formats\AreaAbstract {
 
     /**
      *
@@ -15,12 +15,14 @@ class DefaultArea extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC
 
     /**
      * 
+     * @param \REC1\Formats\FormatComponents $FormatComponets
+     * @param string $Action
      * @return self
      */
-    public static function getInstance(\REC1\Formats\FormatComponents $FormatComponets) {
+    public static function getInstance(\REC1\Formats\FormatComponents $FormatComponets, $Action) {
         if (!isset(self::$Instance)) {
             $c = __CLASS__;
-            self::$Instance = new $c($FormatComponets);
+            self::$Instance = new $c($FormatComponets, $Action);
         }
         return self::$Instance;
     }
@@ -28,11 +30,10 @@ class DefaultArea extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC
     /**
      * 
      * @param \REC1\Formats\FormatComponents $FormatComponets
+     * @param string $Action
      */
-    public function __construct(\REC1\Formats\FormatComponents $FormatComponets) {
-        parent::__construct($FormatComponets);
-
-        $this->addVar("rec1.page.title", "Formatos");
+    public function __construct(\REC1\Formats\FormatComponents $FormatComponets, $Action) {
+        parent::__construct($FormatComponets, $Action);
     }
 
     /**
@@ -49,6 +50,31 @@ class DefaultArea extends \REC1\Pages\Formats\Areas\AreaAbstract implements \REC
      */
     public function getAreaURL() {
         return "default";
+    }
+
+    /**
+     * 
+     */
+    public function initArea() {
+        $this->addVar("rec1.page.title", "Formatos");
+
+        $this->initActions();
+    }
+
+    public function getAdd() {
+        
+    }
+
+    public function getDel() {
+        
+    }
+
+    public function getEdit() {
+        
+    }
+
+    public function getList() {
+        
     }
 
 }
