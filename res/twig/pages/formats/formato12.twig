@@ -1,0 +1,29 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <blockquote>
+        <h1>
+            <i class="material-icons left medium">add_box</i>
+            Por favor proporciona la información que se te solicita
+        </h1>
+    </blockquote>
+    <form role="form" action="formato/12/add/" method="POST">
+        {% include 'pages/formats/formato12/tables/header_table.twig' %}
+        <br>
+        {% include 'pages/formats/formato12/tables/mid_table.twig' %}
+        <br>
+        {% include 'pages/formats/formato12/tables/data_table.twig' %}
+        <br>
+        <div class="input-field">
+            <button class="btn-large waves-effect waves-light" type="submit">
+                Aceptar
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+    <br>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="res/js/formatos/formato12.js"></script>
+{% endblock %}

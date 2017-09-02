@@ -120,19 +120,25 @@ class PageManager extends \REC1\Components\REC1Components {
                 case "test":
                     $Page = new \REC1\Pages\Test($this);
                     break;
-                case "formats":
+                case "formato":
                     $Page = new \REC1\Pages\Formats($this);
                     break;
                 case "page":
                     $Page = new \REC1\Pages\Page($this);
                     break;
-                case "home":
+                case "inicio":
                 default:
                     $Page = new \REC1\Pages\Home($this);
                     break;
             }
 
             $this->setPage($Page);
+
+            /**
+             * @todo $Me variable in pages
+             */
+            $Twig = $this->getTwig();
+            $Twig->setVar('rec1.user.logged', $this->getLoggedUser());
         }
         $this->initVars();
     }
@@ -148,18 +154,7 @@ class PageManager extends \REC1\Components\REC1Components {
             'rec1.page.title' => \REC1\Util\Functions::strFormat("%config_title | %config_var", array(
                 'config_title' => $PageConfig->getPageTitle(),
                 'config_var' => $Twig->getVar('rec1.page.title')
-            )),
-            'rec1.page.navbar' => [
-                "home" => [
-                    "icon" => "language",
-                    "name" => "Inicio"
-                ],
-                "test" => [
-                    "icon" => "track_changes",
-                    "name" => "Pagina de prueba"
-                ]
-            ],
-            'rec1.user.logged' => $this->getLoggedUser(),
+            ))
         ]);
     }
 

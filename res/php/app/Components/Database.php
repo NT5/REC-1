@@ -59,7 +59,10 @@ class Database extends \REC1\Components\BaseComponents {
      */
     public function query($sql) {
         if ($this->getConnection()) {
-            return $this->getConnection()->getMySQLi()->query($sql);
+            $mysqli = $this->getConnection()->getMySQLi();
+            if ($mysqli) {
+                return $mysqli->query($sql);
+            }
         } else {
             $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'query' sin establecer una conexión validad a la base de datos");
         }
@@ -74,7 +77,10 @@ class Database extends \REC1\Components\BaseComponents {
      */
     public function prepare($statement) {
         if ($this->getConnection()) {
-            return $this->getConnection()->getMySQLi()->prepare($statement);
+            $mysqli = $this->getConnection()->getMySQLi();
+            if ($mysqli) {
+                return $mysqli->prepare($statement);
+            }
         } else {
             $this->setLog(\REC1\Components\Logger\Areas::DATABASE_METHODS_ERROR, "Llamada del método 'prepare' sin establecer una conexión validad a la base de datos");
         }

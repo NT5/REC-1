@@ -41,6 +41,19 @@ abstract class Page extends \REC1\Components\REC1Components implements \REC1\Com
         $this->Page_Template = ($Page_Template) ? : "base.twig";
 
         $this->Twig = new \REC1\Components\Twig();
+
+        $this->setFilters();
+    }
+
+    /**
+     * 
+     */
+    private function setFilters() {
+        $Twig = $this->getTwig();
+
+        $Twig->addFilter('integerToRoman', function ($number) {
+            return \REC1\Util\Functions::integerToRoman($number);
+        });
     }
 
     /**

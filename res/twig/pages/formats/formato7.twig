@@ -1,0 +1,67 @@
+{% extends "base.twig" %}
+{% block content %}
+    <br><br>
+    <form action="#">
+        <div class="row">
+            <div class="input-field col s4">
+                <i class="material-icons prefix">donut_large</i>
+                <select>
+                    <option value="">OCOTAL</option>
+                </select>
+                <label>SEDE</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">account_box</i>
+                <input type="number" class="validate" placeholder="Año Lectivo">
+                <label for="">AÑO LECTIVO</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">reorder</i>
+                <select>
+                    <option value=""></option>
+                </select>
+                <label>TRIMESTRE</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">school</i>
+                <select>
+                    <option value="">ing sistemas</option>
+                </select>
+                <label>CARRERA</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">swap_horiz</i>
+                <select>
+                    <option value="">Sabatino</option>
+                </select>
+                <label>TURNO</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">import_export</i>
+                <input type="number" placeholder="TODO" class="validate">
+                <label>AÑO CARRERA</label>
+            </div>
+
+            <div class="input-field col s4">
+                <i class="material-icons prefix">donut_large</i>
+                <select>
+                    <option value="">MASCULINO</option>
+                    <option value="">Femenino</option>
+                </select>
+                <label>SEXO</label>
+            </div>
+
+            <div class="input-field col s4">
+                <i class="material-icons prefix">donut_large</i>
+                <select>
+                    <option value="">URBANO</option>
+                    <option value="">RURAL</option>
+                </select>
+                <label>LUGAR DONDE VIVE</label>
+            </div>
+
+
+
+        </div>
+    </form>
+{% endblock %}

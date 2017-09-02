@@ -1,0 +1,66 @@
+{% extends "base.twig" %}
+{% block content %}
+    <br><br>
+    <form action="#">
+        <div class="row">
+            <div class="input-field col s4">
+                <i class="material-icons prefix">donut_small</i>
+                <select>
+                    <option value="">OCOTAL</option>
+                </select>
+                <label>PED</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">account_circle</i>
+                <input type="number" class="validate" placeholder="Año Lectivo">
+                <label for="">AÑO LECTIVO</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">autorenew</i>
+                <select>
+                    <option value=""></option>
+                </select>
+                <label>TRIMESTRE</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">directions_run</i>
+                <select>
+                    <option value="">ing sistemas</option>
+                </select>
+                <label>CARRERA</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">fast_forward</i>
+                <select>
+                    <option value="">Sabatino</option>
+                </select>
+                <label>TURNO</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">transfer_within_a_station</i>
+                <input type="number" placeholder="TODO" class="validate">
+                <label>AÑO CARRERA</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">navigate_before</i>
+                <input type="number" placeholder="TODO" class="validate">
+                <label>MATRICULA INICIAL V</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">navigate_next</i>
+                <input type="number" placeholder="TODO" class="validate">
+                <label>MATRICULA INICIAL M</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">navigate_before</i>
+                <input type="number" placeholder="TODO" class="validate">
+                <label>MATRICULA FINAL V</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">navigate_next</i>
+                <input type="number" placeholder="TODO" class="validate">
+                <label>MATRICULA FINAL M</label>
+            </div>
+        </div>
+    </form>
+{% endblock %}

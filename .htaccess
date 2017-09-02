@@ -8,13 +8,9 @@ RewriteRule ^res/libs/materialize(/.*)?$ ./bower_components/materialize/dist/$1
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
-RewriteRule ^home*$ ./index.php?p=home
-RewriteRule ^login*$ ./index.php?p=login
-RewriteRule ^logout*$ ./index.php?p=logout
-RewriteRule ^page*$ ./index.php?p=page
+RewriteRule ^(\w+)*$ ./index.php?p=$1
 RewriteRule ^user\/(\d+)*$ ./index.php?p=user&id=$1
-RewriteRule ^formats\/(\w+)\/(?>(?>\d+)|(list|add|edit|new|del)\/(\w+)?)*$ ./index.php?p=formats&format=$1&action=$2&id=$3
-RewriteRule ^test*$ ./index.php?p=test
+RewriteRule ^formato\/(\w+)\/(?>(?>\d+)|(list|add|edit|new|del)\/(\w+)?)*$ ./index.php?p=formato&area=$1&action=$2&id=$3
 
 <Files config.ini>
     order allow,deny

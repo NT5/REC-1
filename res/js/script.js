@@ -3,13 +3,16 @@
 
         $('.button-collapse').sideNav({'edge': 'left'});
         $('.collapsible').collapsible();
+        $('textarea.character-counter').characterCounter();
         $('select').material_select();
         $('ul.tabs').tabs({
             'swipeable': false,
             'onShow': function (tab) {
-                Materialize.fadeInImage(tab);
+                // Materialize.fadeInImage(tab);
             }
         });
+        $('.parallax').parallax();
+        $('.scrollspy').scrollSpy();
         Materialize.showStaggeredList('.tabs');
         $(".dropdown-button").dropdown();
         $('.tooltipped').tooltip({

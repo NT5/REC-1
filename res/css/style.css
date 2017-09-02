@@ -16,3 +16,14 @@
 .base-container {
     min-height: 520px;
 }
+
+.container {
+    width: 88% !important;
+}
+
+/*
+table div.input-field input[type="number"] {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+*/

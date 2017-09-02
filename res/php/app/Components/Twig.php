@@ -95,6 +95,30 @@ class Twig {
     }
 
     /**
+     * 
+     * @param interface $extension
+     */
+    public function addExtension($extension) {
+        $this->Twig_Environment->addExtension($extension);
+    }
+
+    /**
+     * 
+     * @param type $lexer
+     */
+    public function setLexer($lexer) {
+        $this->Twig_Environment->setLexer($lexer);
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getEnvironment() {
+        return $this->Twig_Environment;
+    }
+
+    /**
      * Agrega variables que serán usadas posteriormente en la plantilla Twig
      * @param string $name Nombre de la variable (Pueden ser multidimensionales separadas por un punto)
      * @param string|array $value Valor de la variable puede ser un array o cualquier tipo de objeto
