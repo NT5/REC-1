@@ -1,0 +1,51 @@
+{% extends "base.twig" %}
+{% block content %}
+    <br><br>
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s2">
+                <i class="material-icons prefix">business</i>
+                <select>
+                    <option value="1">Ocotal</option>
+                </select>
+                <label>PEDS</label>
+            </div>
+            <div class="input-field col s2">
+                <i class="material-icons prefix">cached</i>
+                <input id="icon_telephone" type="text" class="validate">
+                <label for="icon_telephone">Corte Eva.</label>
+            </div>
+            <div class="input-field col s2">
+                <i class="material-icons prefix">cached</i>
+                <input id="icon_telephone" type="number" class="validate">
+                <label for="icon_telephone">Ano Lec.</label>
+            </div>
+            <div class="input-field col s2">
+                <i class="material-icons prefix">directions_run</i>
+                <select>
+                    <option value="1">Ing. en memes</option>
+                    <option value="1">Ing. en sistemas</option>
+                </select>
+                <label>Carreras</label>
+            </div>
+            <div class="input-field col s2">
+                <i class="material-icons prefix">cached</i>
+                <input id="icon_telephone" type="number" class="validate">
+                <label for="icon_telephone">MI</label>
+            </div>
+            <div class="input-field col s2">
+                <i class="material-icons prefix">cached</i>
+                <input id="icon_telephone" type="number" class="validate">
+                <label for="icon_telephone">MF</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col a6">
+                <a class="btn waves-effect waves-light">
+                    <i class="material-icons">add</i>
+                    Agregar nueva fila
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

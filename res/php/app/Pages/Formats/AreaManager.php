@@ -61,7 +61,11 @@ class AreaManager {
         $this->addArea(\REC1\Pages\Formats\Areas\Carreras::getInstance($Compo, $Action));
         $this->addArea(\REC1\Pages\Formats\Areas\Peds::getInstance($Compo, $Action));
         $this->addArea(\REC1\Pages\Formats\Areas\Turnos::getInstance($Compo, $Action));
+        $this->addArea(\REC1\Pages\Formats\Areas\Formato7::getInstance($Compo, $Action));
+        $this->addArea(\REC1\Pages\Formats\Areas\Formato9::getInstance($Compo, $Action));
+        $this->addArea(\REC1\Pages\Formats\Areas\Formato10::getInstance($Compo, $Action));
         $this->addArea(\REC1\Pages\Formats\Areas\Formato12::getInstance($Compo, $Action));
+        $this->addArea(\REC1\Pages\Formats\Areas\Formato14::getInstance($Compo, $Action));
     }
 
     /**
